@@ -1,8 +1,8 @@
 from django.urls import path, include
-from . import views
+from app import views
 
 app_name = 'app'
 
 urlpatterns = [
-    path(r'^register/$', views.register, name='register')
+    path('register/', views.register, name='register')
 ]
