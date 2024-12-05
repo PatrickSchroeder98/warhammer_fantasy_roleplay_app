@@ -10,6 +10,12 @@ def index(request):
     return render(request, 'app/index.html')
 
 
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
+
+
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -50,6 +56,13 @@ def user_login(request):
 
         if user:
             if user.is_active:
-                login(request)
+                login(request, user)
                 return HttpResponseRedirect(reverse('index'))
-    return
+            else:
+                return HttpResponse("ACCOUNT NOT ACTIVE")
+        else:
+            print(f"Event - failed login: Username: {username}, Password: {password}")
+            return HttpResponse("INVALID LOGIN DETAILS SUPPLIED")
+    else:
+        return render(request, 'app/login.html', {})
+
