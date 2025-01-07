@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,16 +17,19 @@
         <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'app:register' %}">Register</a>
+        <a class="nav-link" href="{% url 'accounts:signup' %}">Register</a>
       </li>
 
       {% if user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Logout">
+        </form>
       </li>
       {% else %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'app:user_login' %}">Login</a>
+        <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
       </li>
       {% endif %}
 
@@ -33,7 +37,7 @@
   </div>
 </nav>
   <div class = "container">
-    {% block body_block %}
+    {% block content %}
     {% endblock %}
   </div>
 
