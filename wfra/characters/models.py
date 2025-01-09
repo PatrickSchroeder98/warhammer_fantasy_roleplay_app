@@ -1,11 +1,15 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Characters(models.Model):
-    user = models.ForeignKey()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     species = models.CharField(max_length=100)
     """
+    TODO for later
     character_class =
     career =
     career_tier =
@@ -16,6 +20,13 @@ class Characters(models.Model):
     hair =
     eyes =
     """
+
+
+class Fate(models.Model):
+
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    fate = models.IntegerField()
+    fortune = models.IntegerField()
 
 
 class Characteristics(models.Model):
