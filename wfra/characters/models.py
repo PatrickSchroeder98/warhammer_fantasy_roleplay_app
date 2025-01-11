@@ -22,76 +22,78 @@ class Characters(models.Model):
     """
 
 
-class Fate(models.Model):
+class Characteristics(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
 
+    WS_initial = models.IntegerField()
+    WS_advances = models.IntegerField()
+    WS_current = models.IntegerField()
+
+    BS_initial = models.IntegerField()
+    BS_advances = models.IntegerField()
+    BS_current = models.IntegerField()
+
+    S_initial = models.IntegerField()
+    S_advances = models.IntegerField()
+    S_current = models.IntegerField()
+
+    T_initial = models.IntegerField()
+    T_advances = models.IntegerField()
+    T_current = models.IntegerField()
+
+    I_initial = models.IntegerField()
+    I_advances = models.IntegerField()
+    I_current = models.IntegerField()
+
+    Ag_initial = models.IntegerField()
+    Ag_advances = models.IntegerField()
+    Ag_current = models.IntegerField()
+
+    Dex_initial = models.IntegerField()
+    Dex_advances = models.IntegerField()
+    Dex_current = models.IntegerField()
+
+    Int_initial = models.IntegerField()
+    Int_advances = models.IntegerField()
+    Int_current = models.IntegerField()
+
+    WP_initial = models.IntegerField()
+    WP_advances = models.IntegerField()
+    WP_current = models.IntegerField()
+
+    Fel_initial = models.IntegerField()
+    Fel_advances = models.IntegerField()
+    Fel_current = models.IntegerField()
+
+
+class Fate(models.Model):
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     fate = models.IntegerField()
     fortune = models.IntegerField()
 
 
-class Characteristics(models.Model):
-    """
-    character_id
-    INT
-    FK
-    WS_initial
-    INT
-    WS_advances
-    INT
-    WS_current
-    INT
-    BS_initial
-    INT
-    BS_advances
-    INT
-    BS_current
-    INT
-    S_initial
-    INT
-    S_advances
-    INT
-    S_current
-    INT
-    T_initial
-    INT
-    T_advances
-    INT
-    T_current
-    INT
-    I_initial
-    INT
-    I_advances
-    INT
-    I_current
-    INT
-    Ag_initial
-    INT
-    Ag_advances
-    INT
-    Ag_current
-    INT
-    Dex_initial
-    INT
-    Dex_advances
-    INT
-    Dex_current
-    INT
-    Int_initial
-    INT
-    Int_advances
-    INT
-    Int_current
-    INT
-    WP_initial
-    INT
-    WP_advances
-    INT
-    WP_current
-    INT
-    Fel_initial
-    INT
-    Fel_advances
-    INT
-    Fel_current
-    INT
-    """
+class Resilience(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    resilience = models.IntegerField()
+    resolve = models.IntegerField()
+    motivation = models.CharField(max_length=500)
+
+
+class Experience(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    current = models.IntegerField()
+    spent = models.IntegerField()
+    total = models.IntegerField()
+
+
+class Movement(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    movement = models.IntegerField()
+    walk = models.IntegerField()
+    run = models.IntegerField()
+
+
+"""
+class BasicSkills
+class AdvancedSkills
+"""
