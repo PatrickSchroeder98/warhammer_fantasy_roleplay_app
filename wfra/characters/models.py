@@ -95,5 +95,58 @@ class Movement(models.Model):
 
 """
 class BasicSkills
-class AdvancedSkills
 """
+
+
+class AdvancedSkills(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    name = models.CharField(max_length=500)
+    attribute_name = models.CharField(max_length=500)
+    attribute_value = models.IntegerField()
+    advances = models.IntegerField()
+    sum = models.IntegerField()
+
+
+class Talents(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    talent = models.CharField(max_length=500)
+    times_taken = models.IntegerField()
+    description = models.CharField(max_length=1000)
+
+
+class Ambitions(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    short_term = models.CharField(max_length=1000)
+    long_term = models.CharField(max_length=1000)
+
+
+class Party(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    party_name = models.CharField(max_length=1000)
+    short_term = models.CharField(max_length=1000)
+    long_term = models.CharField(max_length=1000)
+    members = models.CharField(max_length=1000)
+
+
+class Psychology(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    effect = models.CharField(max_length=1000)
+
+
+class CorruptionAndMutation(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    effect = models.CharField(max_length=1000)
+
+
+class Wounds(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    sb = models.IntegerField()
+    tb_x2 = models.IntegerField()
+    wbp = models.IntegerField()
+    hardy = models.IntegerField()
+    wounds = models.IntegerField()
+
+
+class Sin(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+    sin = models.IntegerField()
