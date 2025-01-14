@@ -8,18 +8,15 @@ class Characters(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     species = models.CharField(max_length=100)
-    """
-    TODO for later
-    character_class =
-    career =
-    career_tier =
-    career_path =
-    status =
-    age =
-    height =
-    hair =
-    eyes =
-    """
+    character_class = models.CharField(max_length=200)
+    career = models.CharField(max_length=200)
+    career_tier = models.CharField(max_length=200)
+    career_path = models.CharField(max_length=200)
+    status = models.CharField(max_length=200)
+    age = models.IntegerField()
+    height = models.IntegerField()
+    hair = models.CharField(max_length=200)
+    eyes = models.CharField(max_length=200)
 
 
 class Characteristics(models.Model):
@@ -93,9 +90,112 @@ class Movement(models.Model):
     run = models.IntegerField()
 
 
-"""
-class BasicSkills
-"""
+class BasicSkills(models.Model):
+    character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
+
+    art_characteristics = models.IntegerField()
+    art_advances = models.IntegerField()
+    art_skill = models.IntegerField()
+
+    athletics_characteristics = models.IntegerField()
+    athletics_advances = models.IntegerField()
+    athletics_skill = models.IntegerField()
+
+    bribery_characteristics = models.IntegerField()
+    bribery_advances = models.IntegerField()
+    bribery_skill = models.IntegerField()
+
+    charm_characteristics = models.IntegerField()
+    charm_advances = models.IntegerField()
+    charm_skill = models.IntegerField()
+
+    charm_animal_characteristics = models.IntegerField()
+    charm_animal_advances = models.IntegerField()
+    charm_animal_skill = models.IntegerField()
+
+    climb_characteristics = models.IntegerField()
+    climb_advances = models.IntegerField()
+    climb_skill = models.IntegerField()
+
+    cool_characteristics = models.IntegerField()
+    cool_advances = models.IntegerField()
+    cool_skill = models.IntegerField()
+
+    consume_alcohol_characteristics = models.IntegerField()
+    consume_alcohol_advances = models.IntegerField()
+    consume_alcohol_skill = models.IntegerField()
+
+    dodge_characteristics = models.IntegerField()
+    dodge_advances = models.IntegerField()
+    dodge_skill = models.IntegerField()
+
+    drive_characteristics = models.IntegerField()
+    drive_advances = models.IntegerField()
+    drive_skill = models.IntegerField()
+
+    endurance_characteristics = models.IntegerField()
+    endurance_advances = models.IntegerField()
+    endurance_skill = models.IntegerField()
+
+    entertain_characteristics = models.IntegerField()
+    entertain_advances = models.IntegerField()
+    entertain_skill = models.IntegerField()
+
+    gamble_characteristics = models.IntegerField()
+    gamble_advances = models.IntegerField()
+    gamble_skill = models.IntegerField()
+
+    gossip_characteristics = models.IntegerField()
+    gossip_advances = models.IntegerField()
+    gossip_skill = models.IntegerField()
+
+    haggle_characteristics = models.IntegerField()
+    haggle_advances = models.IntegerField()
+    haggle_skill = models.IntegerField()
+
+    intimidate_characteristics = models.IntegerField()
+    intimidate_advances = models.IntegerField()
+    intimidate_skill = models.IntegerField()
+
+    intuition_characteristics = models.IntegerField()
+    intuition_advances = models.IntegerField()
+    intuition_skill = models.IntegerField()
+
+    leadership_characteristics = models.IntegerField()
+    leadership_advances = models.IntegerField()
+    leadership_skill = models.IntegerField()
+
+    melee_basic_characteristics = models.IntegerField()
+    melee_basic_advances = models.IntegerField()
+    melee_basic_skill = models.IntegerField()
+
+    melee_characteristics = models.IntegerField()
+    melee_advances = models.IntegerField()
+    melee_skill = models.IntegerField()
+
+    navigation_characteristics = models.IntegerField()
+    navigation_advances = models.IntegerField()
+    navigation_skill = models.IntegerField()
+
+    outdoor_survival_characteristics = models.IntegerField()
+    outdoor_survival_advances = models.IntegerField()
+    outdoor_survival_skill = models.IntegerField()
+
+    perception_characteristics = models.IntegerField()
+    perception_advances = models.IntegerField()
+    perception_skill = models.IntegerField()
+
+    ride_characteristics = models.IntegerField()
+    ride_advances = models.IntegerField()
+    ride_skill = models.IntegerField()
+
+    row_characteristics = models.IntegerField()
+    row_advances = models.IntegerField()
+    row_skill = models.IntegerField()
+
+    stealth_characteristics = models.IntegerField()
+    stealth_advances = models.IntegerField()
+    stealth_skill = models.IntegerField()
 
 
 class AdvancedSkills(models.Model):
