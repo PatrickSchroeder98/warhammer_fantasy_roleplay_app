@@ -27,6 +27,10 @@
           <input type="submit" value="Logout">
         </form>
       </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'characters:all' %}">Characters</a>
+      </li>
+
       {% else %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
