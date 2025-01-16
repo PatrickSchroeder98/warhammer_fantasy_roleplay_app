@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.contrib import messages
 from . import models
 from .forms import CharactersForm
 
@@ -39,3 +40,16 @@ class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
 
         return context
 
+
+class DeleteViewCharacter(LoginRequiredMixin, generic.DeleteView):
+    model = models.Characters
+    success_url = reverse_lazy("characters:all")
+
+    def get_queryset(self):
+        # Ensure only the owner can delete their characters
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
+
+    def delete(self, *args, **kwargs):
+        messages.success(self.request, "Character Deleted")
+        return super().delete(*args, **kwargs)
