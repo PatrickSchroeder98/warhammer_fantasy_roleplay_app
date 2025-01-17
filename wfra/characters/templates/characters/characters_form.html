@@ -1,10 +1,20 @@
 {% extends "base.html" %}
+
 {% block content %}
 <div class="container mt-5">
     <h2 class="text-center">Create a New Character</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <h4>Character Information</h4>
+        {{ character_form.as_p }}
+
+        <h4>Fate Information</h4>
+        {{ fate_form.as_p }}
+
+        <h4>Resilience Information</h4>
+        {{ resilience_form.as_p }}
+
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Create</button>
         </div>
