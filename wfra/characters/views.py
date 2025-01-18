@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
 from . import models
-from .forms import CharactersForm, FateForm, ResilienceForm
+from .forms import CharactersForm, CharacteristicsForm, FateForm, ResilienceForm, BasicSkillsForm
 
 
 class ListCharacters(LoginRequiredMixin, generic.ListView):
@@ -30,12 +30,16 @@ class CreateCharacter(LoginRequiredMixin, View):
     def get(self, request):
         # Create empty forms
         character_form = CharactersForm()
+        characteristics_form = CharacteristicsForm()
         fate_form = FateForm()
         resilience_form = ResilienceForm()
+        basic_skills_form = BasicSkillsForm()
         return render(request, "characters/characters_form.html", {
             "character_form": character_form,
+            "characteristics_form": characteristics_form,
             "fate_form": fate_form,
             "resilience_form": resilience_form,
+            "basic_skills_form": basic_skills_form,
         })
 
     def post(self, request):
