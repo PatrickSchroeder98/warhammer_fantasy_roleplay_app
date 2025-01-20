@@ -5,7 +5,21 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
 from . import models
-from .forms import CharactersForm, CharacteristicsForm, FateForm, ResilienceForm, BasicSkillsForm
+from .forms import (
+    CharactersForm,
+    CharacteristicsForm,
+    FateForm,
+    ResilienceForm,
+    BasicSkillsForm,
+    AdvancedSkillsForm,
+    TalentsForm,
+    AmbitionsForm,
+    PartyForm,
+    PsychologyForm,
+    CorruptionAndMutationForm,
+    WoundsForm,
+    SinForm,
+)
 
 
 class ListCharacters(LoginRequiredMixin, generic.ListView):
@@ -15,32 +29,43 @@ class ListCharacters(LoginRequiredMixin, generic.ListView):
         return models.Characters.objects.filter(user=self.request.user)
 
 
-# class CreateCharacter(LoginRequiredMixin, generic.CreateView):
-#     model = models.Characters
-#     form_class = CharactersForm
-#     success_url = reverse_lazy('characters:all')
-#
-#     def form_valid(self, form):
-#         self.object = form.save(commit=False)
-#         self.object.user = self.request.user
-#         self.object.save()
-#         return super().form_valid(form)
-
 class CreateCharacter(LoginRequiredMixin, View):
     def get(self, request):
         # Create empty forms
+
         character_form = CharactersForm()
         characteristics_form = CharacteristicsForm()
         fate_form = FateForm()
         resilience_form = ResilienceForm()
         basic_skills_form = BasicSkillsForm()
-        return render(request, "characters/characters_form.html", {
-            "character_form": character_form,
-            "characteristics_form": characteristics_form,
-            "fate_form": fate_form,
-            "resilience_form": resilience_form,
-            "basic_skills_form": basic_skills_form,
-        })
+        advanced_skills_form = AdvancedSkillsForm()
+        talents_form = TalentsForm()
+        ambitions_form = AmbitionsForm()
+        party_form = PartyForm()
+        psychology_form = PsychologyForm()
+        corruption_and_mutation_form = CorruptionAndMutationForm()
+        wounds_form = WoundsForm()
+        sin_form = SinForm()
+
+        return render(
+            request,
+            "characters/characters_form.html",
+            {
+                "character_form": character_form,
+                "characteristics_form": characteristics_form,
+                "fate_form": fate_form,
+                "resilience_form": resilience_form,
+                "basic_skills_form": basic_skills_form,
+                "advanced_skills_form": advanced_skills_form,
+                "talents_form": talents_form,
+                "ambitions_form": ambitions_form,
+                "party_form": party_form,
+                "psychology_form": psychology_form,
+                "corruption_and_mutation_form": corruption_and_mutation_form,
+                "wounds_form": wounds_form,
+                "sin_form": sin_form,
+            },
+        )
 
     def post(self, request):
         """Method binds submitted data to the forms. Then it validates all forms. If they are valid, it saves the data.
@@ -49,7 +74,11 @@ class CreateCharacter(LoginRequiredMixin, View):
         fate_form = FateForm(request.POST)
         resilience_form = ResilienceForm(request.POST)
 
-        if character_form.is_valid() and fate_form.is_valid() and resilience_form.is_valid():
+        if (
+            character_form.is_valid()
+            and fate_form.is_valid()
+            and resilience_form.is_valid()
+        ):
             # Save the main character form
             character = character_form.save(commit=False)
             character.user = request.user  # Set the logged-in user
@@ -68,24 +97,32 @@ class CreateCharacter(LoginRequiredMixin, View):
             return redirect("characters:all")
 
         # If any form is invalid, re-render the form with errors
-        return render(request, "characters/character_form.html", {
-            "character_form": character_form,
-            "fate_form": fate_form,
-            "resilience_form": resilience_form,
-        })
+        return render(
+            request,
+            "characters/character_form.html",
+            {
+                "character_form": character_form,
+                "fate_form": fate_form,
+                "resilience_form": resilience_form,
+            },
+        )
 
 
 class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
     model = models.Characters
-    context_object_name = 'character'
+    context_object_name = "character"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         character = self.object
 
-        context['experience'] = models.Experience.objects.filter(character_id=character)
-        context['basic_skills'] = models.BasicSkills.objects.filter(character_id=character)
-        context['advanced_skills'] = models.AdvancedSkills.objects.filter(character_id=character)
+        context["experience"] = models.Experience.objects.filter(character_id=character)
+        context["resilience"] = models.Resilience.objects.filter(
+            character_id=character
+        )
+        context["advanced_skills"] = models.AdvancedSkills.objects.filter(
+            character_id=character
+        )
 
         return context
 

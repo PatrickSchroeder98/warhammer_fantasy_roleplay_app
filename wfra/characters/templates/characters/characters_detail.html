@@ -3,17 +3,17 @@
 {% block content %}
 <h1>{{ character.name }} ({{ character.species }})</h1>
 
-<h2>Basic Skills</h2>
+<h2>Resilience</h2>
 <ul>
-    {% for skill in basic_skills %}
-    <li>Art: Characteristics={{ skill.art_characteristics }}, Advances={{ skill.art_advances }}, Skill={{ skill.art_skill }}</li>
+    {% for skill in resilience %}
+    <li> Resilience={{ skill.resilience }}, Resolve={{ skill.resolve }}, Motivation={{ skill.motivation }}</li>
     {% endfor %}
 </ul>
 
 <h2>Advanced Skills</h2>
 <ul>
     {% for advanced_skill in advanced_skills %}
-    <li>Advanced Skill 1: {{ advanced_skill.name }}</li>
+    <li>Advanced Skill 1: {{ advanced_skill.name_0 }}</li>
     {% endfor %}
 </ul>
 

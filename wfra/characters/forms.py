@@ -7,6 +7,14 @@ from .models import (
     Experience,
     Movement,
     BasicSkills,
+    AdvancedSkills,
+    Talents,
+    Ambitions,
+    Party,
+    Psychology,
+    CorruptionAndMutation,
+    Wounds,
+    Sin,
 )
 
 
@@ -187,3 +195,52 @@ class BasicSkillsForm(forms.ModelForm):
             "stealth_skill",
         )
 
+
+class AdvancedSkillsForm(forms.ModelForm):
+    class Meta:
+        model = AdvancedSkills
+        fields = ('name_0', 'attribute_name_0', 'attribute_value_0', 'advances_0', 'total_0',
+                  'name_1', 'attribute_name_1', 'attribute_value_1', 'advances_1', 'total_1',
+                  'name_2', 'attribute_name_2', 'attribute_value_2', 'advances_2', 'total_2',)
+
+
+class TalentsForm(forms.ModelForm):
+    class Meta:
+        model = Talents
+        fields = ('talent', 'times_taken', 'description')
+
+
+class AmbitionsForm(forms.ModelForm):
+    class Meta:
+        model = Ambitions
+        fields = ('short_term', 'long_term')
+
+
+class PartyForm(forms.ModelForm):
+    class Meta:
+        model = Party
+        fields = ('party_name', 'short_term', 'long_term', 'members')
+
+
+class PsychologyForm(forms.ModelForm):
+    class Meta:
+        model = Psychology
+        fields = ('effect',)
+
+
+class CorruptionAndMutationForm(forms.ModelForm):
+    class Meta:
+        model = CorruptionAndMutation
+        fields = ('effect',)
+
+
+class WoundsForm(forms.ModelForm):
+    class Meta:
+        model = Wounds
+        fields = ('sb', 'tb_x2', 'wbp', 'hardy', 'wounds')
+
+
+class SinForm(forms.ModelForm):
+    class Meta:
+        model = Sin
+        fields = ('sin',)
