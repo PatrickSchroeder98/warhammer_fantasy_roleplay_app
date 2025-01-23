@@ -10,6 +10,8 @@ from .forms import (
     CharacteristicsForm,
     FateForm,
     ResilienceForm,
+    ExperienceForm,
+    MovementForm,
     BasicSkillsForm,
     AdvancedSkillsForm,
     TalentsForm,
@@ -37,6 +39,8 @@ class CreateCharacter(LoginRequiredMixin, View):
         characteristics_form = CharacteristicsForm()
         fate_form = FateForm()
         resilience_form = ResilienceForm()
+        experience_form = ExperienceForm()
+        movement_form = MovementForm()
         basic_skills_form = BasicSkillsForm()
         advanced_skills_form = AdvancedSkillsForm()
         talents_form = TalentsForm()
@@ -55,6 +59,8 @@ class CreateCharacter(LoginRequiredMixin, View):
                 "characteristics_form": characteristics_form,
                 "fate_form": fate_form,
                 "resilience_form": resilience_form,
+                "experience_form": experience_form,
+                "movement_form": movement_form,
                 "basic_skills_form": basic_skills_form,
                 "advanced_skills_form": advanced_skills_form,
                 "talents_form": talents_form,
@@ -74,6 +80,8 @@ class CreateCharacter(LoginRequiredMixin, View):
         characteristics_form = CharacteristicsForm(request.POST)
         fate_form = FateForm(request.POST)
         resilience_form = ResilienceForm(request.POST)
+        experience_form = ExperienceForm()
+        movement_form = MovementForm()
         basic_skills_form = BasicSkillsForm(request.POST)
         advanced_skills_form = AdvancedSkillsForm(request.POST)
         talents_form = TalentsForm(request.POST)
@@ -89,6 +97,8 @@ class CreateCharacter(LoginRequiredMixin, View):
             and characteristics_form.is_valid()
             and fate_form.is_valid()
             and resilience_form.is_valid()
+            and experience_form.is_valid()
+            and movement_form.is_valid()
             and basic_skills_form.is_valid()
             and advanced_skills_form.is_valid()
             and talents_form.is_valid()
@@ -116,6 +126,14 @@ class CreateCharacter(LoginRequiredMixin, View):
             resilience = resilience_form.save(commit=False)
             resilience.character_id = character
             resilience.save()
+
+            experience = experience_form.save(commit=False)
+            experience.character_id = character
+            experience.save()
+
+            movement = movement_form.save(commit=False)
+            movement.character_id = character
+            movement.save()
 
             basic_skills = basic_skills_form.save(commit=False)
             basic_skills.character_id = character
@@ -161,6 +179,8 @@ class CreateCharacter(LoginRequiredMixin, View):
                 "characteristics_form": characteristics_form,
                 "fate_form": fate_form,
                 "resilience_form": resilience_form,
+                "experience_form": experience_form,
+                "movement_form": movement_form,
                 "basic_skills_form": basic_skills_form,
                 "advanced_skills_form": advanced_skills_form,
                 "talents_form": talents_form,
@@ -187,6 +207,8 @@ class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
         )
         context["fate"] = models.Fate.objects.filter(character_id=character)
         context["resilience"] = models.Resilience.objects.filter(character_id=character)
+        context["experience"] = models.Experience.objects.filter(character_id=character)
+        context["movement"] = models.Movement.objects.filter(character_id=character)
         context["basic_skills"] = models.BasicSkills.objects.filter(
             character_id=character
         )

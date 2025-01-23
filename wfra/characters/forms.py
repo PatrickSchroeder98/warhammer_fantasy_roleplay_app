@@ -43,10 +43,46 @@ class CharactersForm(forms.ModelForm):
             "species": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Character Species"}
             ),
+            "character_class": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Character Class"}
+            ),
+            "career": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Career"}
+            ),
+            "career_tier": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Career Tier"}
+            ),
+            "career_path": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Career Path"}
+            ),
+            "status": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Status"}
+            ),
+            "age": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Character Age"}
+            ),
+            "height": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Character Height"}
+            ),
+            "hair": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Character Hair"}
+            ),
+            "eyes": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Character Eyes"}
+            ),
         }
         labels = {
             "name": "Character Name",
             "species": "Species",
+            "character_class": "Character Class",
+            "career": "Career",
+            "career_tier": "Career Tier",
+            "career_path": "Career Path",
+            "status": "Status",
+            "age": "Character Age",
+            "height": "Character Height",
+            "hair": "Character Hair",
+            "eyes": "Character Eyes",
         }
 
 
@@ -86,17 +122,175 @@ class CharacteristicsForm(forms.ModelForm):
             "Fel_current",
         )
 
+        widgets = {
+            "WS_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Weapon Skill"}
+            ),
+            "WS_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Weapon Skill"}
+            ),
+            "WS_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Weapon Skill"}
+            ),
+            "BS_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Ballistic Skill"}
+            ),
+            "BS_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Ballistic Skill"}
+            ),
+            "BS_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Ballistic Skill"}
+            ),
+            "S_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Strength"}
+            ),
+            "S_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Strength"}
+            ),
+            "S_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Strength"}
+            ),
+            "T_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Toughness"}
+            ),
+            "T_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Toughness"}
+            ),
+            "T_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Toughness"}
+            ),
+            "I_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Initiative"}
+            ),
+            "I_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Initiative"}
+            ),
+            "I_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Initiative"}
+            ),
+            "Ag_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Agility"}
+            ),
+            "Ag_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Agility"}
+            ),
+            "Ag_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Agility"}
+            ),
+            "Dex_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Dexterity"}
+            ),
+            "Dex_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Dexterity"}
+            ),
+            "Dex_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Dexterity"}
+            ),
+            "Int_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Intelligence"}
+            ),
+            "Int_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Intelligence"}
+            ),
+            "Int_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Intelligence"}
+            ),
+            "WP_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Willpower"}
+            ),
+            "WP_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Willpower"}
+            ),
+            "WP_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Willpower"}
+            ),
+            "Fel_initial": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Initial Fellowship"}
+            ),
+            "Fel_advances": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Advances Fellowship"}
+            ),
+            "Fel_current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Fellowship"}
+            ),
+        }
+
+        labels = {
+            "WS_initial": "Initial Weapon Skill",
+            "WS_advances": "Advances Weapon Skill",
+            "WS_current": "Current Weapon Skill",
+            "BS_initial": "Initial Ballistic Skill",
+            "BS_advances": "Advances Ballistic Skill",
+            "BS_current": "Current Ballistic Skill",
+            "S_initial": "Initial Strength",
+            "S_advances": "Advances Strength",
+            "S_current": "Current Strength",
+            "T_initial": "Initial Toughness",
+            "T_advances": "Advances Toughness",
+            "T_current": "Current Toughness",
+            "I_initial": "Initial Initiative",
+            "I_advances": "Advances Initiative",
+            "I_current": "Current Initiative",
+            "Ag_initial": "Initial Agility",
+            "Ag_advances": "Advances Agility",
+            "Ag_current": "Current Agility",
+            "Dex_initial": "Initial Dexterity",
+            "Dex_advances": "Advances Dexterity",
+            "Dex_current": "Current Dexterity",
+            "Int_initial": "Initial Intelligence",
+            "Int_advances": "Advances Intelligence",
+            "Int_current": "Current Intelligence",
+            "WP_initial": "Initial Willpower",
+            "WP_advances": "Advances Willpower",
+            "WP_current": "Current Willpower",
+            "Fel_initial": "Initial Fellowship",
+            "Fel_advances": "Advances Fellowship",
+            "Fel_current": "Current Fellowship",
+        }
+
 
 class FateForm(forms.ModelForm):
     class Meta:
         model = Fate
         fields = ("fate", "fortune")
 
+        widgets = {
+            "fate": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Fate Points"}
+            ),
+            "fortune": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Fortune Points"}
+            ),
+        }
+
+        labels = {
+            "fate": "Fate Points",
+            "fortune": "Fortune Points",
+        }
+
 
 class ResilienceForm(forms.ModelForm):
     class Meta:
         model = Resilience
         fields = ("resilience", "resolve", "motivation")
+
+        widgets = {
+            "resilience": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Resilience Points"}
+            ),
+            "resolve": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Resolve Points"}
+            ),
+            "motivation": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Motivation"}
+            ),
+        }
+
+        labels = {
+            "resilience": "Resilience Points",
+            "resolve": "Resolve Points",
+            "motivation": "Motivation",
+        }
 
 
 class ExperienceForm(forms.ModelForm):
