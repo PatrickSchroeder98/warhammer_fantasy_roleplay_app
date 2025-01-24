@@ -58,10 +58,10 @@ class CharactersForm(forms.ModelForm):
             "status": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Status"}
             ),
-            "age": forms.TextInput(
+            "age": forms.NumberInput(
                 attrs={"class": "form-control", "placeholder": "Character Age"}
             ),
-            "height": forms.TextInput(
+            "height": forms.NumberInput(
                 attrs={"class": "form-control", "placeholder": "Character Height"}
             ),
             "hair": forms.TextInput(
@@ -281,7 +281,7 @@ class ResilienceForm(forms.ModelForm):
             "resolve": forms.NumberInput(
                 attrs={"class": "form-control", "placeholder": "Resolve Points"}
             ),
-            "motivation": forms.NumberInput(
+            "motivation": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Motivation"}
             ),
         }
@@ -298,11 +298,47 @@ class ExperienceForm(forms.ModelForm):
         model = Experience
         fields = ("current", "spent", "total")
 
+        widgets = {
+            "current": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Current Experience Points"}
+            ),
+            "spent": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Spent Experience Points"}
+            ),
+            "total": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Total Experience Points"}
+            ),
+        }
+
+        labels = {
+            "current": "Current Experience Points",
+            "spent": "Spent Experience Points",
+            "total": "Total Experience Points",
+        }
+
 
 class MovementForm(forms.ModelForm):
     class Meta:
         model = Movement
         fields = ("movement", "walk", "run")
+
+        widgets = {
+            "movement": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Movement Speed"}
+            ),
+            "walk": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Walk Speed"}
+            ),
+            "run": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Run Speed"}
+            ),
+        }
+
+        labels = {
+            "movement": "Movement Speed",
+            "walk": "Walk Speed",
+            "run": "Run Speed",
+        }
 
 
 class BasicSkillsForm(forms.ModelForm):
@@ -389,6 +425,97 @@ class BasicSkillsForm(forms.ModelForm):
             "stealth_skill",
         )
 
+        widgets = {
+            field_name: forms.NumberInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": field_name.replace("_", " ").capitalize(),
+                }
+            )
+            for field_name in fields
+        }
+
+        labels = {
+            "art_characteristics": "Art Characteristics",
+            "art_advances": "Art Advances",
+            "art_skill": "Art Skill",
+            "athletics_characteristics": "Athletics Characteristics",
+            "athletics_advances": "Athletics Advances",
+            "athletics_skill": "Athletics Skill",
+            "bribery_characteristics": "Bribery Characteristics",
+            "bribery_advances": "Bribery Advances",
+            "bribery_skill": "Bribery Skill",
+            "charm_characteristics": "Charm Characteristics",
+            "charm_advances": "Charm Advances",
+            "charm_skill": "Charm Skill",
+            "charm_animal_characteristics": "Charm Animal Characteristics",
+            "charm_animal_advances": "Charm Animal Advances",
+            "charm_animal_skill": "Charm Animal Skill",
+            "climb_characteristics": "Climb Characteristics",
+            "climb_advances": "Climb Advances",
+            "climb_skill": "Climb Skill",
+            "cool_characteristics": "Cool Characteristics",
+            "cool_advances": "Cool Advances",
+            "cool_skill": "Cool Skill",
+            "consume_alcohol_characteristics": "Consume Alcohol Characteristics",
+            "consume_alcohol_advances": "Consume Alcohol Advances",
+            "consume_alcohol_skill": "Consume Alcohol Skill",
+            "dodge_characteristics": "Dodge Characteristics",
+            "dodge_advances": "Dodge Advances",
+            "dodge_skill": "Dodge Skill",
+            "drive_characteristics": "Drive Characteristics",
+            "drive_advances": "Drive Advances",
+            "drive_skill": "Drive Skill",
+            "endurance_characteristics": "Endurance Characteristics",
+            "endurance_advances": "Endurance Advances",
+            "endurance_skill": "Endurance Skill",
+            "entertain_characteristics": "Entertain Characteristics",
+            "entertain_advances": "Entertain Advances",
+            "entertain_skill": "Entertain Skill",
+            "gamble_characteristics": "Gamble Characteristics",
+            "gamble_advances": "Gamble Advances",
+            "gamble_skill": "Gamble Skill",
+            "gossip_characteristics": "Gossip Characteristics",
+            "gossip_advances": "Gossip Advances",
+            "gossip_skill": "Gossip Skill",
+            "haggle_characteristics": "Haggle Characteristics",
+            "haggle_advances": "Haggle Advances",
+            "haggle_skill": "Haggle Skill",
+            "intimidate_characteristics": "Intimidate Characteristics",
+            "intimidate_advances": "Intimidate Advances",
+            "intimidate_skill": "Intimidate Skill",
+            "intuition_characteristics": "Intuition Characteristics",
+            "intuition_advances": "Intuition Advances",
+            "intuition_skill": "Intuition Skill",
+            "leadership_characteristics": "Leadership Characteristics",
+            "leadership_advances": "Leadership Advances",
+            "leadership_skill": "Leadership Skill",
+            "melee_basic_characteristics": "Melee Basic Characteristics",
+            "melee_basic_advances": "Melee Basic Advances",
+            "melee_basic_skill": "Melee Basic Skill",
+            "melee_characteristics": "Melee Characteristics",
+            "melee_advances": "Melee Advances",
+            "melee_skill": "Melee Skill",
+            "navigation_characteristics": "Navigation Characteristics",
+            "navigation_advances": "Navigation Advances",
+            "navigation_skill": "Navigation Skill",
+            "outdoor_survival_characteristics": "Outdoor Survival Characteristics",
+            "outdoor_survival_advances": "Outdoor Survival Advances",
+            "outdoor_survival_skill": "Outdoor Survival Skill",
+            "perception_characteristics": "Perception Characteristics",
+            "perception_advances": "Perception Advances",
+            "perception_skill": "Perception Skill",
+            "ride_characteristics": "Ride Characteristics",
+            "ride_advances": "Ride Advances",
+            "ride_skill": "Ride Skill",
+            "row_characteristics": "Row Characteristics",
+            "row_advances": "Row Advances",
+            "row_skill": "Row Skill",
+            "stealth_characteristics": "Stealth Characteristics",
+            "stealth_advances": "Stealth Advances",
+            "stealth_skill": "Stealth Skill",
+        }
+
 
 class AdvancedSkillsForm(forms.ModelForm):
     class Meta:
@@ -403,11 +530,43 @@ class TalentsForm(forms.ModelForm):
         model = Talents
         fields = ('talent', 'times_taken', 'description')
 
+        widgets = {
+            "talent": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Talent Name"}
+            ),
+            "times_taken": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Times Taken"}
+            ),
+            "description": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Talent Description"}
+            ),
+        }
+
+        labels = {
+            "talent": "Talent Name",
+            "times_taken": "Times Taken",
+            "description": "Talent Description",
+        }
+
 
 class AmbitionsForm(forms.ModelForm):
     class Meta:
         model = Ambitions
         fields = ('short_term', 'long_term')
+
+        widgets = {
+            "short_term": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Short Term Ambition"}
+            ),
+            "long_term": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Long Term Ambition"}
+            ),
+        }
+
+        labels = {
+            "short_term": "Short Term Ambition",
+            "long_term": "Long Term Ambition",
+        }
 
 
 class PartyForm(forms.ModelForm):
@@ -415,11 +574,43 @@ class PartyForm(forms.ModelForm):
         model = Party
         fields = ('party_name', 'short_term', 'long_term', 'members')
 
+        widgets = {
+            "party_name": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Party Name"}
+            ),
+            "short_term": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Short Term Party Ambition"}
+            ),
+            "long_term": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Long Term Party Ambition"}
+            ),
+            "members": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Party Members"}
+            ),
+        }
+
+        labels = {
+            "party_name": "Party Name",
+            "short_term": "Short Term Party Ambition",
+            "long_term": "Long Term Party Ambition",
+            "members": "Party Members",
+        }
+
 
 class PsychologyForm(forms.ModelForm):
     class Meta:
         model = Psychology
         fields = ('effect',)
+
+        widgets = {
+            "effect": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Psychology Effects"}
+            ),
+        }
+
+        labels = {
+            "effect": "Psychology Effects",
+        }
 
 
 class CorruptionAndMutationForm(forms.ModelForm):
@@ -427,14 +618,60 @@ class CorruptionAndMutationForm(forms.ModelForm):
         model = CorruptionAndMutation
         fields = ('effect',)
 
+        widgets = {
+            "effect": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Corruption And Mutation Effects"}
+            ),
+        }
+
+        labels = {
+            "effect": "Corruption And Mutation Effects",
+        }
+
 
 class WoundsForm(forms.ModelForm):
     class Meta:
         model = Wounds
         fields = ('sb', 'tb_x2', 'wbp', 'hardy', 'wounds')
 
+        widgets = {
+            "sb": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Strength Bonus"}
+            ),
+            "tb_x2": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Toughness Bonus x2"}
+            ),
+            "wbp": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Willpower Bonus"}
+            ),
+            "hardy": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Hardy Skill"}
+            ),
+            "wounds": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Number Of Wounds (Health)"}
+            ),
+        }
+
+        labels = {
+            "sb": "Strength Bonus",
+            "tb_x2": "Toughness Bonus x2",
+            "wbp": "Willpower Bonus",
+            "hardy": "Hardy Skill",
+            "wounds": "Number Of Wounds (Health)",
+        }
+
 
 class SinForm(forms.ModelForm):
     class Meta:
         model = Sin
         fields = ('sin',)
+
+        widgets = {
+            "sin": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Sin Points"}
+            ),
+        }
+
+        labels = {
+            "sin": "Sin Points",
+        }
