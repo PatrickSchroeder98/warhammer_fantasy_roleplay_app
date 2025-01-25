@@ -520,9 +520,33 @@ class BasicSkillsForm(forms.ModelForm):
 class AdvancedSkillsForm(forms.ModelForm):
     class Meta:
         model = AdvancedSkills
-        fields = ('name_0', 'attribute_name_0', 'attribute_value_0', 'advances_0', 'total_0',
-                  'name_1', 'attribute_name_1', 'attribute_value_1', 'advances_1', 'total_1',
-                  'name_2', 'attribute_name_2', 'attribute_value_2', 'advances_2', 'total_2',)
+        fields = ('name', 'attribute_name', 'attribute_value', 'advances', 'total')
+
+        widgets = {
+            "name": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Advanced Skill Name"}
+            ),
+            "attribute_name": forms.NumberInput(
+                attrs={"class": "form-control", "placeholder": "Attribute Name"}
+            ),
+            "attribute_value": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Attribute Value"}
+            ),
+            "advances": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Advances"}
+            ),
+            "total": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Total Value"}
+            ),
+        }
+
+        labels = {
+            "name": "Advanced Skill Name",
+            "attribute_name": "Attribute Name",
+            "attribute_value": "Attribute Value",
+            "advances": "Advances",
+            "total": "Total Value",
+        }
 
 
 class TalentsForm(forms.ModelForm):

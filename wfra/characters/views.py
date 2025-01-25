@@ -1,3 +1,4 @@
+from django.forms import modelformset_factory
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -42,7 +43,10 @@ class CreateCharacter(LoginRequiredMixin, View):
         experience_form = ExperienceForm()
         movement_form = MovementForm()
         basic_skills_form = BasicSkillsForm()
-        advanced_skills_form = AdvancedSkillsForm()
+
+        AdvancedSkillsFormSet = modelformset_factory(models.AdvancedSkills, form=AdvancedSkillsForm, extra=1, can_delete=False)
+        advanced_skills_formset = AdvancedSkillsFormSet(queryset=models.AdvancedSkills.objects.none())
+
         talents_form = TalentsForm()
         ambitions_form = AmbitionsForm()
         party_form = PartyForm()
@@ -62,7 +66,7 @@ class CreateCharacter(LoginRequiredMixin, View):
                 "experience_form": experience_form,
                 "movement_form": movement_form,
                 "basic_skills_form": basic_skills_form,
-                "advanced_skills_form": advanced_skills_form,
+                "advanced_skills_form": advanced_skills_formset,
                 "talents_form": talents_form,
                 "ambitions_form": ambitions_form,
                 "party_form": party_form,
@@ -83,7 +87,10 @@ class CreateCharacter(LoginRequiredMixin, View):
         experience_form = ExperienceForm()
         movement_form = MovementForm()
         basic_skills_form = BasicSkillsForm(request.POST)
-        advanced_skills_form = AdvancedSkillsForm(request.POST)
+
+        AdvancedSkillsFormSet = modelformset_factory(models.AdvancedSkills, form=AdvancedSkillsForm, extra=0, can_delete=False)
+        advanced_skills_formset = AdvancedSkillsFormSet(request.POST)
+
         talents_form = TalentsForm(request.POST)
         ambitions_form = AmbitionsForm(request.POST)
         party_form = PartyForm(request.POST)
@@ -100,7 +107,7 @@ class CreateCharacter(LoginRequiredMixin, View):
             and experience_form.is_valid()
             and movement_form.is_valid()
             and basic_skills_form.is_valid()
-            and advanced_skills_form.is_valid()
+            and advanced_skills_formset.is_valid()
             and talents_form.is_valid()
             and ambitions_form.is_valid()
             and party_form.is_valid()
@@ -139,9 +146,11 @@ class CreateCharacter(LoginRequiredMixin, View):
             basic_skills.character_id = character
             basic_skills.save()
 
-            advanced_skills = advanced_skills_form.save(commit=False)
-            advanced_skills.character_id = character
-            advanced_skills.save()
+            for form in advanced_skills_formset:
+                if form.cleaned_data and not form.cleaned_data.get('DELETE', False):
+                    advanced_skill = form.save(commit=False)
+                    advanced_skill.character_id = character
+                    advanced_skill.save()
 
             talents = talents_form.save(commit=False)
             talents.character_id = character
@@ -182,7 +191,7 @@ class CreateCharacter(LoginRequiredMixin, View):
                 "experience_form": experience_form,
                 "movement_form": movement_form,
                 "basic_skills_form": basic_skills_form,
-                "advanced_skills_form": advanced_skills_form,
+                "advanced_skills_form": advanced_skills_formset,
                 "talents_form": talents_form,
                 "ambitions_form": ambitions_form,
                 "party_form": party_form,

@@ -200,23 +200,11 @@ class BasicSkills(models.Model):
 
 class AdvancedSkills(models.Model):
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
-    name_0 = models.CharField(max_length=500)
-    attribute_name_0 = models.CharField(max_length=500)
-    attribute_value_0 = models.IntegerField()
-    advances_0 = models.IntegerField()
-    total_0 = models.IntegerField()
-
-    name_1 = models.CharField(max_length=500)
-    attribute_name_1 = models.CharField(max_length=500)
-    attribute_value_1 = models.IntegerField()
-    advances_1 = models.IntegerField()
-    total_1 = models.IntegerField()
-
-    name_2 = models.CharField(max_length=500)
-    attribute_name_2 = models.CharField(max_length=500)
-    attribute_value_2 = models.IntegerField()
-    advances_2 = models.IntegerField()
-    total_2 = models.IntegerField()
+    name = models.CharField(max_length=500)
+    attribute_name = models.CharField(max_length=500)
+    attribute_value = models.IntegerField()
+    advances = models.IntegerField()
+    total = models.IntegerField()
 
 
 class Talents(models.Model):
