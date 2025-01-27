@@ -2,20 +2,166 @@
 
 {% block content %}
 <h1>{{ character.name }} ({{ character.species }})</h1>
+<h> Class: {{ character.character_class }},  </h>
+
+<h2>Characteristics</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Skill</th>
+            <th>Initial</th>
+            <th>Advances</th>
+            <th>Current</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for characteristic in characteristics %}
+        <tr>
+            <td>WS</td>
+            <td>{{ characteristic.WS_initial }}</td>
+            <td>{{ characteristic.WS_advances }}</td>
+            <td>{{ characteristic.WS_current }}</td>
+        </tr>
+        <tr>
+            <td>BS</td>
+            <td>{{ characteristic.BS_initial }}</td>
+            <td>{{ characteristic.BS_advances }}</td>
+            <td>{{ characteristic.BS_current }}</td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td>{{ characteristic.S_initial }}</td>
+            <td>{{ characteristic.S_advances }}</td>
+            <td>{{ characteristic.S_current }}</td>
+        </tr>
+        <tr>
+            <td>T</td>
+            <td>{{ characteristic.T_initial }}</td>
+            <td>{{ characteristic.T_advances }}</td>
+            <td>{{ characteristic.T_current }}</td>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>{{ characteristic.I_initial }}</td>
+            <td>{{ characteristic.I_advances }}</td>
+            <td>{{ characteristic.I_current }}</td>
+        </tr>
+        <tr>
+            <td>Ag</td>
+            <td>{{ characteristic.Ag_initial }}</td>
+            <td>{{ characteristic.Ag_advances }}</td>
+            <td>{{ characteristic.Ag_current }}</td>
+        </tr>
+        <tr>
+            <td>Dex</td>
+            <td>{{ characteristic.Dex_initial }}</td>
+            <td>{{ characteristic.Dex_advances }}</td>
+            <td>{{ characteristic.Dex_current }}</td>
+        </tr>
+        <tr>
+            <td>Int</td>
+            <td>{{ characteristic.Int_initial }}</td>
+            <td>{{ characteristic.Int_advances }}</td>
+            <td>{{ characteristic.Int_current }}</td>
+        </tr>
+        <tr>
+            <td>WP</td>
+            <td>{{ characteristic.WP_initial }}</td>
+            <td>{{ characteristic.WP_advances }}</td>
+            <td>{{ characteristic.WP_current }}</td>
+        </tr>
+        <tr>
+            <td>Fel</td>
+            <td>{{ characteristic.Fel_initial }}</td>
+            <td>{{ characteristic.Fel_advances }}</td>
+            <td>{{ characteristic.Fel_current }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Fate</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Fate</th>
+            <th>Fortune</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for skill in fate %}
+            <tr>
+                <td>{{ skill.fate }}</td>
+                <td>{{ skill.fortune }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
 
 <h2>Resilience</h2>
-<ul>
-    {% for skill in resilience %}
-    <li> Resilience={{ skill.resilience }}, Resolve={{ skill.resolve }}, Motivation={{ skill.motivation }}</li>
-    {% endfor %}
-</ul>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Resilience</th>
+            <th>Resolve</th>
+            <th>Motivation</th>
+        </tr>
+    </thead>
 
-<h2>Advanced Skills</h2>
-<ul>
-    {% for advanced_skill in advanced_skills %}
-    <li>Advanced Skill 1: {{ advanced_skill.name_0 }}</li>
-    {% endfor %}
-</ul>
+    <tbody>
+            {% for skill in resilience %}
+            <tr>
+                <td>{{ skill.resilience }}</td>
+                <td>{{ skill.resolve }}</td>
+                <td>{{ skill.motivation }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+<h2>Experience</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Current</th>
+            <th>Spent</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for skill in experience %}
+            <tr>
+                <td>{{ skill.current }}</td>
+                <td>{{ skill.spent }}</td>
+                <td>{{ skill.total }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+<h2>Movement</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Movement</th>
+            <th>Walk</th>
+            <th>Run</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for skill in experience %}
+            <tr>
+                <td>{{ skill.movement }}</td>
+                <td>{{ skill.walk }}</td>
+                <td>{{ skill.run }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
 
 
 <a href="{% url 'characters:delete' character.pk %}">Delete</a>
