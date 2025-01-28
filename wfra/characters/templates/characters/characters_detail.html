@@ -2,7 +2,38 @@
 
 {% block content %}
 <h1>{{ character.name }} ({{ character.species }})</h1>
-<h> Class: {{ character.character_class }},  </h>
+
+<h2>Character Details</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Career</th>
+            <th>Career Tier</th>
+            <th>Career Path</th>
+            <th>Status</th>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Hair</th>
+            <th>Eyes</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+                <td>{{ character.character_class }}</td>
+                <td>{{ character.career }}</td>
+                <td>{{ character.career_tier }}</td>
+                <td>{{ character.career_path }}</td>
+                <td>{{ character.status }}</td>
+                <td>{{ character.age }}</td>
+                <td>{{ character.height }}</td>
+                <td>{{ character.hair }}</td>
+                <td>{{ character.age }}</td>
+            </tr>
+    </tbody>
+</table>
 
 <h2>Characteristics</h2>
 <table class="table table-striped table-bordered">
@@ -163,7 +194,202 @@
     </tbody>
 </table>
 
+<h2>Basic Skills</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Skill</th>
+            <th>Characteristics</th>
+            <th>Advances</th>
+            <th>Skill</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for skill in basic_skills %}
+        <tr>
+            <td>Art</td>
+            <td>{{ skill.art_characteristics }}</td>
+            <td>{{ skill.art_advances }}</td>
+            <td>{{ skill.art_skill }}</td>
+        </tr>
+        <tr>
+            <td>Athletics</td>
+            <td>{{ skill.athletics_characteristics }}</td>
+            <td>{{ skill.athletics_advances }}</td>
+            <td>{{ skill.athletics_skill }}</td>
+        </tr>
+        <tr>
+            <td>Bribery</td>
+            <td>{{ skill.bribery_characteristics }}</td>
+            <td>{{ skill.bribery_advances }}</td>
+            <td>{{ skill.bribery_skill }}</td>
+        </tr>
+        <tr>
+            <td>Charm</td>
+            <td>{{ skill.charm_characteristics }}</td>
+            <td>{{ skill.charm_advances }}</td>
+            <td>{{ skill.charm_skill }}</td>
+        </tr>
+        <tr>
+            <td>Charm Animal</td>
+            <td>{{ skill.charm_animal_characteristics }}</td>
+            <td>{{ skill.charm_animal_advances }}</td>
+            <td>{{ skill.charm_animal_skill }}</td>
+        </tr>
+        <tr>
+            <td>Climb</td>
+            <td>{{ skill.climb_characteristics }}</td>
+            <td>{{ skill.climb_advances }}</td>
+            <td>{{ skill.climb_skill }}</td>
+        </tr>
+        <tr>
+            <td>Cool</td>
+            <td>{{ skill.cool_characteristics }}</td>
+            <td>{{ skill.cool_advances }}</td>
+            <td>{{ skill.cool_skill }}</td>
+        </tr>
+        <tr>
+            <td>Consume Alcohol</td>
+            <td>{{ skill.consume_alcohol_characteristics }}</td>
+            <td>{{ skill.consume_alcohol_advances }}</td>
+            <td>{{ skill.consume_alcohol_skill }}</td>
+        </tr>
+        <tr>
+            <td>Dodge</td>
+            <td>{{ skill.dodge_characteristics }}</td>
+            <td>{{ skill.dodge_advances }}</td>
+            <td>{{ skill.dodge_skill }}</td>
+        </tr>
+        <tr>
+            <td>Drive</td>
+            <td>{{ skill.drive_characteristics }}</td>
+            <td>{{ skill.drive_advances }}</td>
+            <td>{{ skill.drive_skill }}</td>
+        </tr>
+        <tr>
+            <td>Endurance</td>
+            <td>{{ skill.endurance_characteristics }}</td>
+            <td>{{ skill.endurance_advances }}</td>
+            <td>{{ skill.endurance_skill }}</td>
+        </tr>
+        <tr>
+            <td>Entertain</td>
+            <td>{{ skill.entertain_characteristics }}</td>
+            <td>{{ skill.entertain_advances }}</td>
+            <td>{{ skill.entertain_skill }}</td>
+        </tr>
+        <tr>
+            <td>Gamble</td>
+            <td>{{ skill.gamble_characteristics }}</td>
+            <td>{{ skill.gamble_advances }}</td>
+            <td>{{ skill.gamble_skill }}</td>
+        </tr>
+        <tr>
+            <td>Gossip</td>
+            <td>{{ skill.gossip_characteristics }}</td>
+            <td>{{ skill.gossip_advances }}</td>
+            <td>{{ skill.gossip_skill }}</td>
+        </tr>
+        <tr>
+            <td>Haggle</td>
+            <td>{{ skill.haggle_characteristics }}</td>
+            <td>{{ skill.haggle_advances }}</td>
+            <td>{{ skill.haggle_skill }}</td>
+        </tr>
+        <tr>
+            <td>Intimidate</td>
+            <td>{{ skill.intimidate_characteristics }}</td>
+            <td>{{ skill.intimidate_advances }}</td>
+            <td>{{ skill.intimidate_skill }}</td>
+        </tr>
+        <tr>
+            <td>Intuition</td>
+            <td>{{ skill.intuition_characteristics }}</td>
+            <td>{{ skill.intuition_advances }}</td>
+            <td>{{ skill.intuition_skill }}</td>
+        </tr>
+        <tr>
+            <td>Leadership</td>
+            <td>{{ skill.leadership_characteristics }}</td>
+            <td>{{ skill.leadership_advances }}</td>
+            <td>{{ skill.leadership_skill }}</td>
+        </tr>
+        <tr>
+            <td>Melee Basic</td>
+            <td>{{ skill.melee_basic_characteristics }}</td>
+            <td>{{ skill.melee_basic_advances }}</td>
+            <td>{{ skill.melee_basic_skill }}</td>
+        </tr>
+        <tr>
+            <td>Melee</td>
+            <td>{{ skill.melee_characteristics }}</td>
+            <td>{{ skill.melee_advances }}</td>
+            <td>{{ skill.melee_skill }}</td>
+        </tr>
+        <tr>
+            <td>Navigation</td>
+            <td>{{ skill.navigation_characteristics }}</td>
+            <td>{{ skill.navigation_advances }}</td>
+            <td>{{ skill.navigation_skill }}</td>
+        </tr>
+        <tr>
+            <td>Outdoor Survival</td>
+            <td>{{ skill.outdoor_survival_characteristics }}</td>
+            <td>{{ skill.outdoor_survival_advances }}</td>
+            <td>{{ skill.outdoor_survival_skill }}</td>
+        </tr>
+        <tr>
+            <td>Perception</td>
+            <td>{{ skill.perception_characteristics }}</td>
+            <td>{{ skill.perception_advances }}</td>
+            <td>{{ skill.perception_skill }}</td>
+        </tr>
+        <tr>
+            <td>Ride</td>
+            <td>{{ skill.ride_characteristics }}</td>
+            <td>{{ skill.ride_advances }}</td>
+            <td>{{ skill.ride_skill }}</td>
+        </tr>
+        <tr>
+            <td>Row</td>
+            <td>{{ skill.row_characteristics }}</td>
+            <td>{{ skill.row_advances }}</td>
+            <td>{{ skill.row_skill }}</td>
+        </tr>
+        <tr>
+            <td>Stealth</td>
+            <td>{{ skill.stealth_characteristics }}</td>
+            <td>{{ skill.stealth_advances }}</td>
+            <td>{{ skill.stealth_skill }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
+<h2>Advanced skills</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Skill Name</th>
+            <th>Attribute Name</th>
+            <th>Attribute Value</th>
+            <th>Skill Advances</th>
+            <th>Skill Total Value</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for skill in advanced_skills %}
+            <tr>
+                <td>{{ skill.name }}</td>
+                <td>{{ skill.attribute_name }}</td>
+                <td>{{ skill.attribute_value }}</td>
+                <td>{{ skill.advances }}</td>
+                <td>{{ skill.total }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
 <a href="{% url 'characters:delete' character.pk %}">Delete</a>
 
 {% endblock %}
