@@ -130,7 +130,6 @@
     </tbody>
 </table>
 
-
 <h2>Resilience</h2>
 <table class="table table-striped table-bordered">
     <thead>
@@ -390,6 +389,141 @@
             {% endfor %}
     </tbody>
 </table>
+
+<h2>Talents</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Talent</th>
+            <th>Times Taken</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for skill in talents %}
+            <tr>
+                <td>{{ skill.talent }}</td>
+                <td>{{ skill.times_taken }}</td>
+                <td>{{ skill.description }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+<h2>Ambitions</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Short Term</th>
+            <th>Long Term</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for skill in ambitions %}
+            <tr>
+                <td>{{ skill.short_term }}</td>
+                <td>{{ skill.long_term }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+<h2>Party</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Short Term Party Ambition</th>
+            <th>Long Term Party Ambition</th>
+            <th>Members</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            {% for skill in party %}
+            <tr>
+                <td>{{ skill.party_name }}</td>
+                <td>{{ skill.short_term }}</td>
+                <td>{{ skill.long_term }}</td>
+                <td>{{ skill.members }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+<h2>Psychology</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Effect</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+                <td>{{ psychology.effect }}</td>
+            </tr>
+    </tbody>
+</table>
+
+<h2>Corruption And Mutation</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Effect</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+                <td>{{ corruption_and_mutation.effect }}</td>
+            </tr>
+    </tbody>
+</table>
+
+<h2>Wounds</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Strength Bonus</th>
+            <th>Toughness Bonus x2</th>
+            <th>Willpower Bonus</th>
+            <th>Hardy Skill</th>
+            <th>Number Of Wounds (Health)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for skill in wounds %}
+            <tr>
+                <td>{{ skill.sb }}</td>
+                <td>{{ skill.tb_x2 }}</td>
+                <td>{{ skill.wbp }}</td>
+                <td>{{ skill.hardy }}</td>
+                <td>{{ skill.wounds }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Sin</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Sin Points</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+                <td>{{ sin.sin }}</td>
+            </tr>
+    </tbody>
+</table>
+
+
 <a href="{% url 'characters:delete' character.pk %}">Delete</a>
 
 {% endblock %}
