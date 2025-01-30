@@ -26,15 +26,19 @@ from .forms import (
 
 
 class ListCharacters(LoginRequiredMixin, generic.ListView):
+    """List view of characters."""
     model = models.Characters
 
     def get_queryset(self):
+        """Returns the query with all characters of logged in user."""
         return models.Characters.objects.filter(user=self.request.user)
 
 
 class CreateCharacter(LoginRequiredMixin, View):
+    """View for creating new character."""
+
     def get(self, request):
-        # Create empty forms
+        """Method creates empty forms for character creation."""
 
         character_form = CharactersForm()
         characteristics_form = CharacteristicsForm()
@@ -204,10 +208,12 @@ class CreateCharacter(LoginRequiredMixin, View):
 
 
 class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
+    """Detail view of a character."""
     model = models.Characters
     context_object_name = "character"
 
     def get_context_data(self, **kwargs):
+        """Method builds and returns a context with all character details."""
         context = super().get_context_data(**kwargs)
         character = self.object
 
@@ -238,14 +244,16 @@ class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
 
 
 class DeleteViewCharacter(LoginRequiredMixin, generic.DeleteView):
+    """Delete view of a character."""
     model = models.Characters
     success_url = reverse_lazy("characters:all")
 
     def get_queryset(self):
-        # Ensure only the owner can delete their characters
+        """Method to ensure that only the owner can delete their characters."""
         queryset = super().get_queryset()
         return queryset.filter(user=self.request.user)
 
     def delete(self, *args, **kwargs):
+        """Method deletes chosen character."""
         messages.success(self.request, "Character Deleted")
         return super().delete(*args, **kwargs)

@@ -5,6 +5,7 @@ User = get_user_model()
 
 
 class Characters(models.Model):
+    """Model with fields for basic character information."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     species = models.CharField(max_length=100)
@@ -20,6 +21,7 @@ class Characters(models.Model):
 
 
 class Characteristics(models.Model):
+    """Model with fields related to characteristics, such as strength or intelligence."""
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
 
     WS_initial = models.IntegerField()
@@ -64,12 +66,14 @@ class Characteristics(models.Model):
 
 
 class Fate(models.Model):
+    """Model containing fate and fortune points of characters."""
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     fate = models.IntegerField()
     fortune = models.IntegerField()
 
 
 class Resilience(models.Model):
+    """Model containing resilience and resolve points of character, along with motivation CharField."""
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     resilience = models.IntegerField()
     resolve = models.IntegerField()
@@ -77,6 +81,7 @@ class Resilience(models.Model):
 
 
 class Experience(models.Model):
+    """Model with experience points fields."""
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     current = models.IntegerField()
     spent = models.IntegerField()
@@ -84,6 +89,7 @@ class Experience(models.Model):
 
 
 class Movement(models.Model):
+    """Model containing fields for various movement points values."""
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     movement = models.IntegerField()
     walk = models.IntegerField()
@@ -91,6 +97,7 @@ class Movement(models.Model):
 
 
 class BasicSkills(models.Model):
+    """Model with characteristic value, advances and total value of every basic skill."""
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
 
     art_characteristics = models.IntegerField()
@@ -199,6 +206,7 @@ class BasicSkills(models.Model):
 
 
 class AdvancedSkills(models.Model):
+    """Model with name, characteristic name and value, advances and total value of advanced skills."""
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     name = models.CharField(max_length=500)
     attribute_name = models.CharField(max_length=500)
