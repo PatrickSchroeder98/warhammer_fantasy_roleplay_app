@@ -19,6 +19,8 @@ from .models import (
 
 
 class CharactersForm(forms.ModelForm):
+    """Form with basic information about character."""
+
     class Meta:
         model = Characters
         fields = (
@@ -87,6 +89,8 @@ class CharactersForm(forms.ModelForm):
 
 
 class CharacteristicsForm(forms.ModelForm):
+    """Form with fields from characteristics model."""
+
     class Meta:
         model = Characteristics
         fields = (
@@ -133,13 +137,22 @@ class CharacteristicsForm(forms.ModelForm):
                 attrs={"class": "form-control", "placeholder": "Current Weapon Skill"}
             ),
             "BS_initial": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Initial Ballistic Skill"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Initial Ballistic Skill",
+                }
             ),
             "BS_advances": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Advances Ballistic Skill"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Advances Ballistic Skill",
+                }
             ),
             "BS_current": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Current Ballistic Skill"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Current Ballistic Skill",
+                }
             ),
             "S_initial": forms.NumberInput(
                 attrs={"class": "form-control", "placeholder": "Initial Strength"}
@@ -250,6 +263,8 @@ class CharacteristicsForm(forms.ModelForm):
 
 
 class FateForm(forms.ModelForm):
+    """Form with fields from fate model."""
+
     class Meta:
         model = Fate
         fields = ("fate", "fortune")
@@ -270,6 +285,8 @@ class FateForm(forms.ModelForm):
 
 
 class ResilienceForm(forms.ModelForm):
+    """Form with fields from resilience model."""
+
     class Meta:
         model = Resilience
         fields = ("resilience", "resolve", "motivation")
@@ -294,19 +311,30 @@ class ResilienceForm(forms.ModelForm):
 
 
 class ExperienceForm(forms.ModelForm):
+    """Form with fields from experience model."""
+
     class Meta:
         model = Experience
         fields = ("current", "spent", "total")
 
         widgets = {
             "current": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Current Experience Points"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Current Experience Points",
+                }
             ),
             "spent": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Spent Experience Points"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Spent Experience Points",
+                }
             ),
             "total": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Total Experience Points"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Total Experience Points",
+                }
             ),
         }
 
@@ -318,6 +346,8 @@ class ExperienceForm(forms.ModelForm):
 
 
 class MovementForm(forms.ModelForm):
+    """Form with fields from movement model."""
+
     class Meta:
         model = Movement
         fields = ("movement", "walk", "run")
@@ -342,6 +372,8 @@ class MovementForm(forms.ModelForm):
 
 
 class BasicSkillsForm(forms.ModelForm):
+    """Form with fields from basic skills model."""
+
     class Meta:
         model = BasicSkills
         fields = (
@@ -518,9 +550,11 @@ class BasicSkillsForm(forms.ModelForm):
 
 
 class AdvancedSkillsForm(forms.ModelForm):
+    """Form with fields from advanced skills model."""
+
     class Meta:
         model = AdvancedSkills
-        fields = ('name', 'attribute_name', 'attribute_value', 'advances', 'total')
+        fields = ("name", "attribute_name", "attribute_value", "advances", "total")
 
         widgets = {
             "name": forms.TextInput(
@@ -550,9 +584,11 @@ class AdvancedSkillsForm(forms.ModelForm):
 
 
 class TalentsForm(forms.ModelForm):
+    """Form with fields from talents model."""
+
     class Meta:
         model = Talents
-        fields = ('talent', 'times_taken', 'description')
+        fields = ("talent", "times_taken", "description")
 
         widgets = {
             "talent": forms.TextInput(
@@ -574,9 +610,11 @@ class TalentsForm(forms.ModelForm):
 
 
 class AmbitionsForm(forms.ModelForm):
+    """Form with fields from ambitions model."""
+
     class Meta:
         model = Ambitions
-        fields = ('short_term', 'long_term')
+        fields = ("short_term", "long_term")
 
         widgets = {
             "short_term": forms.TextInput(
@@ -594,19 +632,27 @@ class AmbitionsForm(forms.ModelForm):
 
 
 class PartyForm(forms.ModelForm):
+    """Form with fields from ambitions model."""
+
     class Meta:
         model = Party
-        fields = ('party_name', 'short_term', 'long_term', 'members')
+        fields = ("party_name", "short_term", "long_term", "members")
 
         widgets = {
             "party_name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Party Name"}
             ),
             "short_term": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Short Term Party Ambition"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Short Term Party Ambition",
+                }
             ),
             "long_term": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Long Term Party Ambition"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Long Term Party Ambition",
+                }
             ),
             "members": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Party Members"}
@@ -622,9 +668,11 @@ class PartyForm(forms.ModelForm):
 
 
 class PsychologyForm(forms.ModelForm):
+    """Form with field from psychology model."""
+
     class Meta:
         model = Psychology
-        fields = ('effect',)
+        fields = ("effect",)
 
         widgets = {
             "effect": forms.TextInput(
@@ -638,13 +686,18 @@ class PsychologyForm(forms.ModelForm):
 
 
 class CorruptionAndMutationForm(forms.ModelForm):
+    """Form with field from corruption and mutation model."""
+
     class Meta:
         model = CorruptionAndMutation
-        fields = ('effect',)
+        fields = ("effect",)
 
         widgets = {
             "effect": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Corruption And Mutation Effects"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Corruption And Mutation Effects",
+                }
             ),
         }
 
@@ -654,9 +707,11 @@ class CorruptionAndMutationForm(forms.ModelForm):
 
 
 class WoundsForm(forms.ModelForm):
+    """Form with fields from wounds model."""
+
     class Meta:
         model = Wounds
-        fields = ('sb', 'tb_x2', 'wbp', 'hardy', 'wounds')
+        fields = ("sb", "tb_x2", "wbp", "hardy", "wounds")
 
         widgets = {
             "sb": forms.NumberInput(
@@ -672,7 +727,10 @@ class WoundsForm(forms.ModelForm):
                 attrs={"class": "form-control", "placeholder": "Hardy Skill"}
             ),
             "wounds": forms.NumberInput(
-                attrs={"class": "form-control", "placeholder": "Number Of Wounds (Health)"}
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Number Of Wounds (Health)",
+                }
             ),
         }
 
@@ -686,9 +744,11 @@ class WoundsForm(forms.ModelForm):
 
 
 class SinForm(forms.ModelForm):
+    """Form with field from sin model."""
+
     class Meta:
         model = Sin
-        fields = ('sin',)
+        fields = ("sin",)
 
         widgets = {
             "sin": forms.NumberInput(

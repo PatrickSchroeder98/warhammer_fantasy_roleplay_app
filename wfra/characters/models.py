@@ -6,6 +6,7 @@ User = get_user_model()
 
 class Characters(models.Model):
     """Model with fields for basic character information."""
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     species = models.CharField(max_length=100)
@@ -22,6 +23,7 @@ class Characters(models.Model):
 
 class Characteristics(models.Model):
     """Model with fields related to characteristics, such as strength or intelligence."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
 
     WS_initial = models.IntegerField()
@@ -67,6 +69,7 @@ class Characteristics(models.Model):
 
 class Fate(models.Model):
     """Model containing fate and fortune points of characters."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     fate = models.IntegerField()
     fortune = models.IntegerField()
@@ -74,6 +77,7 @@ class Fate(models.Model):
 
 class Resilience(models.Model):
     """Model containing resilience and resolve points of character, along with motivation CharField."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     resilience = models.IntegerField()
     resolve = models.IntegerField()
@@ -82,6 +86,7 @@ class Resilience(models.Model):
 
 class Experience(models.Model):
     """Model with experience points fields."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     current = models.IntegerField()
     spent = models.IntegerField()
@@ -90,6 +95,7 @@ class Experience(models.Model):
 
 class Movement(models.Model):
     """Model containing fields for various movement points values."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     movement = models.IntegerField()
     walk = models.IntegerField()
@@ -98,6 +104,7 @@ class Movement(models.Model):
 
 class BasicSkills(models.Model):
     """Model with characteristic value, advances and total value of every basic skill."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
 
     art_characteristics = models.IntegerField()
@@ -207,6 +214,7 @@ class BasicSkills(models.Model):
 
 class AdvancedSkills(models.Model):
     """Model with name, characteristic name and value, advances and total value of advanced skills."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     name = models.CharField(max_length=500)
     attribute_name = models.CharField(max_length=500)
@@ -216,6 +224,8 @@ class AdvancedSkills(models.Model):
 
 
 class Talents(models.Model):
+    """Model with fields related to talents."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     talent = models.CharField(max_length=500)
     times_taken = models.IntegerField()
@@ -223,12 +233,16 @@ class Talents(models.Model):
 
 
 class Ambitions(models.Model):
+    """Model with fields related to ambitions."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     short_term = models.CharField(max_length=1000)
     long_term = models.CharField(max_length=1000)
 
 
 class Party(models.Model):
+    """Model with fields storing information about party."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     party_name = models.CharField(max_length=1000)
     short_term = models.CharField(max_length=1000)
@@ -237,16 +251,22 @@ class Party(models.Model):
 
 
 class Psychology(models.Model):
+    """Model with field storing information about psychological effects."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     effect = models.CharField(max_length=1000)
 
 
 class CorruptionAndMutation(models.Model):
+    """Model with field storing information about corruption and mutation effects."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     effect = models.CharField(max_length=1000)
 
 
 class Wounds(models.Model):
+    """Model with fields related to wounds formula."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     sb = models.IntegerField()
     tb_x2 = models.IntegerField()
@@ -256,5 +276,7 @@ class Wounds(models.Model):
 
 
 class Sin(models.Model):
+    """Model with field storing information about sin points."""
+
     character_id = models.ForeignKey(Characters, on_delete=models.CASCADE)
     sin = models.IntegerField()

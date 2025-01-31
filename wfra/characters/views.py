@@ -5,7 +5,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views import View
-from . import models
+from .models import (
+    Characters,
+    Characteristics,
+    Fate,
+    Resilience,
+    Experience,
+    Movement,
+    BasicSkills,
+    AdvancedSkills,
+    Talents,
+    Ambitions,
+    Party,
+    Psychology,
+    CorruptionAndMutation,
+    Wounds,
+    Sin,
+)
 from .forms import (
     CharactersForm,
     CharacteristicsForm,
@@ -27,11 +43,12 @@ from .forms import (
 
 class ListCharacters(LoginRequiredMixin, generic.ListView):
     """List view of characters."""
-    model = models.Characters
+
+    model = Characters
 
     def get_queryset(self):
         """Returns the query with all characters of logged in user."""
-        return models.Characters.objects.filter(user=self.request.user)
+        return Characters.objects.filter(user=self.request.user)
 
 
 class CreateCharacter(LoginRequiredMixin, View):
@@ -48,8 +65,12 @@ class CreateCharacter(LoginRequiredMixin, View):
         movement_form = MovementForm()
         basic_skills_form = BasicSkillsForm()
 
-        AdvancedSkillsFormSet = modelformset_factory(models.AdvancedSkills, form=AdvancedSkillsForm, extra=1, can_delete=False)
-        advanced_skills_formset = AdvancedSkillsFormSet(queryset=models.AdvancedSkills.objects.none())
+        AdvancedSkillsFormSet = modelformset_factory(
+            AdvancedSkills, form=AdvancedSkillsForm, extra=1, can_delete=False
+        )
+        advanced_skills_formset = AdvancedSkillsFormSet(
+            queryset=AdvancedSkills.objects.none()
+        )
 
         talents_form = TalentsForm()
         ambitions_form = AmbitionsForm()
@@ -92,7 +113,9 @@ class CreateCharacter(LoginRequiredMixin, View):
         movement_form = MovementForm()
         basic_skills_form = BasicSkillsForm(request.POST)
 
-        AdvancedSkillsFormSet = modelformset_factory(models.AdvancedSkills, form=AdvancedSkillsForm, extra=0, can_delete=False)
+        AdvancedSkillsFormSet = modelformset_factory(
+            AdvancedSkills, form=AdvancedSkillsForm, extra=0, can_delete=False
+        )
         advanced_skills_formset = AdvancedSkillsFormSet(request.POST)
 
         talents_form = TalentsForm(request.POST)
@@ -151,7 +174,7 @@ class CreateCharacter(LoginRequiredMixin, View):
             basic_skills.save()
 
             for form in advanced_skills_formset:
-                if form.cleaned_data and not form.cleaned_data.get('DELETE', False):
+                if form.cleaned_data and not form.cleaned_data.get("DELETE", False):
                     advanced_skill = form.save(commit=False)
                     advanced_skill.character_id = character
                     advanced_skill.save()
@@ -209,7 +232,8 @@ class CreateCharacter(LoginRequiredMixin, View):
 
 class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
     """Detail view of a character."""
-    model = models.Characters
+
+    model = Characters
     context_object_name = "character"
 
     def get_context_data(self, **kwargs):
@@ -217,35 +241,34 @@ class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         character = self.object
 
-        context["characteristics"] = models.Characteristics.objects.filter(
+        context["characteristics"] = Characteristics.objects.filter(
             character_id=character
         )
-        context["fate"] = models.Fate.objects.filter(character_id=character)
-        context["resilience"] = models.Resilience.objects.filter(character_id=character)
-        context["experience"] = models.Experience.objects.filter(character_id=character)
-        context["movement"] = models.Movement.objects.filter(character_id=character)
-        context["basic_skills"] = models.BasicSkills.objects.filter(
+        context["fate"] = Fate.objects.filter(character_id=character)
+        context["resilience"] = Resilience.objects.filter(character_id=character)
+        context["experience"] = Experience.objects.filter(character_id=character)
+        context["movement"] = Movement.objects.filter(character_id=character)
+        context["basic_skills"] = BasicSkills.objects.filter(character_id=character)
+        context["advanced_skills"] = AdvancedSkills.objects.filter(
             character_id=character
         )
-        context["advanced_skills"] = models.AdvancedSkills.objects.filter(
+        context["talents"] = Talents.objects.filter(character_id=character)
+        context["ambitions"] = Ambitions.objects.filter(character_id=character)
+        context["party"] = Party.objects.filter(character_id=character)
+        context["psychology"] = Psychology.objects.filter(character_id=character)
+        context["corruption_and_mutation"] = CorruptionAndMutation.objects.filter(
             character_id=character
         )
-        context["talents"] = models.Talents.objects.filter(character_id=character)
-        context["ambitions"] = models.Ambitions.objects.filter(character_id=character)
-        context["party"] = models.Party.objects.filter(character_id=character)
-        context["psychology"] = models.Psychology.objects.filter(character_id=character)
-        context["corruption_and_mutation"] = (
-            models.CorruptionAndMutation.objects.filter(character_id=character)
-        )
-        context["wounds"] = models.Wounds.objects.filter(character_id=character)
-        context["sin"] = models.Sin.objects.filter(character_id=character)
+        context["wounds"] = Wounds.objects.filter(character_id=character)
+        context["sin"] = Sin.objects.filter(character_id=character)
 
         return context
 
 
 class DeleteViewCharacter(LoginRequiredMixin, generic.DeleteView):
     """Delete view of a character."""
-    model = models.Characters
+
+    model = Characters
     success_url = reverse_lazy("characters:all")
 
     def get_queryset(self):
