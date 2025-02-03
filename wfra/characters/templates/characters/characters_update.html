@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Update Character</h2>
+<form method="post">
+    {% csrf_token %}
+    
+    <h3>Character Information</h3>
+    {{ form.as_p }}
+
+    <h3>Characteristics</h3>
+    {{ characteristics_form.as_p }}
+
+    <h3>Basic Skills</h3>
+    {{ basic_skills_form.as_p }}
+
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

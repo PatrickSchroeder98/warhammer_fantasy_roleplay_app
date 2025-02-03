@@ -265,6 +265,44 @@ class DetailViewCharacter(LoginRequiredMixin, generic.DetailView):
         return context
 
 
+class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
+    """Update view of a character."""
+    model = Characters
+    form_class = CharactersForm
+    template_name = "characters/characters_update.html"
+    success_url = reverse_lazy("characters:all")
+
+    def get_context_data(self, **kwargs):
+        """Extend context to include related models."""
+        context = super().get_context_data(**kwargs)
+        character = self.object  # Current character object
+
+        context["characteristics"] = Characteristics.objects.filter(character_id=character).first()
+        context["basic_skills"] = BasicSkills.objects.filter(character_id=character).first()
+        # context["advanced_skills"] = AdvancedSkills.objects.filter(character_id=character).first()
+        # context["talents"] = Talents.objects.filter(character_id=character)
+        # context["wounds"] = Wounds.objects.filter(character_id=character).first()
+
+        return context
+
+    def form_valid(self, form):
+        """Save related models after character form is valid."""
+        response = super().form_valid(form)
+
+        # Get character instance
+        character = self.object
+
+        characteristics_form = CharacteristicsForm(self.request.POST)
+        if characteristics_form.is_valid():
+            characteristics_form.save()
+
+        basic_skills_form = BasicSkillsForm(self.request.POST)
+        if basic_skills_form.is_valid():
+            basic_skills_form.save()
+
+        return response
+
+
 class DeleteViewCharacter(LoginRequiredMixin, generic.DeleteView):
     """Delete view of a character."""
 
