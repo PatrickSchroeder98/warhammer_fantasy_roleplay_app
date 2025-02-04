@@ -5,14 +5,60 @@
 <form method="post">
     {% csrf_token %}
     
-    <h3>Character Information</h3>
-    {{ form.as_p }}
+        <h4>Character Information</h4>
+        {{ form.as_p }}
 
-    <h3>Characteristics</h3>
-    {{ characteristics_form.as_p }}
+        <h4>Characteristics Information</h4>
+        {{ characteristics_form.as_p }}
 
-    <h3>Basic Skills</h3>
-    {{ basic_skills_form.as_p }}
+        <h4>Fate Information</h4>
+        {{ fate_form.as_p }}
+
+        <h4>Resilience Information</h4>
+        {{ resilience_form.as_p }}
+
+        <h4>Experience Information</h4>
+        {{ experience_form.as_p }}
+
+        <h4>Movement Information</h4>
+        {{ movement_form.as_p }}
+
+        <h4>Basic Skills Information</h4>
+        {{ basic_skills_form.as_p }}
+
+        <h4>Advanced Skills Information</h4>
+        <div id="formset-container">
+            {{ advanced_skills_form.management_form }}
+            {% for form in advanced_skills_form %}
+                <div class="formset-item">
+                    {{ form.as_p }}
+                    <button type="button" class="btn btn-danger remove-skill">Remove</button>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="add-skill" class="btn btn-secondary mt-3">Add Advanced Skill</button>
+
+
+        <h4>Talents Information</h4>
+        {{ talents_form.as_p }}
+
+        <h4>Ambitions Information</h4>
+        {{ ambitions_form.as_p }}
+
+        <h4>Party Information</h4>
+        {{ party_form.as_p }}
+
+        <h4>Psychology Information</h4>
+        {{ psychology_form.as_p }}
+
+        <h4>Corruption and Mutation Information</h4>
+        {{ corruption_and_mutation_form.as_p }}
+
+        <h4>Wounds Information</h4>
+        {{ wounds_form.as_p }}
+
+        <h4>Sin Information</h4>
+        {{ sin_form.as_p }}
 
     <button type="submit">Save Changes</button>
 </form>

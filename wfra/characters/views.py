@@ -1,5 +1,5 @@
 from django.forms import modelformset_factory
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -277,11 +277,27 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
         context = super().get_context_data(**kwargs)
         character = self.object  # Current character object
 
-        context["characteristics"] = Characteristics.objects.filter(character_id=character).first()
-        context["basic_skills"] = BasicSkills.objects.filter(character_id=character).first()
+        context["characteristics_form"] = CharacteristicsForm(
+            instance=get_object_or_404(Characteristics, character_id=character)
+        )
+        context["fate"] = FateForm(
+            instance=get_object_or_404(Fate, character_id=character)
+        )
+        context["resilience"] = ResilienceForm(
+            instance=get_object_or_404(Resilience, character_id=character)
+        )
+        # context["resilience"] = Resilience.objects.filter(character_id=character).first()
+        # context["experience"] = Experience.objects.filter(character_id=character).first()
+        # context["movement"] = Movement.objects.filter(character_id=character).first()
+        # context["basic_skills"] = BasicSkills.objects.filter(character_id=character).first()
         # context["advanced_skills"] = AdvancedSkills.objects.filter(character_id=character).first()
         # context["talents"] = Talents.objects.filter(character_id=character)
+        # context["ambitions"] = Ambitions.objects.filter(character_id=character)
+        # context["party"] = Party.objects.filter(character_id=character)
+        # context["psychology"] = Psychology.objects.filter(character_id=character)
+        # context["corruption_and_mutation"] = CorruptionAndMutation.objects.filter(character_id=character)
         # context["wounds"] = Wounds.objects.filter(character_id=character).first()
+        # context["sin"] = Sin.objects.filter(character_id=character)
 
         return context
 
@@ -289,16 +305,66 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
         """Save related models after character form is valid."""
         response = super().form_valid(form)
 
-        # Get character instance
         character = self.object
 
-        characteristics_form = CharacteristicsForm(self.request.POST)
+        characteristics = get_object_or_404(Characteristics, character_id=character)
+        fate = get_object_or_404(Fate, character_id=character)
+
+        characteristics_form = CharacteristicsForm(self.request.POST, instance=characteristics)
         if characteristics_form.is_valid():
             characteristics_form.save()
 
-        basic_skills_form = BasicSkillsForm(self.request.POST)
+        fate_form = FateForm(self.request.POST, instance=fate)
+        if fate_form.is_valid():
+            fate_form.save()
+
+        resilience_form = ResilienceForm(self.request.POST, instance=resilience)
+        if resilience_form.is_valid():
+            resilience_form.save()
+
+        experience_form = ExperienceForm(self.request.POST, instance=experience)
+        if experience_form.is_valid():
+            experience_form.save()
+
+        movement_form = MovementForm(self.request.POST, instance=movement)
+        if movement_form.is_valid():
+            movement_form.save()
+
+        basic_skills_form = BasicSkillsForm(self.request.POST, instance=basic_skills)
         if basic_skills_form.is_valid():
             basic_skills_form.save()
+
+        advanced_skills_form = AdvancedSkillsForm(self.request.POST, instance=advanced_skills)
+        if advanced_skills_form.is_valid():
+            advanced_skills_form.save()
+
+        talents_form = TalentsForm(self.request.POST, instance=talents)
+        if talents_form.is_valid():
+            talents_form.save()
+
+        ambitions_form = AmbitionsForm(self.request.POST, instance=ambitions)
+        if ambitions_form.is_valid():
+            ambitions_form.save()
+
+        party_form = PartyForm(self.request.POST, instance=party)
+        if party_form.is_valid():
+            party_form.save()
+
+        psychology_form = PsychologyForm(self.request.POST, instance=psychology)
+        if psychology_form.is_valid():
+            psychology_form.save()
+
+        corruption_and_mutation_form = CorruptionAndMutationForm(self.request.POST, instance=corruption_and_mutation)
+        if corruption_and_mutation_form.is_valid():
+            corruption_and_mutation_form.save()
+
+        wounds_form = WoundsForm(self.request.POST, instance=wounds)
+        if wounds_form.is_valid():
+            wounds_form.save()
+
+        sin_form = SinForm(self.request.POST, instance=sin)
+        if sin_form.is_valid():
+            sin_form.save()
 
         return response
 
