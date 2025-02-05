@@ -109,8 +109,8 @@ class CreateCharacter(LoginRequiredMixin, View):
         characteristics_form = CharacteristicsForm(request.POST)
         fate_form = FateForm(request.POST)
         resilience_form = ResilienceForm(request.POST)
-        experience_form = ExperienceForm()
-        movement_form = MovementForm()
+        experience_form = ExperienceForm(request.POST)
+        movement_form = MovementForm(request.POST)
         basic_skills_form = BasicSkillsForm(request.POST)
 
         AdvancedSkillsFormSet = modelformset_factory(
@@ -183,6 +183,10 @@ class CreateCharacter(LoginRequiredMixin, View):
             talents.character_id = character
             talents.save()
 
+            ambitions = ambitions_form.save(commit=False)
+            ambitions.character_id = character
+            ambitions.save()
+
             party = party_form.save(commit=False)
             party.character_id = character
             party.save()
@@ -209,7 +213,7 @@ class CreateCharacter(LoginRequiredMixin, View):
         # If any form is invalid, re-render the form with errors
         return render(
             request,
-            "characters/character_form.html",
+            "characters/characters_form.html",
             {
                 "character_form": character_form,
                 "characteristics_form": characteristics_form,
@@ -277,7 +281,7 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
         context = super().get_context_data(**kwargs)
         character = self.object  # Current character object
 
-        context["characteristics_form"] = CharacteristicsForm(
+        context["characteristics"] = CharacteristicsForm(
             instance=get_object_or_404(Characteristics, character_id=character)
         )
         context["fate"] = FateForm(
@@ -286,18 +290,42 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
         context["resilience"] = ResilienceForm(
             instance=get_object_or_404(Resilience, character_id=character)
         )
-        # context["resilience"] = Resilience.objects.filter(character_id=character).first()
-        # context["experience"] = Experience.objects.filter(character_id=character).first()
-        # context["movement"] = Movement.objects.filter(character_id=character).first()
-        # context["basic_skills"] = BasicSkills.objects.filter(character_id=character).first()
-        # context["advanced_skills"] = AdvancedSkills.objects.filter(character_id=character).first()
-        # context["talents"] = Talents.objects.filter(character_id=character)
-        # context["ambitions"] = Ambitions.objects.filter(character_id=character)
-        # context["party"] = Party.objects.filter(character_id=character)
-        # context["psychology"] = Psychology.objects.filter(character_id=character)
-        # context["corruption_and_mutation"] = CorruptionAndMutation.objects.filter(character_id=character)
-        # context["wounds"] = Wounds.objects.filter(character_id=character).first()
-        # context["sin"] = Sin.objects.filter(character_id=character)
+        context["experience"] = ExperienceForm(
+            instance=get_object_or_404(Experience, character_id=character)
+        )
+        context["movement"] = MovementForm(
+            instance=get_object_or_404(Movement, character_id=character)
+        )
+        context["basic_skills"] = BasicSkillsForm(
+            instance=get_object_or_404(BasicSkills, character_id=character)
+        )
+        AdvancedSkillsFormSet = modelformset_factory(
+            AdvancedSkills, form=AdvancedSkillsForm, extra=1, can_delete=True
+        )
+        context["advanced_skills_formset"] = AdvancedSkillsFormSet(
+            queryset=AdvancedSkills.objects.filter(character_id=character)
+        )
+        context["talents"] = TalentsForm(
+            instance=get_object_or_404(Talents, character_id=character)
+        )
+        context["ambitions"] = AmbitionsForm(
+            instance=get_object_or_404(Ambitions, character_id=character)
+        )
+        context["party"] = PartyForm(
+            instance=get_object_or_404(Party, character_id=character)
+        )
+        context["psychology"] = PsychologyForm(
+            instance=get_object_or_404(Psychology, character_id=character)
+        )
+        context["corruption_and_mutation"] = CorruptionAndMutationForm(
+            instance=get_object_or_404(CorruptionAndMutation, character_id=character)
+        )
+        context["wounds"] = WoundsForm(
+            instance=get_object_or_404(Wounds, character_id=character)
+        )
+        context["sin"] = SinForm(
+            instance=get_object_or_404(Sin, character_id=character)
+        )
 
         return context
 
@@ -309,6 +337,18 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
 
         characteristics = get_object_or_404(Characteristics, character_id=character)
         fate = get_object_or_404(Fate, character_id=character)
+        resilience = get_object_or_404(Resilience, character_id=character)
+        experience = get_object_or_404(Experience, character_id=character)
+        movement = get_object_or_404(Movement, character_id=character)
+        basic_skills = get_object_or_404(BasicSkills, character_id=character)
+        # advanced_skills = get_object_or_404(AdvancedSkills, character_id=character)
+        talents = get_object_or_404(Talents, character_id=character)
+        ambitions = get_object_or_404(Ambitions, character_id=character)
+        party = get_object_or_404(Party, character_id=character)
+        psychology = get_object_or_404(Psychology, character_id=character)
+        corruption_and_mutation = get_object_or_404(CorruptionAndMutation, character_id=character)
+        wounds = get_object_or_404(Wounds, character_id=character)
+        sin = get_object_or_404(Sin, character_id=character)
 
         characteristics_form = CharacteristicsForm(self.request.POST, instance=characteristics)
         if characteristics_form.is_valid():
@@ -334,9 +374,22 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
         if basic_skills_form.is_valid():
             basic_skills_form.save()
 
-        advanced_skills_form = AdvancedSkillsForm(self.request.POST, instance=advanced_skills)
-        if advanced_skills_form.is_valid():
-            advanced_skills_form.save()
+        AdvancedSkillsFormSet = modelformset_factory(
+            AdvancedSkills, form=AdvancedSkillsForm, extra=0, can_delete=True
+        )
+        advanced_skills_formset = AdvancedSkillsFormSet(self.request.POST)
+
+        if advanced_skills_formset.is_valid():
+            for form in advanced_skills_formset:
+                if form.cleaned_data:
+                    if form.cleaned_data.get("DELETE", False):
+                        # Delete the skill if marked for deletion
+                        form.instance.delete()
+                    else:
+                        # Assign character_id and save
+                        advanced_skill = form.save(commit=False)
+                        advanced_skill.character_id = character
+                        advanced_skill.save()
 
         talents_form = TalentsForm(self.request.POST, instance=talents)
         if talents_form.is_valid():

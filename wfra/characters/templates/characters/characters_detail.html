@@ -183,7 +183,7 @@
     </thead>
 
     <tbody>
-            {% for skill in experience %}
+            {% for skill in movement %}
             <tr>
                 <td>{{ skill.movement }}</td>
                 <td>{{ skill.walk }}</td>
@@ -462,9 +462,11 @@
     </thead>
 
     <tbody>
+            {% for skill in psychology %}
             <tr>
-                <td>{{ psychology.effect }}</td>
+                <td>{{ skill.effect }}</td>
             </tr>
+            {% endfor %}
     </tbody>
 </table>
 
@@ -477,9 +479,11 @@
     </thead>
 
     <tbody>
+            {% for skill in corruption_and_mutation %}
             <tr>
-                <td>{{ corruption_and_mutation.effect }}</td>
+                <td>{{ skill.effect }}</td>
             </tr>
+            {% endfor %}
     </tbody>
 </table>
 
@@ -517,9 +521,11 @@
     </thead>
 
     <tbody>
+            {% for skill in sin %}
             <tr>
-                <td>{{ sin.sin }}</td>
+                <td>{{ skill.sin }}</td>
             </tr>
+            {% endfor %}
     </tbody>
 </table>
 
