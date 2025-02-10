@@ -560,16 +560,16 @@ class AdvancedSkillsForm(forms.ModelForm):
             "name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Advanced Skill Name"}
             ),
-            "attribute_name": forms.NumberInput(
+            "attribute_name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Attribute Name"}
             ),
-            "attribute_value": forms.TextInput(
+            "attribute_value": forms.NumberInput(
                 attrs={"class": "form-control", "placeholder": "Attribute Value"}
             ),
-            "advances": forms.TextInput(
+            "advances": forms.NumberInput(
                 attrs={"class": "form-control", "placeholder": "Advances"}
             ),
-            "total": forms.TextInput(
+            "total": forms.NumberInput(
                 attrs={"class": "form-control", "placeholder": "Total Value"}
             ),
         }

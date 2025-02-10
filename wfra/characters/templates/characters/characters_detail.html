@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="text-center">
+    <br>
 <h1>{{ character.name }} ({{ character.species }})</h1>
+    <br>
 
 <h2>Character Details</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Class</th>
@@ -36,7 +39,7 @@
 </table>
 
 <h2>Characteristics</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Skill</th>
@@ -112,7 +115,7 @@
 </table>
 
 <h2>Fate</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Fate</th>
@@ -131,7 +134,7 @@
 </table>
 
 <h2>Resilience</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Resilience</th>
@@ -152,7 +155,7 @@
 </table>
 
 <h2>Experience</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Current</th>
@@ -173,7 +176,7 @@
 </table>
 
 <h2>Movement</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Movement</th>
@@ -194,7 +197,7 @@
 </table>
 
 <h2>Basic Skills</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Skill</th>
@@ -366,7 +369,7 @@
 </table>
 
 <h2>Advanced skills</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Skill Name</th>
@@ -391,7 +394,7 @@
 </table>
 
 <h2>Talents</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Talent</th>
@@ -412,7 +415,7 @@
 </table>
 
 <h2>Ambitions</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Short Term</th>
@@ -431,7 +434,7 @@
 </table>
 
 <h2>Party</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Name</th>
@@ -454,7 +457,7 @@
 </table>
 
 <h2>Psychology</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Effect</th>
@@ -471,7 +474,7 @@
 </table>
 
 <h2>Corruption And Mutation</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Effect</th>
@@ -488,7 +491,7 @@
 </table>
 
 <h2>Wounds</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Strength Bonus</th>
@@ -513,7 +516,7 @@
 </table>
 
 <h2>Sin</h2>
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered" style="color: #f5e1c8">
     <thead>
         <tr>
             <th>Sin Points</th>
@@ -529,7 +532,10 @@
     </tbody>
 </table>
 
-
-<a href="{% url 'characters:delete' character.pk %}">Delete</a>
-
+<div class="d-flex justify-content-between mt-3">
+    <a href="{% url 'characters:update' character.pk %}" class="btn btn-warning">Update</a>
+    <a href="{% url 'characters:delete' character.pk %}" class="btn btn-danger">Delete</a>
+</div>
+    <br><br><br>
+</div>
 {% endblock %}

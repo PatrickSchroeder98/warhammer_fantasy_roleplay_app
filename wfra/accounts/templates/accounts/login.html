@@ -1,12 +1,22 @@
 {% extends "base.html" %}
-<h1>DEBUGGING TEMPLATE</h1>
 {% block content %}
-<h1>DEBUGGING TEMPLATE</h1>
 <div class="container mt-5">
     <h2 class="text-center">Login</h2>
-    <form method="post">
+    <form method="post" class="mx-auto" style="max-width: 400px;">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        {% for field in form %}
+        <div class="mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <div class="text-danger">
+                    {{ field.errors.as_text }}
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
