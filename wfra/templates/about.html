@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block content %}
 <br>
 <div class="jumbotron">
@@ -21,6 +23,24 @@
     <h1>About the Author</h1>
     <h3>I'm a passionate Warhammer Fantasy fan and a software engineer specializing in Python programming.</h3>
     <h3>See my other projects in my <a href="https://patrickschroeder98.github.io/portfolio/index.html">Portfolio</a>.</h3>
+</div>
+
+<div class="jumbotron">
+    <section id="contact" class="contact-section">
+        <h2 data-i18n="contact-header">Contact Me</h2>
+        <div class="contact-info">
+            <a href="mailto:patrickschroeder479@gmail.com">patrickschroeder479@gmail.com</a>
+            <span></span>
+
+            <a href="https://www.linkedin.com/in/patrick-schröder-6b2007263/" target="_blank">
+                <img src="{% static 'wfra/img/linkedin.png' %}" alt="LinkedIn">
+            </a>
+            <span></span>
+            <a href="https://github.com/PatrickSchroeder98/" target="_blank">
+                <img src="{% static 'wfra/img/github-mark-white.png' %}" alt="GitHub">
+            </a>
+        </div>
+    </section>
 </div>
 <br>
 
