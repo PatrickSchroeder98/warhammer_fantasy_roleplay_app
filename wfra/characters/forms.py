@@ -91,6 +91,18 @@ class CharactersForm(forms.ModelForm):
 class CharacteristicsForm(forms.ModelForm):
     """Form with fields from characteristics model."""
 
+    # # Alternative way to disable the fields - unsupported, because user should see the value
+    # WS_current = forms.IntegerField(disabled=True, required=False)
+    # BS_current = forms.IntegerField(disabled=True, required=False)
+    # S_current = forms.IntegerField(disabled=True, required=False)
+    # T_current = forms.IntegerField(disabled=True, required=False)
+    # I_current = forms.IntegerField(disabled=True, required=False)
+    # Ag_current = forms.IntegerField(disabled=True, required=False)
+    # Dex_current = forms.IntegerField(disabled=True, required=False)
+    # Int_current = forms.IntegerField(disabled=True, required=False)
+    # WP_current = forms.IntegerField(disabled=True, required=False)
+    # Fel_current = forms.IntegerField(disabled=True, required=False)
+
     class Meta:
         model = Characteristics
         fields = (
