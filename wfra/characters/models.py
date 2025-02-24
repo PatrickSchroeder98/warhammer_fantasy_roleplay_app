@@ -66,6 +66,22 @@ class Characteristics(models.Model):
     Fel_advances = models.IntegerField()
     Fel_current = models.IntegerField()
 
+    def save(self, *args, **kwargs):
+        """Method save is overridden to calculate current values of characteristics."""
+
+        self.WS_current = sum([self.WS_initial, self.WS_advances])
+        self.BS_current = sum([self.BS_initial, self.BS_advances])
+        self.S_current = sum([self.S_initial, self.S_advances])
+        self.T_current = sum([self.T_initial, self.T_advances])
+        self.I_current = sum([self.I_initial, self.I_advances])
+        self.Ag_current = sum([self.Ag_initial, self.Ag_advances])
+        self.Dex_current = sum([self.Dex_initial, self.Dex_advances])
+        self.Int_current = sum([self.Int_initial, self.Int_advances])
+        self.WP_current = sum([self.WP_initial, self.WS_advances])
+        self.Fel_current = sum([self.Fel_initial, self.Fel_advances])
+
+        super().save(*args, **kwargs)
+
 
 class Fate(models.Model):
     """Model containing fate and fortune points of characters."""

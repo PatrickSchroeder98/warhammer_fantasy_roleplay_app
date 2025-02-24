@@ -9,6 +9,8 @@ document.getElementById('id_Int_current').disabled = true;
 document.getElementById('id_WP_current').disabled = true;
 document.getElementById('id_Fel_current').disabled = true;
 
+document.getElementById('id_art_characteristics').disabled = true;
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const wsInit = document.getElementById("id_WS_initial");
@@ -51,12 +53,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const felAdv = document.getElementById("id_Fel_advances");
     const felCurrent = document.getElementById("id_Fel_current");
 
-    function updateCurrent(current, init, adv) {
+    const artInit = document.getElementById("id_art_characteristics");
+
+    function updateCurrent(current, init, adv, ...extraFields) {
         const initVal = parseInt(init.value) || 0;
         const advVal = parseInt(adv.value) || 0;
         current.value = initVal + advVal;
+
+        for (var i = 0; i < extraFields.length; i++) {
+            extraFields[i].value = current.value;
+        }
     }
+
+    wsInit.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv));
+    wsAdv.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv));
+
+    bsInit.addEventListener("input", updateCurrent.bind(null, bsCurrent, bsInit, bsAdv));
+    bsAdv.addEventListener("input", updateCurrent.bind(null, bsCurrent, bsInit, bsAdv));
+
+    sInit.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv));
+    sAdv.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv));
 
     tInit.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv));
     tAdv.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv));
+
+    iInit.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv));
+    iAdv.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv));
+
+    agInit.addEventListener("input", updateCurrent.bind(null, agCurrent, agInit, agAdv));
+    agAdv.addEventListener("input", updateCurrent.bind(null, agCurrent, agInit, agAdv));
+
+    dexInit.addEventListener("input", updateCurrent.bind(null, dexCurrent, dexInit, dexAdv, artInit));
+    dexAdv.addEventListener("input", updateCurrent.bind(null, dexCurrent, dexInit, dexAdv, artInit));
+
+    intInit.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv));
+    intAdv.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv));
+
+    wpInit.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv));
+    wpAdv.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv));
+
+    felInit.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv));
+    felAdv.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv));
+
+
 });
