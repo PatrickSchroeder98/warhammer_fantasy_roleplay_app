@@ -10,6 +10,32 @@ document.getElementById('id_WP_current').disabled = true;
 document.getElementById('id_Fel_current').disabled = true;
 
 document.getElementById('id_art_characteristics').disabled = true;
+document.getElementById('id_athletics_characteristics').disabled = true;
+document.getElementById('id_bribery_characteristics').disabled = true;
+document.getElementById('id_charm_characteristics').disabled = true;
+document.getElementById('id_charm_animal_characteristics').disabled = true;
+document.getElementById('id_climb_characteristics').disabled = true;
+document.getElementById('id_cool_characteristics').disabled = true;
+document.getElementById('id_consume_alcohol_characteristics').disabled = true;
+document.getElementById('id_dodge_characteristics').disabled = true;
+document.getElementById('id_drive_characteristics').disabled = true;
+document.getElementById('id_endurance_characteristics').disabled = true;
+document.getElementById('id_entertain_characteristics').disabled = true;
+document.getElementById('id_gamble_characteristics').disabled = true;
+document.getElementById('id_gossip_characteristics').disabled = true;
+document.getElementById('id_haggle_characteristics').disabled = true;
+document.getElementById('id_intimidate_characteristics').disabled = true;
+document.getElementById('id_intuition_characteristics').disabled = true;
+document.getElementById('id_leadership_characteristics').disabled = true;
+document.getElementById('id_melee_basic_characteristics').disabled = true;
+document.getElementById('id_melee_characteristics').disabled = true;
+document.getElementById('id_navigation_characteristics').disabled = true;
+document.getElementById('id_outdoor_survival_characteristics').disabled = true;
+document.getElementById('id_perception_characteristics').disabled = true;
+document.getElementById('id_ride_characteristics').disabled = true;
+document.getElementById('id_row_characteristics').disabled = true;
+document.getElementById('id_stealth_characteristics').disabled = true;
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -55,6 +81,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const artInit = document.getElementById("id_art_characteristics");
 
+    const athInit = document.getElementById("id_athletics_characteristics");
+
+    const briInit = document.getElementById("id_bribery_characteristics");
+
+    const chaInit = document.getElementById("id_charm_characteristics");
+
+    const chaaniInit = document.getElementById("id_charm_animal_characteristics");
+
+    const cliInit = document.getElementById("id_climb_characteristics");
+
+    const coolInit = document.getElementById("id_cool_characteristics");
+
+    const conalcInit = document.getElementById("id_consume_alcohol_characteristics");
+
+    const dodInit = document.getElementById("id_dodge_characteristics");
+
+    const driInit = document.getElementById("id_drive_characteristics");
+
+    const endInit = document.getElementById("id_endurance_characteristics");
+
+    const entInit = document.getElementById("id_entertain_characteristics");
+
+    const gamInit = document.getElementById("id_gamble_characteristics");
+
+    const gosInit = document.getElementById("id_gossip_characteristics");
+
+    const hagInit = document.getElementById("id_haggle_characteristics");
+
+    const indInit = document.getElementById("id_intimidate_characteristics");
+
+    const inuInit = document.getElementById("id_intuition_characteristics");
+
+    const leaInit = document.getElementById("id_leadership_characteristics");
+
+    const melbasInit = document.getElementById("id_melee_basic_characteristics");
+
+    const melInit = document.getElementById("id_melee_characteristics");
+
+    const navInit = document.getElementById("id_navigation_characteristics");
+
+    const outsurInit = document.getElementById("id_outdoor_survival_characteristics");
+
+    const perInit = document.getElementById("id_perception_characteristics");
+
+    const ridInit = document.getElementById("id_ride_characteristics");
+
+    const rowInit = document.getElementById("id_row_characteristics");
+
+    const steInit = document.getElementById("id_stealth_characteristics");
+
     function updateCurrent(current, init, adv, ...extraFields) {
         const initVal = parseInt(init.value) || 0;
         const advVal = parseInt(adv.value) || 0;
@@ -65,35 +141,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    wsInit.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv));
-    wsAdv.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv));
+    wsInit.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv, melbasInit, melInit));
+    wsAdv.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv, melbasInit, melInit));
 
     bsInit.addEventListener("input", updateCurrent.bind(null, bsCurrent, bsInit, bsAdv));
     bsAdv.addEventListener("input", updateCurrent.bind(null, bsCurrent, bsInit, bsAdv));
 
-    sInit.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv));
-    sAdv.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv));
+    sInit.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv, cliInit, indInit, rowInit));
+    sAdv.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv, cliInit, indInit, rowInit));
 
-    tInit.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv));
-    tAdv.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv));
+    tInit.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv, conalcInit, endInit));
+    tAdv.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv, conalcInit, endInit));
 
-    iInit.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv));
-    iAdv.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv));
+    iInit.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv, inuInit, navInit, perInit));
+    iAdv.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv, inuInit, navInit, perInit));
 
-    agInit.addEventListener("input", updateCurrent.bind(null, agCurrent, agInit, agAdv));
-    agAdv.addEventListener("input", updateCurrent.bind(null, agCurrent, agInit, agAdv));
+    agInit.addEventListener("input", updateCurrent.bind(null, agCurrent, agInit, agAdv, athInit, dodInit, driInit, ridInit, steInit));
+    agAdv.addEventListener("input", updateCurrent.bind(null, agCurrent, agInit, agAdv, athInit, dodInit, driInit, ridInit, steInit));
 
     dexInit.addEventListener("input", updateCurrent.bind(null, dexCurrent, dexInit, dexAdv, artInit));
     dexAdv.addEventListener("input", updateCurrent.bind(null, dexCurrent, dexInit, dexAdv, artInit));
 
-    intInit.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv));
-    intAdv.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv));
+    intInit.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv, gamInit, outsurInit));
+    intAdv.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv, gamInit, outsurInit));
 
-    wpInit.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv));
-    wpAdv.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv));
+    wpInit.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit));
+    wpAdv.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit));
 
-    felInit.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv));
-    felAdv.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv));
+    felInit.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv, briInit, chaInit, entInit, gosInit, hagInit, leaInit));
+    felAdv.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv, briInit, chaInit, entInit, gosInit, hagInit, leaInit));
 
 
 });
