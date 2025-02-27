@@ -273,6 +273,20 @@ class CharacteristicsForm(forms.ModelForm):
             "Fel_current": "Current Fellowship",
         }
 
+    def __init__(self, *args, **kwargs):
+        super(CharacteristicsForm, self).__init__(*args, **kwargs)
+        self.fields['WS_current'].required = False
+        self.fields['BS_current'].required = False
+        self.fields['S_current'].required = False
+        self.fields['T_current'].required = False
+        self.fields['I_current'].required = False
+        self.fields['Ag_current'].required = False
+        self.fields['Dex_current'].required = False
+        self.fields['Int_current'].required = False
+        self.fields['WP_current'].required = False
+        self.fields['Fel_current'].required = False
+
+
 
 class FateForm(forms.ModelForm):
     """Form with fields from fate model."""

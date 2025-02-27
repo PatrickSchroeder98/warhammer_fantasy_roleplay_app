@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
     steCurrent.disabled = true;
 
     function updateCurrent(current, init, adv, ...extraFields) {
+    /* Function for characteristics calculation, also saves the values to related basic skills. */
         const initVal = parseInt(init.value) || 0;
         const advVal = parseInt(adv.value) || 0;
         current.value = initVal + advVal;
@@ -251,10 +252,37 @@ document.addEventListener('DOMContentLoaded', function() {
     felAdv.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv, briInit, chaInit, entInit, gosInit, hagInit, leaInit));
 
     function updateSkill(current, init, adv) {
+    /* Function for basic skills final value calculation. */
         const initVal = parseInt(init.value) || 0;
         const advVal = parseInt(adv.value) || 0;
         current.value = initVal + advVal;
     }
 
-    artAdv.addEventListener("input", updateSkill.bind(null, artCurrent, artInit, artAdv))
+    artAdv.addEventListener("input", updateSkill.bind(null, artCurrent, artInit, artAdv));
+    athAdv.addEventListener("input", updateSkill.bind(null, athCurrent, athInit, athAdv));
+    briAdv.addEventListener("input", updateSkill.bind(null, briCurrent, briInit, briAdv));
+    chaAdv.addEventListener("input", updateSkill.bind(null, chaCurrent, chaInit, chaAdv));
+    chaaniAdv.addEventListener("input", updateSkill.bind(null, chaaniCurrent, chaaniInit, chaaniAdv));
+    cliAdv.addEventListener("input", updateSkill.bind(null, cliCurrent, cliInit, cliAdv));
+    coolAdv.addEventListener("input", updateSkill.bind(null, coolCurrent, coolInit, coolAdv));
+    conalcAdv.addEventListener("input", updateSkill.bind(null, conalcCurrent, conalcInit, conalcAdv));
+    dodAdv.addEventListener("input", updateSkill.bind(null, dodCurrent, dodInit, dodAdv));
+    driAdv.addEventListener("input", updateSkill.bind(null, driCurrent, driInit, driAdv));
+    endAdv.addEventListener("input", updateSkill.bind(null, endCurrent, endInit, endAdv));
+    entAdv.addEventListener("input", updateSkill.bind(null, entCurrent, entInit, entAdv));
+    gamAdv.addEventListener("input", updateSkill.bind(null, gamCurrent, gamInit, gamAdv));
+    gosAdv.addEventListener("input", updateSkill.bind(null, gosCurrent, gosInit, gosAdv));
+    hagAdv.addEventListener("input", updateSkill.bind(null, hagCurrent, hagInit, hagAdv));
+    indAdv.addEventListener("input", updateSkill.bind(null, indCurrent, indInit, indAdv));
+    inuAdv.addEventListener("input", updateSkill.bind(null, inuCurrent, inuInit, inuAdv));
+    leaAdv.addEventListener("input", updateSkill.bind(null, leaCurrent, leaInit, leaAdv));
+    melbasAdv.addEventListener("input", updateSkill.bind(null, melbasCurrent, melbasInit, melbasAdv));
+    melAdv.addEventListener("input", updateSkill.bind(null, melCurrent, melInit, melAdv));
+    navAdv.addEventListener("input", updateSkill.bind(null, navCurrent, navInit, navAdv));
+    outsurAdv.addEventListener("input", updateSkill.bind(null, outsurCurrent, outsurInit, outsurAdv));
+    perAdv.addEventListener("input", updateSkill.bind(null, perCurrent, perInit, perAdv));
+    ridAdv.addEventListener("input", updateSkill.bind(null, ridCurrent, ridInit, ridAdv));
+    rowAdv.addEventListener("input", updateSkill.bind(null, rowCurrent, rowInit, rowAdv));
+    steAdv.addEventListener("input", updateSkill.bind(null, steCurrent, steInit, steAdv));
+
 });

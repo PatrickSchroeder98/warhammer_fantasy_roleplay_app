@@ -67,7 +67,7 @@ class Characteristics(models.Model):
     Fel_current = models.IntegerField()
 
     def save(self, *args, **kwargs):
-        """Method save is overridden to calculate current values of characteristics."""
+        """Method save is overwritten to calculate current values of characteristics."""
 
         self.WS_current = sum([self.WS_initial, self.WS_advances])
         self.BS_current = sum([self.BS_initial, self.BS_advances])
