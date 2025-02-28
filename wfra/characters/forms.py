@@ -287,7 +287,6 @@ class CharacteristicsForm(forms.ModelForm):
         self.fields['Fel_current'].required = False
 
 
-
 class FateForm(forms.ModelForm):
     """Form with fields from fate model."""
 
@@ -573,6 +572,87 @@ class BasicSkillsForm(forms.ModelForm):
             "stealth_advances": "Stealth Advances",
             "stealth_skill": "Stealth Skill",
         }
+
+    def __init__(self, *args, **kwargs):
+        super(BasicSkillsForm, self).__init__(*args, **kwargs)
+
+        self.fields['art_characteristics'].required = False
+        self.fields['art_skill'].required = False
+
+        self.fields['athletics_characteristics'].required = False
+        self.fields['athletics_skill'].required = False
+
+        self.fields['bribery_characteristics'].required = False
+        self.fields['bribery_skill'].required = False
+
+        self.fields['charm_characteristics'].required = False
+        self.fields['charm_skill'].required = False
+
+        self.fields['charm_animal_characteristics'].required = False
+        self.fields['charm_animal_skill'].required = False
+
+        self.fields['climb_characteristics'].required = False
+        self.fields['climb_skill'].required = False
+
+        self.fields['cool_characteristics'].required = False
+        self.fields['cool_skill'].required = False
+
+        self.fields['consume_alcohol_characteristics'].required = False
+        self.fields['consume_alcohol_skill'].required = False
+
+        self.fields['dodge_characteristics'].required = False
+        self.fields['dodge_skill'].required = False
+
+        self.fields['drive_characteristics'].required = False
+        self.fields['drive_skill'].required = False
+
+        self.fields['endurance_characteristics'].required = False
+        self.fields['endurance_skill'].required = False
+
+        self.fields['entertain_characteristics'].required = False
+        self.fields['entertain_skill'].required = False
+
+        self.fields['gamble_characteristics'].required = False
+        self.fields['gamble_skill'].required = False
+
+        self.fields['gossip_characteristics'].required = False
+        self.fields['gossip_skill'].required = False
+
+        self.fields['haggle_characteristics'].required = False
+        self.fields['haggle_skill'].required = False
+
+        self.fields['intimidate_characteristics'].required = False
+        self.fields['intimidate_skill'].required = False
+
+        self.fields['intuition_characteristics'].required = False
+        self.fields['intuition_skill'].required = False
+
+        self.fields['leadership_characteristics'].required = False
+        self.fields['leadership_skill'].required = False
+
+        self.fields['melee_basic_characteristics'].required = False
+        self.fields['melee_basic_skill'].required = False
+
+        self.fields['melee_characteristics'].required = False
+        self.fields['melee_skill'].required = False
+
+        self.fields['navigation_characteristics'].required = False
+        self.fields['navigation_skill'].required = False
+
+        self.fields['outdoor_survival_characteristics'].required = False
+        self.fields['outdoor_survival_skill'].required = False
+
+        self.fields['perception_characteristics'].required = False
+        self.fields['perception_skill'].required = False
+
+        self.fields['ride_characteristics'].required = False
+        self.fields['ride_skill'].required = False
+
+        self.fields['row_characteristics'].required = False
+        self.fields['row_skill'].required = False
+
+        self.fields['stealth_characteristics'].required = False
+        self.fields['stealth_skill'].required = False
 
 
 class AdvancedSkillsForm(forms.ModelForm):
