@@ -227,91 +227,91 @@ class BasicSkills(models.Model):
     stealth_advances = models.IntegerField()
     stealth_skill = models.IntegerField()
 
-    def save(self, *args, **kwargs):
-        """Method save is overwritten to calculate current values of basic skills."""
-        characteristics = Characteristics.objects.get(character_id=self.character_id)
-        if characteristics:
-            self.art_characteristics = characteristics.Dex_current
-        else:
-            self.art_characteristics = 0  # Default if no Characteristics found
-
-        #self.art_characteristics = sum([characteristics.Dex_current])
-        self.art_skill = sum([self.art_characteristics, self.art_advances])
-
-        self.athletics_characteristics = sum([characteristics.Ag_current])
-        self.athletics_skill = sum([self.athletics_characteristics, self.athletics_advances])
-
-        self.bribery_characteristics = sum([characteristics.Fel_current])
-        self.bribery_skill = sum([self.bribery_characteristics, self.bribery_advances])
-
-        self.charm_characteristics = sum([characteristics.Fel_current])
-        self.charm_skill = sum([self.charm_characteristics, self.charm_advances])
-
-        self.charm_animal_characteristics = sum([characteristics.WP_current])
-        self.charm_animal_skill = sum([self.charm_animal_characteristics, self.charm_animal_advances])
-
-        self.climb_characteristics = sum([characteristics.S_current])
-        self.climb_skill = sum([self.climb_characteristics, self.climb_advances])
-
-        self.cool_characteristics = sum([characteristics.WP_current])
-        self.cool_skill = sum([self.cool_characteristics, self.cool_advances])
-
-        self.consume_alcohol_characteristics = sum([characteristics.T_current])
-        self.consume_alcohol_skill = sum([self.consume_alcohol_characteristics, self.consume_alcohol_advances])
-
-        self.dodge_characteristics = sum([characteristics.Ag_current])
-        self.dodge_skill = sum([self.dodge_characteristics, self.dodge_advances])
-
-        self.drive_characteristics = sum([characteristics.Ag_current])
-        self.drive_skill = sum([self.drive_characteristics, self.drive_advances])
-
-        self.endurance_characteristics = sum([characteristics.T_current])
-        self.endurance_skill = sum([self.endurance_characteristics, self.endurance_advances])
-
-        self.entertain_characteristics = sum([characteristics.Fel_current])
-        self.entertain_skill = sum([self.entertain_characteristics, self.entertain_advances])
-
-        self.gamble_characteristics = sum([characteristics.Int_current])
-        self.gamble_skill = sum([self.gamble_characteristics, self.gamble_advances])
-
-        self.gossip_characteristics = sum([characteristics.Fel_current])
-        self.gossip_skill = sum([self.gossip_characteristics, self.gossip_advances])
-
-        self.haggle_characteristics = sum([characteristics.Fel_current])
-        self.haggle_skill = sum([self.haggle_characteristics, self.haggle_advances])
-
-        self.intimidate_characteristics = sum([characteristics.S_current])
-        self.intimidate_skill = sum([self.intimidate_characteristics, self.intimidate_advances])
-
-        self.intuition_characteristics = sum([characteristics.I_current])
-        self.intuition_skill = sum([self.intuition_characteristics, self.intuition_advances])
-
-        self.leadership_characteristics = sum([characteristics.Fel_current])
-        self.leadership_skill = sum([self.leadership_characteristics, self.leadership_advances])
-
-        self.melee_basic_characteristics = sum([characteristics.WS_current])
-        self.melee_basic_skill = sum([self.melee_basic_characteristics, self.melee_basic_advances])
-
-        self.melee_characteristics = sum([characteristics.WS_current])
-        self.melee_skill = sum([self.melee_characteristics, self.melee_advances])
-
-        self.navigation_characteristics = sum([characteristics.I_current])
-        self.navigation_skill = sum([self.navigation_characteristics, self.navigation_advances])
-
-        self.outdoor_survival_characteristics = sum([characteristics.Int_current])
-        self.outdoor_survival_skill = sum([self.outdoor_survival_characteristics, self.outdoor_survival_advances])
-
-        self.perception_characteristics = sum([characteristics.I_current])
-        self.perception_skill = sum([self.perception_characteristics, self.perception_advances])
-
-        self.ride_characteristics = sum([characteristics.Ag_current])
-        self.ride_skill = sum([self.ride_characteristics, self.ride_advances])
-
-        self.row_characteristics = sum([characteristics.S_current])
-        self.row_skill = sum([self.row_characteristics, self.row_advances])
-
-        self.stealth_characteristics = sum([characteristics.Ag_current])
-        self.stealth_advances = sum([self.stealth_characteristics, self.stealth_advances])
+    # def save(self, *args, **kwargs):
+    #     """Method save is overwritten to calculate current values of basic skills."""
+    #     characteristics = Characteristics.objects.get(character_id=self.character_id)
+    #     if characteristics:
+    #         self.art_characteristics = characteristics.Dex_current
+    #     else:
+    #         self.art_characteristics = 0  # Default if no Characteristics found
+    #
+    #     #self.art_characteristics = sum([characteristics.Dex_current])
+    #     self.art_skill = sum([self.art_characteristics, self.art_advances])
+    #
+    #     self.athletics_characteristics = sum([characteristics.Ag_current])
+    #     self.athletics_skill = sum([self.athletics_characteristics, self.athletics_advances])
+    #
+    #     self.bribery_characteristics = sum([characteristics.Fel_current])
+    #     self.bribery_skill = sum([self.bribery_characteristics, self.bribery_advances])
+    #
+    #     self.charm_characteristics = sum([characteristics.Fel_current])
+    #     self.charm_skill = sum([self.charm_characteristics, self.charm_advances])
+    #
+    #     self.charm_animal_characteristics = sum([characteristics.WP_current])
+    #     self.charm_animal_skill = sum([self.charm_animal_characteristics, self.charm_animal_advances])
+    #
+    #     self.climb_characteristics = sum([characteristics.S_current])
+    #     self.climb_skill = sum([self.climb_characteristics, self.climb_advances])
+    #
+    #     self.cool_characteristics = sum([characteristics.WP_current])
+    #     self.cool_skill = sum([self.cool_characteristics, self.cool_advances])
+    #
+    #     self.consume_alcohol_characteristics = sum([characteristics.T_current])
+    #     self.consume_alcohol_skill = sum([self.consume_alcohol_characteristics, self.consume_alcohol_advances])
+    #
+    #     self.dodge_characteristics = sum([characteristics.Ag_current])
+    #     self.dodge_skill = sum([self.dodge_characteristics, self.dodge_advances])
+    #
+    #     self.drive_characteristics = sum([characteristics.Ag_current])
+    #     self.drive_skill = sum([self.drive_characteristics, self.drive_advances])
+    #
+    #     self.endurance_characteristics = sum([characteristics.T_current])
+    #     self.endurance_skill = sum([self.endurance_characteristics, self.endurance_advances])
+    #
+    #     self.entertain_characteristics = sum([characteristics.Fel_current])
+    #     self.entertain_skill = sum([self.entertain_characteristics, self.entertain_advances])
+    #
+    #     self.gamble_characteristics = sum([characteristics.Int_current])
+    #     self.gamble_skill = sum([self.gamble_characteristics, self.gamble_advances])
+    #
+    #     self.gossip_characteristics = sum([characteristics.Fel_current])
+    #     self.gossip_skill = sum([self.gossip_characteristics, self.gossip_advances])
+    #
+    #     self.haggle_characteristics = sum([characteristics.Fel_current])
+    #     self.haggle_skill = sum([self.haggle_characteristics, self.haggle_advances])
+    #
+    #     self.intimidate_characteristics = sum([characteristics.S_current])
+    #     self.intimidate_skill = sum([self.intimidate_characteristics, self.intimidate_advances])
+    #
+    #     self.intuition_characteristics = sum([characteristics.I_current])
+    #     self.intuition_skill = sum([self.intuition_characteristics, self.intuition_advances])
+    #
+    #     self.leadership_characteristics = sum([characteristics.Fel_current])
+    #     self.leadership_skill = sum([self.leadership_characteristics, self.leadership_advances])
+    #
+    #     self.melee_basic_characteristics = sum([characteristics.WS_current])
+    #     self.melee_basic_skill = sum([self.melee_basic_characteristics, self.melee_basic_advances])
+    #
+    #     self.melee_characteristics = sum([characteristics.WS_current])
+    #     self.melee_skill = sum([self.melee_characteristics, self.melee_advances])
+    #
+    #     self.navigation_characteristics = sum([characteristics.I_current])
+    #     self.navigation_skill = sum([self.navigation_characteristics, self.navigation_advances])
+    #
+    #     self.outdoor_survival_characteristics = sum([characteristics.Int_current])
+    #     self.outdoor_survival_skill = sum([self.outdoor_survival_characteristics, self.outdoor_survival_advances])
+    #
+    #     self.perception_characteristics = sum([characteristics.I_current])
+    #     self.perception_skill = sum([self.perception_characteristics, self.perception_advances])
+    #
+    #     self.ride_characteristics = sum([characteristics.Ag_current])
+    #     self.ride_skill = sum([self.ride_characteristics, self.ride_advances])
+    #
+    #     self.row_characteristics = sum([characteristics.S_current])
+    #     self.row_skill = sum([self.row_characteristics, self.row_advances])
+    #
+    #     self.stealth_characteristics = sum([characteristics.Ag_current])
+    #     self.stealth_advances = sum([self.stealth_characteristics, self.stealth_advances])
 
 
 class AdvancedSkills(models.Model):
