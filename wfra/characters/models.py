@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from .util import SPECIES_CHOICES
 
 User = get_user_model()
 
@@ -9,7 +10,7 @@ class Characters(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    species = models.CharField(max_length=100)
+    species = models.CharField(max_length=100, choices=SPECIES_CHOICES)
     character_class = models.CharField(max_length=200)
     career = models.CharField(max_length=200)
     career_tier = models.CharField(max_length=200)

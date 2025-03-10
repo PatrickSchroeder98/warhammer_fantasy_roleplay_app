@@ -21,6 +21,11 @@ from .models import (
 class CharactersForm(forms.ModelForm):
     """Form with basic information about character."""
 
+    def __init__(self, *args, **kwargs):
+        """Changes character_class into a dropdown menu."""
+        super().__init__(*args, **kwargs)
+        self.fields["character_class"].widget = forms.Select(choices=[("Test", "Test")])
+
     class Meta:
         model = Characters
         fields = (
@@ -42,12 +47,12 @@ class CharactersForm(forms.ModelForm):
             "name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Character Name"}
             ),
-            "species": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Character Species"}
-            ),
-            "character_class": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Character Class"}
-            ),
+            # "species": forms.TextInput(
+            #     attrs={"class": "form-control", "placeholder": "Character Species"}
+            # ),
+            # "character_class": forms.TextInput(
+            #     attrs={"class": "form-control", "placeholder": "Character Class"}
+            # ),
             "career": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Career"}
             ),
