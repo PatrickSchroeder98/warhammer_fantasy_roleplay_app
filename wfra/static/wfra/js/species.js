@@ -3,11 +3,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const classSelect = document.getElementById("id_character_class");
 
     const classOptions = {
-        "Human": ["Scholar", "Priest", "Merchant", "Soldier"],
-        "Dwarf": ["Scholar", "Slayer", "Merchant", "Engineer"],
-        "Halfling": ["Scholar", "Thief", "Cook", "Entertainer"],
-        "Wood Elf": ["Scholar", "Waywatcher", "Hunter", "Druid"],
-        "High Elf": ["Scholar", "Mage", "Diplomat", "Swordmaster"]
+        "Human": ["Apothecary", "Engineer", "Lawyer", "Nun", "Physician", "Priest", "Scholar", "Wizard",
+                  "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",
+                  "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Servant", "Spy", "Warden",
+                  "Bailiff", "Hedge Witch", "Herbalist", "Hunter", "Miner", "Mystic", "Scout", "Villager"],
+
+        "Dwarf": ["Apothecary", "Engineer", "Lawyer", "Physician", "Scholar",
+                  "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",
+                  "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Servant", "Spy", "Warden",
+                  "Bailiff", "Hunter", "Miner", "Scout", "Villager"],
+
+        "Halfling": ["Apothecary", "Engineer", "Lawyer", "Physician", "Scholar",
+                     "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",
+                     "Advisor", "Artist", "Envoy", "Servant", "Spy", "Warden",
+                     "Bailiff", "Herbalist", "Hunter", "Miner", "Scout", "Villager"],
+
+        "High Elf": ["Apothecary", "Lawyer", "Physician", "Scholar", "Wizard",
+                     "Artisan", "Investigator", "Merchant", "Townsman", "Watchman",
+                     "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Spy", "Warden",
+                     "Herbalist", "Hunter", "Scout"],
+
+        "Wood Elf": ["Scholar", "Wizard",
+                     "Artisan",
+                     "Advisor", "Artist", "Envoy", "Noble", "Spy", "Warden",
+                     "Herbalist", "Hunter", "Mystic", "Scout"]
+
     };
 
     function updateClasses() {
