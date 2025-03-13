@@ -36,7 +36,12 @@
 
 
         <h4>Talents Information</h4>
-        {{ talents.as_p }}
+        {{ talents_formset.management_form }}
+        {% for form in talents_formset %}
+        <div class="formset-item">
+            {{ form.as_p }}
+        </div>
+        {% endfor %}
 
         <h4>Ambitions Information</h4>
         {{ ambitions.as_p }}

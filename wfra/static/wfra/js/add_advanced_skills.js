@@ -23,6 +23,31 @@ document.getElementById("add-skill").addEventListener("click", function () {
     totalForms.value = currentFormCount + 1;
 });
 
+document.getElementById("add-talent").addEventListener("click", function () {
+    const formContainer = document.getElementById("formset-container-2");
+    const totalForms = document.querySelector("#id_form-TOTAL_FORMS");
+    const currentFormCount = parseInt(totalForms.value);
+    const newFormIndex = currentFormCount;
+
+    // Clone the first form in the formset
+    const emptyForm = formContainer.querySelector(".formset-item").cloneNode(true);
+
+    // Update the names and IDs of the cloned form
+    emptyForm.querySelectorAll("input, select, textarea").forEach((input) => {
+        if (input.name) {
+            input.name = input.name.replace(`-0-`, `-${newFormIndex}-`);
+        }
+        if (input.id) {
+            input.id = input.id.replace(`-0-`, `-${newFormIndex}-`);
+        }
+        input.value = ""; // Clear any existing value
+    });
+
+    // Append the new form and update the total forms count
+    formContainer.appendChild(emptyForm);
+    totalForms.value = currentFormCount + 1;
+});
+
 document.addEventListener("click", function (event) {
     const totalForms = document.querySelector("#id_form-TOTAL_FORMS");
     const currentFormCount = parseInt(totalForms.value);

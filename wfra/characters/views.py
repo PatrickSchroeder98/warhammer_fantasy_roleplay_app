@@ -72,7 +72,13 @@ class CreateCharacter(LoginRequiredMixin, View):
             queryset=AdvancedSkills.objects.none()
         )
 
-        talents_form = TalentsForm()
+        TalentsFormSet = modelformset_factory(
+            Talents, form=TalentsForm, extra=1, can_delete=False
+        )
+        talents_formset = TalentsFormSet(
+            queryset=Talents.objects.none()
+        )
+
         ambitions_form = AmbitionsForm()
         party_form = PartyForm()
         psychology_form = PsychologyForm()
@@ -92,7 +98,7 @@ class CreateCharacter(LoginRequiredMixin, View):
                 "movement_form": movement_form,
                 "basic_skills_form": basic_skills_form,
                 "advanced_skills_form": advanced_skills_formset,
-                "talents_form": talents_form,
+                "talents_form": talents_formset,
                 "ambitions_form": ambitions_form,
                 "party_form": party_form,
                 "psychology_form": psychology_form,
@@ -118,7 +124,11 @@ class CreateCharacter(LoginRequiredMixin, View):
         )
         advanced_skills_formset = AdvancedSkillsFormSet(request.POST)
 
-        talents_form = TalentsForm(request.POST)
+        TalentsFormSet = modelformset_factory(
+            Talents, form=TalentsForm, extra=0, can_delete=False
+        )
+        talents_formset = TalentsFormSet(request.POST)
+
         ambitions_form = AmbitionsForm(request.POST)
         party_form = PartyForm(request.POST)
         psychology_form = PsychologyForm(request.POST)
@@ -135,7 +145,7 @@ class CreateCharacter(LoginRequiredMixin, View):
             and movement_form.is_valid()
             and basic_skills_form.is_valid()
             and advanced_skills_formset.is_valid()
-            and talents_form.is_valid()
+            and talents_formset.is_valid()
             and ambitions_form.is_valid()
             and party_form.is_valid()
             and psychology_form.is_valid()
@@ -179,9 +189,11 @@ class CreateCharacter(LoginRequiredMixin, View):
                     advanced_skill.character_id = character
                     advanced_skill.save()
 
-            talents = talents_form.save(commit=False)
-            talents.character_id = character
-            talents.save()
+            for form in talents_formset:
+                if form.cleaned_data and not form.cleaned_data.get("DELETE", False):
+                    talents = form.save(commit=False)
+                    talents.character_id = character
+                    talents.save()
 
             ambitions = ambitions_form.save(commit=False)
             ambitions.character_id = character
@@ -223,7 +235,7 @@ class CreateCharacter(LoginRequiredMixin, View):
                 "movement_form": movement_form,
                 "basic_skills_form": basic_skills_form,
                 "advanced_skills_form": advanced_skills_formset,
-                "talents_form": talents_form,
+                "talents_form": talents_formset,
                 "ambitions_form": ambitions_form,
                 "party_form": party_form,
                 "psychology_form": psychology_form,
@@ -305,9 +317,14 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
         context["advanced_skills_formset"] = AdvancedSkillsFormSet(
             queryset=AdvancedSkills.objects.filter(character_id=character)
         )
-        context["talents"] = TalentsForm(
-            instance=get_object_or_404(Talents, character_id=character)
+
+        TalentsFormSet = modelformset_factory(
+            Talents, form=TalentsForm, extra=1, can_delete=True
         )
+        context["talents_formset"] = TalentsFormSet(
+            queryset=Talents.objects.filter(character_id=character)
+        )
+
         context["ambitions"] = AmbitionsForm(
             instance=get_object_or_404(Ambitions, character_id=character)
         )
@@ -342,7 +359,7 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
         movement = get_object_or_404(Movement, character_id=character)
         basic_skills = get_object_or_404(BasicSkills, character_id=character)
         # advanced_skills = get_object_or_404(AdvancedSkills, character_id=character)
-        talents = get_object_or_404(Talents, character_id=character)
+        # talents = get_object_or_404(Talents, character_id=character)
         ambitions = get_object_or_404(Ambitions, character_id=character)
         party = get_object_or_404(Party, character_id=character)
         psychology = get_object_or_404(Psychology, character_id=character)
@@ -391,9 +408,22 @@ class UpdateViewCharacter(LoginRequiredMixin, generic.UpdateView):
                         advanced_skill.character_id = character
                         advanced_skill.save()
 
-        talents_form = TalentsForm(self.request.POST, instance=talents)
-        if talents_form.is_valid():
-            talents_form.save()
+        TalentsFormSet = modelformset_factory(
+            Talents, form=TalentsForm, extra=0, can_delete=True
+        )
+        talents_formset = TalentsFormSet(self.request.POST)
+
+        if talents_formset.is_valid():
+            for form in talents_formset:
+                if form.cleaned_data:
+                    if form.cleaned_data.get("DELETE", False):
+                        # Delete the skill if marked for deletion
+                        form.instance.delete()
+                    else:
+                        # Assign character_id and save
+                        talent = form.save(commit=False)
+                        talent.character_id = character
+                        talent.save()
 
         ambitions_form = AmbitionsForm(self.request.POST, instance=ambitions)
         if ambitions_form.is_valid():
