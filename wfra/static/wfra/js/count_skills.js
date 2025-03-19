@@ -210,6 +210,22 @@ document.addEventListener('DOMContentLoaded', function() {
     steInit.readOnly = true;
     steCurrent.readOnly = true;
 
+    /* Wounds fields */
+
+    const sBonus = document.getElementById("id_sb");
+    sBonus.readOnly = true;
+
+    const tBonus = document.getElementById("id_tb_x2");
+    tBonus.readOnly = true;
+
+    const wpBonus = document.getElementById("id_wbp");
+    wpBonus.readOnly = true;
+
+    const hardyTalent = document.getElementById("id_hardy");
+
+    const woundsNumber = document.getElementById("id_wounds");
+    woundsNumber.readOnly = true;
+
     function updateCurrent(current, init, adv, ...extraFields) {
     /* Function for characteristics calculation, also saves the values to related basic skills. */
         const initVal = parseInt(init.value) || 0;
@@ -221,17 +237,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function updateBonus(current, bonus) {
+        const c = parseInt(current.value) || 0;
+        if (c < 10) {
+            bonus.value = 0;
+        }
+        else if (c > 99) {
+            bonus.value = 9;
+        }
+        else {
+            bonus.value = Number(String(c)[0]);
+        }
+
+    }
+
     wsInit.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv, melbasInit, melInit));
     wsAdv.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv, melbasInit, melInit));
 
     bsInit.addEventListener("input", updateCurrent.bind(null, bsCurrent, bsInit, bsAdv));
     bsAdv.addEventListener("input", updateCurrent.bind(null, bsCurrent, bsInit, bsAdv));
 
-    sInit.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv, cliInit, indInit, rowInit));
-    sAdv.addEventListener("input", updateCurrent.bind(null, sCurrent, sInit, sAdv, cliInit, indInit, rowInit));
+    sInit.addEventListener("input", () => {
+        updateCurrent(sCurrent, sInit, sAdv, cliInit, indInit, rowInit);
+        updateBonus(sCurrent, sBonus);
+    });
 
-    tInit.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv, conalcInit, endInit));
-    tAdv.addEventListener("input", updateCurrent.bind(null, tCurrent, tInit, tAdv, conalcInit, endInit));
+    sAdv.addEventListener("input", () => {
+        updateCurrent(sCurrent, sInit, sAdv, cliInit, indInit, rowInit);
+        updateBonus(sCurrent, sBonus);
+    });
+
+    tInit.addEventListener("input", () => {
+        updateCurrent(tCurrent, tInit, tAdv, conalcInit, endInit, tBonus)
+        updateBonus(tCurrent, tBonus);
+    });
+
+    tAdv.addEventListener("input", () => {
+        updateCurrent(tCurrent, tInit, tAdv, conalcInit, endInit, tBonus)
+        updateBonus(tCurrent, tBonus);
+    });
 
     iInit.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv, inuInit, navInit, perInit));
     iAdv.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv, inuInit, navInit, perInit));
@@ -245,8 +289,8 @@ document.addEventListener('DOMContentLoaded', function() {
     intInit.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv, gamInit, outsurInit));
     intAdv.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv, gamInit, outsurInit));
 
-    wpInit.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit));
-    wpAdv.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit));
+    wpInit.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit, wpBonus));
+    wpAdv.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit, wpBonus));
 
     felInit.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv, briInit, chaInit, entInit, gosInit, hagInit, leaInit));
     felAdv.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv, briInit, chaInit, entInit, gosInit, hagInit, leaInit));
@@ -284,5 +328,16 @@ document.addEventListener('DOMContentLoaded', function() {
     ridAdv.addEventListener("input", updateSkill.bind(null, ridCurrent, ridInit, ridAdv));
     rowAdv.addEventListener("input", updateSkill.bind(null, rowCurrent, rowInit, rowAdv));
     steAdv.addEventListener("input", updateSkill.bind(null, steCurrent, steInit, steAdv));
+
+
+    function updateWounds(sBonus, tBonus, wpBonus, hardyTalent, woundsNumber) {
+    /* Function for calculation of total number of wounds (health). */
+        const s = parseInt(sBonus.value) || 0;
+        const t_x = parseInt(tBonus.value) || 0;
+        const wp = parseInt(wpBonus.value) || 0;
+        const h = parseInt(hardyTalent.value) || 0;
+        woundsNumber.value = 0;
+    }
+
 
 });
