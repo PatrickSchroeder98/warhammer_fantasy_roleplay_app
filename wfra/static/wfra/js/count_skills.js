@@ -238,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateBonus(current, bonus) {
+    /* Function to set the proper value of wounds bonus. */
         const c = parseInt(current.value) || 0;
         if (c < 10) {
             bonus.value = 0;
@@ -249,6 +250,11 @@ document.addEventListener('DOMContentLoaded', function() {
             bonus.value = Number(String(c)[0]);
         }
 
+    }
+
+    function multiply(bonus, x) {
+    /* Function to multiply the value of bonus. */
+        bonus.value = bonus.value * x;
     }
 
     wsInit.addEventListener("input", updateCurrent.bind(null, wsCurrent, wsInit, wsAdv, melbasInit, melInit));
@@ -268,13 +274,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     tInit.addEventListener("input", () => {
-        updateCurrent(tCurrent, tInit, tAdv, conalcInit, endInit, tBonus)
+        updateCurrent(tCurrent, tInit, tAdv, conalcInit, endInit)
         updateBonus(tCurrent, tBonus);
+        multiply(tBonus, 2)
     });
 
     tAdv.addEventListener("input", () => {
-        updateCurrent(tCurrent, tInit, tAdv, conalcInit, endInit, tBonus)
+        updateCurrent(tCurrent, tInit, tAdv, conalcInit, endInit)
         updateBonus(tCurrent, tBonus);
+        multiply(tBonus, 2)
     });
 
     iInit.addEventListener("input", updateCurrent.bind(null, iCurrent, iInit, iAdv, inuInit, navInit, perInit));
@@ -289,8 +297,15 @@ document.addEventListener('DOMContentLoaded', function() {
     intInit.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv, gamInit, outsurInit));
     intAdv.addEventListener("input", updateCurrent.bind(null, intCurrent, intInit, intAdv, gamInit, outsurInit));
 
-    wpInit.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit, wpBonus));
-    wpAdv.addEventListener("input", updateCurrent.bind(null, wpCurrent, wpInit, wpAdv, chaaniInit, coolInit, wpBonus));
+    wpInit.addEventListener("input", () => {
+        updateCurrent(wpCurrent, wpInit, wpAdv, chaaniInit, coolInit)
+        updateBonus(wpCurrent, wpBonus);
+    });
+
+    wpAdv.addEventListener("input", () => {
+        updateCurrent(wpCurrent, wpInit, wpAdv, chaaniInit, coolInit)
+        updateBonus(wpCurrent, wpBonus);
+    });
 
     felInit.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv, briInit, chaInit, entInit, gosInit, hagInit, leaInit));
     felAdv.addEventListener("input", updateCurrent.bind(null, felCurrent, felInit, felAdv, briInit, chaInit, entInit, gosInit, hagInit, leaInit));
@@ -333,11 +348,20 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateWounds(sBonus, tBonus, wpBonus, hardyTalent, woundsNumber) {
     /* Function for calculation of total number of wounds (health). */
         const s = parseInt(sBonus.value) || 0;
-        const t_x = parseInt(tBonus.value) || 0;
+        let t_x = parseInt(tBonus.value) || 0;
         const wp = parseInt(wpBonus.value) || 0;
-        const h = parseInt(hardyTalent.value) || 0;
-        woundsNumber.value = 0;
+        let h = parseInt(hardyTalent.value) || 0;
+
+        if (h <= 0) {
+            woundsNumber.value = s + t_x + wp;
+        }
+        else {
+            h = h + 2;
+            t_x = (t_x / 2) * h;
+            woundsNumber.value = s + t_x + wp;
+        }
+
     }
 
-
+    hardyTalent.addEventListener("input", updateWounds.bind(null, sBonus, tBonus, wpBonus, hardyTalent, woundsNumber));
 });
