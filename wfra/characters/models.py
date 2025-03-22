@@ -20,6 +20,8 @@ class Characters(models.Model):
     height = models.IntegerField()
     hair = models.CharField(max_length=200)
     eyes = models.CharField(max_length=200)
+    backstory = models.CharField(max_length=2000)
+    other_information = models.CharField(max_length=500)
 
 
 class Characteristics(models.Model):
@@ -376,6 +378,7 @@ class Wounds(models.Model):
     wbp = models.IntegerField()
     hardy = models.IntegerField()
     wounds = models.IntegerField()
+    current_wounds = models.IntegerField()
 
 
 class Sin(models.Model):

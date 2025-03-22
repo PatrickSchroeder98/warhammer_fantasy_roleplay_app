@@ -19,7 +19,6 @@
             <th>Height</th>
             <th>Hair</th>
             <th>Eyes</th>
-
         </tr>
     </thead>
 
@@ -34,6 +33,22 @@
                 <td>{{ character.height }}</td>
                 <td>{{ character.hair }}</td>
                 <td>{{ character.age }}</td>
+            </tr>
+    </tbody>
+</table>
+    <table class="table table-striped table-bordered" style="color: #f5e1c8">
+    <thead>
+        <tr>
+            <th>Backstory</th>
+            <th>Other Information</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+                <td>{{ character.backstory }}</td>
+                <td>{{ character.other_information }}</td>
             </tr>
     </tbody>
 </table>
@@ -499,6 +514,7 @@
             <th>Willpower Bonus</th>
             <th>Hardy Skill</th>
             <th>Number Of Wounds (Health)</th>
+            <th>Current Number Of Wounds (Health)</th>
         </tr>
     </thead>
 
@@ -510,6 +526,7 @@
                 <td>{{ skill.wbp }}</td>
                 <td>{{ skill.hardy }}</td>
                 <td>{{ skill.wounds }}</td>
+                <td>{{ skill.current_wounds }}</td>
             </tr>
         {% endfor %}
     </tbody>

@@ -40,6 +40,8 @@ class CharactersForm(forms.ModelForm):
             "height",
             "hair",
             "eyes",
+            "backstory",
+            "other_information",
         )  # Fields to include in the form
 
         # Customization of widgets and labels
@@ -77,6 +79,12 @@ class CharactersForm(forms.ModelForm):
             "eyes": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Character Eyes"}
             ),
+            "backstory": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Character Backstory"}
+            ),
+            "other_information": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Other Information"}
+            ),
         }
         labels = {
             "name": "Character Name",
@@ -90,6 +98,8 @@ class CharactersForm(forms.ModelForm):
             "height": "Character Height",
             "hair": "Character Hair",
             "eyes": "Character Eyes",
+            "backstory": "Character Backstory (max 2000 characters)",
+            "other_information": "Other Information (max 500 characters)",
         }
 
 
@@ -822,7 +832,7 @@ class WoundsForm(forms.ModelForm):
 
     class Meta:
         model = Wounds
-        fields = ("sb", "tb_x2", "wbp", "hardy", "wounds")
+        fields = ("sb", "tb_x2", "wbp", "hardy", "wounds", "current_wounds")
 
         widgets = {
             "sb": forms.NumberInput(
@@ -843,6 +853,12 @@ class WoundsForm(forms.ModelForm):
                     "placeholder": "Number Of Wounds (Health)",
                 }
             ),
+            "current_wounds": forms.NumberInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Current Number Of Wounds (Health)",
+                }
+            ),
         }
 
         labels = {
@@ -851,6 +867,7 @@ class WoundsForm(forms.ModelForm):
             "wbp": "Willpower Bonus",
             "hardy": "Hardy Skill",
             "wounds": "Number Of Wounds (Health)",
+            "current_wounds": "Current Number Of Wounds (Health)",
         }
 
 
