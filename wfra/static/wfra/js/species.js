@@ -2,57 +2,69 @@ document.addEventListener("DOMContentLoaded", function () {
     const speciesSelect = document.getElementById("id_species");
     const classSelect = document.getElementById("id_character_class");
 
-    const classOptions = {
-        "Human": ["Apothecary", "Engineer", "Lawyer", "Nun", "Physician", "Priest", "Scholar", "Wizard",
-                  "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",
-                  "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Servant", "Spy", "Warden",
-                  "Bailiff", "Hedge Witch", "Herbalist", "Hunter", "Miner", "Mystic", "Scout", "Villager",
-                  "Bounty Hunter", "Coachman", "Entertainer", "Flagellant", "Messenger", "Pedlar", "Roadwarden", "Witch Hunter",
-                  "Boatman", "Huffer", "Riverwarden", "Riverwoman", "Seaman", "Smuggler", "Stevedore", "Wrecker",
-                  "Bawd", "Charlatan", "Fence", "Grave Robber", "Outlaw", "Racketeer", "Thief", "Witch",
-                  "Cavalryman", "Guard", "Knight", "Pit Fighter", "Protagonist", "Soldier", "Warrior Priest"],
+    const classOptions = ["Academics", "Burghers", "Courtiers", "Peasants", "Rangers", "Riverfolk", "Rogues", "Warriors"]
 
-        "Dwarf": ["Apothecary", "Engineer", "Lawyer", "Physician", "Scholar",
-                  "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",
-                  "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Servant", "Spy", "Warden",
-                  "Bailiff", "Hunter", "Miner", "Scout", "Villager",
-                  "Bounty Hunter", "Coachman", "Entertainer", "Messenger", "Pedlar",
-                  "Boatman", "Huffer", "Riverwoman", "Seaman", "Smuggler", "Stevedore", "Wrecker",
-                  "Fence", "Outlaw", "Racketeer", "Thief",
-                  "Guard", "Pit Fighter", "Protagonist", "Soldier", "Slayer"],
+    const careerOptions = {
+        "Human": {
+                  "Academics": [ "Apothecary", "Engineer", "Lawyer", "Nun", "Physician", "Priest", "Scholar", "Wizard",],
+                  "Burghers": [ "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",],
+                  "Courtiers": [ "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Servant", "Spy", "Warden",],
+                  "Peasants": [ "Bailiff", "Hedge Witch", "Herbalist", "Hunter", "Miner", "Mystic", "Scout", "Villager",],
+                  "Rangers": [ "Bounty Hunter", "Coachman", "Entertainer", "Flagellant", "Messenger", "Pedlar", "Roadwarden", "Witch Hunter",],
+                  "Riverfolk": [ "Boatman", "Huffer", "Riverwarden", "Riverwoman", "Seaman", "Smuggler", "Stevedore", "Wrecker",],
+                  "Rogues": [ "Bawd", "Charlatan", "Fence", "Grave Robber", "Outlaw", "Racketeer", "Thief", "Witch",],
+                  "Warriors": [ "Cavalryman", "Guard", "Knight", "Pit Fighter", "Protagonist", "Soldier", "Warrior Priest",],
+                  },
 
-        "Halfling": ["Apothecary", "Engineer", "Lawyer", "Physician", "Scholar",
-                     "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",
-                     "Advisor", "Artist", "Envoy", "Servant", "Spy", "Warden",
-                     "Bailiff", "Herbalist", "Hunter", "Miner", "Scout", "Villager",
-                     "Bounty Hunter", "Coachman", "Entertainer", "Messenger", "Pedlar", "Roadwarden",
-                     "Boatman", "Huffer", "Riverwarden", "Riverwoman", "Seaman", "Smuggler", "Stevedore",
-                     "Bawd", "Charlatan", "Fence", "Grave Robber", "Outlaw", "Racketeer", "Thief",
-                     "Guard", "Pit Fighter", "Soldier"],
+        "Dwarf": {
+                  "Academics": [ "Apothecary", "Engineer", "Lawyer", "Physician", "Scholar",],
+                  "Burghers": [ "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",],
+                  "Courtiers": [ "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Servant", "Spy", "Warden",],
+                  "Peasants": [ "Bailiff", "Hunter", "Miner", "Scout", "Villager",],
+                  "Rangers": [ "Bounty Hunter", "Coachman", "Entertainer", "Messenger", "Pedlar",],
+                  "Riverfolk": [ "Boatman", "Huffer", "Riverwoman", "Seaman", "Smuggler", "Stevedore", "Wrecker",],
+                  "Rogues": [ "Fence", "Outlaw", "Racketeer", "Thief",],
+                  "Warriors": [ "Guard", "Pit Fighter", "Protagonist", "Soldier", "Slayer",],
+                  },
 
-        "High Elf": ["Apothecary", "Lawyer", "Physician", "Scholar", "Wizard",
-                     "Artisan", "Investigator", "Merchant", "Townsman", "Watchman",
-                     "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Spy", "Warden",
-                     "Herbalist", "Hunter", "Scout",
-                     "Bounty Hunter", "Entertainer", "Messenger",
-                     "Boatman", "Seaman", "Smuggler",
-                     "Bawd", "Charlatan", "Outlaw",
-                     "Cavalryman", "Guard", "Knight", "Pit Fighter", "Protagonist", "Soldier"],
+        "Halfling": {
+                     "Academics": [ "Apothecary", "Engineer", "Lawyer", "Physician", "Scholar",],
+                     "Burghers": [ "Agitator", "Artisan", "Beggar", "Investigator", "Merchant", "Rat Catcher", "Townsman", "Watchman",],
+                     "Courtiers": [ "Advisor", "Artist", "Envoy", "Servant", "Spy", "Warden",],
+                     "Peasants": [ "Bailiff", "Herbalist", "Hunter", "Miner", "Scout", "Villager",],
+                     "Rangers": [ "Bounty Hunter", "Coachman", "Entertainer", "Messenger", "Pedlar", "Roadwarden",],
+                     "Riverfolk": [ "Boatman", "Huffer", "Riverwarden", "Riverwoman", "Seaman", "Smuggler", "Stevedore",],
+                     "Rogues": [ "Bawd", "Charlatan", "Fence", "Grave Robber", "Outlaw", "Racketeer", "Thief",],
+                     "Warriors": [ "Guard", "Pit Fighter", "Soldier",],
+                     },
 
-        "Wood Elf": ["Scholar", "Wizard",
-                     "Artisan",
-                     "Advisor", "Artist", "Envoy", "Noble", "Spy", "Warden",
-                     "Herbalist", "Hunter", "Mystic", "Scout",
-                     "Bounty Hunter", "Entertainer", "Messenger",
-                     "Wrecker",
-                     "Outlaw",
-                     "Cavalryman", "Guard", "Knight", "Pit Fighter", "Soldier"]
+        "High Elf": {
+                     "Academics": [ "Apothecary", "Lawyer", "Physician", "Scholar", "Wizard",],
+                     "Burghers": [ "Artisan", "Investigator", "Merchant", "Townsman", "Watchman",],
+                     "Courtiers": [ "Advisor", "Artist", "Duellist", "Envoy", "Noble", "Spy", "Warden",],
+                     "Peasants": [ "Herbalist", "Hunter", "Scout",],
+                     "Rangers": [ "Bounty Hunter", "Entertainer", "Messenger",],
+                     "Riverfolk": [ "Boatman", "Seaman", "Smuggler",],
+                     "Rogues": [ "Bawd", "Charlatan", "Outlaw",],
+                     "Warriors": [ "Cavalryman", "Guard", "Knight", "Pit Fighter", "Protagonist", "Soldier",],
+                     },
+
+        "Wood Elf": {
+                     "Academics": [ "Scholar", "Wizard",],
+                     "Burghers": [ "Artisan",],
+                     "Courtiers": [ "Advisor", "Artist", "Envoy", "Noble", "Spy", "Warden",],
+                     "Peasants": [ "Herbalist", "Hunter", "Mystic", "Scout",],
+                     "Rangers": [ "Bounty Hunter", "Entertainer", "Messenger",],
+                     "Riverfolk": [ "Wrecker",],
+                     "Rogues": [ "Outlaw",],
+                     "Warriors": [ "Cavalryman", "Guard", "Knight", "Pit Fighter", "Soldier",],
+                     },
 
     };
 
     function updateClasses() {
-        const selectedSpecies = speciesSelect.value;
-        const availableClasses = classOptions[selectedSpecies] || ["Scholar"];
+        //const selectedSpecies = speciesSelect.value;
+        const availableClasses = classOptions || ["Peasants"];
 
         classSelect.innerHTML = "";
         availableClasses.forEach(cls => {
