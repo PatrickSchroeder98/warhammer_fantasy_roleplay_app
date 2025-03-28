@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const speciesSelect = document.getElementById("id_species");
     const classSelect = document.getElementById("id_character_class");
+    const careerSelect = document.getElementById("id_career");
 
     const classOptions = ["Academics", "Burghers", "Courtiers", "Peasants", "Rangers", "Riverfolk", "Rogues", "Warriors"]
 
@@ -64,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateClasses() {
         //const selectedSpecies = speciesSelect.value;
-        const availableClasses = classOptions || ["Peasants"];
+        const availableClasses = classOptions || ["Rogues"];
 
         classSelect.innerHTML = "";
         availableClasses.forEach(cls => {
@@ -75,6 +76,26 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function updateCareer() {
+        const selectedSpecies = speciesSelect.value;
+        const selectedClass = classSelect.value;
+
+        const availableCareers = careerOptions[selectedSpecies][selectedClass] || ["Outlaw"];
+
+        careerSelect.innerHTML = "";
+        availableCareers.forEach(cls => {
+            const option = document.createElement("option");
+            option.value = cls;
+            option.textContent = cls;
+            careerSelect.appendChild(option);
+        });
+    }
+
     speciesSelect.addEventListener("change", updateClasses);
+
+    speciesSelect.addEventListener("change", updateCareer);
+    classSelect.addEventListener("change", updateCareer);
+
     updateClasses();  // Run on page load to set the initial values
+    updateCareer();
 });

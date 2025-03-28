@@ -25,6 +25,7 @@ class CharactersForm(forms.ModelForm):
         """Changes character_class into a dropdown menu."""
         super().__init__(*args, **kwargs)
         self.fields["character_class"].widget = forms.Select(choices=[("Test", "Test")])
+        self.fields["career"].widget = forms.Select(choices=[("Test", "Test")])
 
     class Meta:
         model = Characters
@@ -55,9 +56,9 @@ class CharactersForm(forms.ModelForm):
             # "character_class": forms.TextInput(
             #     attrs={"class": "form-control", "placeholder": "Character Class"}
             # ),
-            "career": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Career"}
-            ),
+            # "career": forms.TextInput(
+            #     attrs={"class": "form-control", "placeholder": "Career"}
+            # ),
             "career_tier": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Career Tier"}
             ),
