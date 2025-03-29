@@ -26,4 +26,5 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('characters/', include('characters.urls', namespace='characters')),
     path('about/', views.AboutPage.as_view(), name="about"),
+    path("api/career-options/", views.career_options_api, name="career-options-api"),
 ]
