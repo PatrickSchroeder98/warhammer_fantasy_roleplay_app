@@ -8,6 +8,7 @@ The aim of this project is to create an application that can support players in 
 * New character creation.
 * Character management.
 * Progress saving.
+* Character creation forms automation.
 
 ## Upcoming Features  
 * Equipment management.
