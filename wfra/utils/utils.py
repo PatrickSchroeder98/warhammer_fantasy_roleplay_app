@@ -63,3 +63,209 @@ CAREER_OPTIONS = {
                      },
 
     }
+
+CAREER_PATHS = {
+    # Academics
+    "Apothecary": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+
+    "Engineer": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Lawyer": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Nun": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Physician": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Priest": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Scholar": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Wizard": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+
+    # Burghers
+    "Agitator": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+
+    "Artisan": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Beggar": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Investigator": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Merchant": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Rat Catcher": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Townsman": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Watchman": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+
+    # Courtiers
+    "Advisor": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+
+    "Artist": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Duellist": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Envoy": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Noble": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Servant": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Spy": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Warden": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+
+    # Peasants
+    "Bailiff": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+
+    "Hedge Witch": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Herbalist": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Hunter": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Miner": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Mystic": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Scout": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+    "Villager": {
+        "1": ["Apothecary's Apprentice", "Brass 3"],
+        "2": ["Apothecary", "Silver 1"],
+        "3": ["Master Apothecary", "Silver 3"],
+        "4": ["Apothecary-General", "Gold 1"],
+    },
+}
