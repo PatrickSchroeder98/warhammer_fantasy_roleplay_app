@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const classSelect = document.getElementById("id_character_class");
     const careerSelect = document.getElementById("id_career");
 
+    const careerPath = document.getElementById("id_career_path");
+    careerPath.disabled = true;
+    const status = document.getElementById("id_status");
+    status.disabled = true;
+    const careerTier = document.getElementById("id_career_tier");
+
     const classOptions = ["Academics", "Burghers", "Courtiers", "Peasants", "Rangers", "Riverfolk", "Rogues", "Warriors"]
 
     let careerOptions = {};
@@ -10,10 +16,21 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(data => {
         careerOptions = data;
-        console.log(careerOptions);
 
         updateClasses();
         updateCareer();
+    });
+
+    let careerPaths = {};
+    fetch('/api/career-paths/')
+    .then(response => response.json())
+    .then(data => {
+        careerPaths = data;
+        console.log(careerPaths);
+        careerTier.value = 1
+
+        //updateClasses();
+        //updateCareer();
     });
 
     function updateClasses() {

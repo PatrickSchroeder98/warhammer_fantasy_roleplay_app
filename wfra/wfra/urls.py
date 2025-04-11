@@ -27,4 +27,5 @@ urlpatterns = [
     path('characters/', include('characters.urls', namespace='characters')),
     path('about/', views.AboutPage.as_view(), name="about"),
     path("api/career-options/", views.career_options_api, name="career-options-api"),
+    path("api/career-paths/", views.career_paths_api, name="career-paths-api"),
 ]
