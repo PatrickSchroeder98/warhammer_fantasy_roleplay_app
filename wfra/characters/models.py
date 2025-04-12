@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from utils.utils import SPECIES_CHOICES
+from utils.utils import SPECIES_CHOICES, CAREER_PATHS_MAP
 
 User = get_user_model()
 
@@ -13,7 +13,7 @@ class Characters(models.Model):
     species = models.CharField(max_length=100, choices=SPECIES_CHOICES, default="Human")
     character_class = models.CharField(max_length=200)
     career = models.CharField(max_length=200)
-    career_tier = models.CharField(max_length=200)
+    career_tier = models.CharField(max_length=2, choices=CAREER_PATHS_MAP, default="1")
     career_path = models.CharField(max_length=200)
     status = models.CharField(max_length=200)
     age = models.IntegerField()

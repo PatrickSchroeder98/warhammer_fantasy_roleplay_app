@@ -64,6 +64,13 @@ CAREER_OPTIONS = {
 
     }
 
+CAREER_PATHS_MAP = [
+    ("1", "1"),
+    ("2", "2"),
+    ("3", "3"),
+    ("4", "4"),
+]
+
 CAREER_PATHS = {
     # Academics
     "Apothecary": {

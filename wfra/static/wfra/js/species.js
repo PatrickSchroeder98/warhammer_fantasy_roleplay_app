@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const careerSelect = document.getElementById("id_career");
 
     const careerPath = document.getElementById("id_career_path");
-    careerPath.disabled = true;
+    careerPath.readOnly = true;
     const status = document.getElementById("id_status");
-    status.disabled = true;
+    status.readOnly = true;
     const careerTier = document.getElementById("id_career_tier");
 
     const classOptions = ["Academics", "Burghers", "Courtiers", "Peasants", "Rangers", "Riverfolk", "Rogues", "Warriors"]
@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(response => response.json())
     .then(data => {
         careerPaths = data;
-        console.log(careerPaths);
-        careerTier.value = 1
+        //console.log(careerPaths);
+        //careerTier.value = 1
 
         //updateClasses();
-        //updateCareer();
+        updatePath();
     });
 
     function updateClasses() {
@@ -66,8 +66,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function updatePath() {
+        const selectedClass = careerSelect.value;
+        const selectedTier = careerTier.value
+        //console.log(careerPaths[selectedClass][selectedTier])
+        careerPath.value = careerPaths[selectedClass][selectedTier][0]
+        status.value = careerPaths[selectedClass][selectedTier][1]
+    }
+
     speciesSelect.addEventListener("change", updateClasses);
     speciesSelect.addEventListener("change", updateCareer);
     classSelect.addEventListener("change", updateCareer);
 
+    careerTier.addEventListener("change", updatePath);
+    careerSelect.addEventListener("change", updatePath);
+    classSelect.addEventListener("change", updatePath);
+    speciesSelect.addEventListener("change", updatePath);
 });

@@ -59,9 +59,9 @@ class CharactersForm(forms.ModelForm):
             # "career": forms.TextInput(
             #     attrs={"class": "form-control", "placeholder": "Career"}
             # ),
-            "career_tier": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Career Tier"}
-            ),
+            # "career_tier": forms.TextInput(
+            #     attrs={"class": "form-control", "placeholder": "Career Tier"}
+            # ),
             "career_path": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Career Path"}
             ),
