@@ -1,0 +1,171 @@
+[
+  {
+    "model": "equipment.weapon",
+    "pk": 1,
+    "fields": {
+      "name": "Hand Weapon",
+      "price": "1GC",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "reach": "Average",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "-"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 2,
+    "fields": {
+      "name": "Improvised Weapon",
+      "price": "N/A",
+      "encumbrance": 1.0,
+      "availability": "N/A",
+      "reach": "Varies",
+      "damage": "+SB+1",
+      "qualities_and_flaws": "Undamaging"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 3,
+    "fields": {
+      "name": "Dagger",
+      "price": "16/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "reach": "Very Short",
+      "damage": "+SB+2",
+      "qualities_and_flaws": "-"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 4,
+    "fields": {
+      "name": "Knife",
+      "price": "8/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "reach": "Very Short",
+      "damage": "+SB+1",
+      "qualities_and_flaws": "Undamaging"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 5,
+    "fields": {
+      "name": "Shield (Buckler)",
+      "price": "18/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "reach": "Personal",
+      "damage": "+SB+1",
+      "qualities_and_flaws": "Shield 1, Defensive, Undamaging"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 6,
+    "fields": {
+      "name": "Shield",
+      "price": "2GC",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "reach": "Very Short",
+      "damage": "+SB+2",
+      "qualities_and_flaws": "Shield 2, Defensive, Undamaging"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 7,
+    "fields": {
+      "name": "Shield (Large)",
+      "price": "3GC",
+      "encumbrance": 3.0,
+      "availability": "Common",
+      "reach": "Very Short",
+      "damage": "+SB+3",
+      "qualities_and_flaws": "Shield 3, Defensive, Undamaging"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 8,
+    "fields": {
+      "name": "Cavalry Hammer",
+      "price": "3GC",
+      "encumbrance": 3.0,
+      "availability": "Scarce",
+      "reach": "Long",
+      "damage": "+SB+5",
+      "qualities_and_flaws": "Pummel"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 9,
+    "fields": {
+      "name": "Lance",
+      "price": "1GC",
+      "encumbrance": 3.0,
+      "availability": "Rare",
+      "reach": "Very Long",
+      "damage": "+SB+6",
+      "qualities_and_flaws": "Impact, Impale"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 10,
+    "fields": {
+      "name": "Foil",
+      "price": "5GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce",
+      "reach": "Medium",
+      "damage": "+SB+3",
+      "qualities_and_flaws": "Fast, Impale, Precise, Undamaging"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 11,
+    "fields": {
+      "name": "Rapier",
+      "price": "5GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce",
+      "reach": "Long",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "Fast, Impale"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 12,
+    "fields": {
+      "name": "Unarmed",
+      "price": "N/A",
+      "encumbrance": 0.0,
+      "availability": "-",
+      "reach": "Personal",
+      "damage": "+SB+0",
+      "qualities_and_flaws": "Undamaging"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 13,
+    "fields": {
+      "name": "Knuckledusters",
+      "price": "2/6",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "reach": "Personal",
+      "damage": "+SB+2",
+      "qualities_and_flaws": "-"
+    }
+  }
+]
