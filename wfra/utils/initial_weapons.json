@@ -9,7 +9,8 @@
       "availability": "Common",
       "reach": "Average",
       "damage": "+SB+4",
-      "qualities_and_flaws": "-"
+      "qualities_and_flaws": "-",
+      "type": "Basic"
     }
   },
   {
@@ -22,7 +23,8 @@
       "availability": "N/A",
       "reach": "Varies",
       "damage": "+SB+1",
-      "qualities_and_flaws": "Undamaging"
+      "qualities_and_flaws": "Undamaging",
+      "type": "Basic"
     }
   },
   {
@@ -35,7 +37,8 @@
       "availability": "Common",
       "reach": "Very Short",
       "damage": "+SB+2",
-      "qualities_and_flaws": "-"
+      "qualities_and_flaws": "-",
+      "type": "Basic"
     }
   },
   {
@@ -48,7 +51,8 @@
       "availability": "Common",
       "reach": "Very Short",
       "damage": "+SB+1",
-      "qualities_and_flaws": "Undamaging"
+      "qualities_and_flaws": "Undamaging",
+      "type": "Basic"
     }
   },
   {
@@ -61,7 +65,8 @@
       "availability": "Common",
       "reach": "Personal",
       "damage": "+SB+1",
-      "qualities_and_flaws": "Shield 1, Defensive, Undamaging"
+      "qualities_and_flaws": "Shield 1, Defensive, Undamaging",
+      "type": "Basic"
     }
   },
   {
@@ -74,7 +79,8 @@
       "availability": "Common",
       "reach": "Very Short",
       "damage": "+SB+2",
-      "qualities_and_flaws": "Shield 2, Defensive, Undamaging"
+      "qualities_and_flaws": "Shield 2, Defensive, Undamaging",
+      "type": "Basic"
     }
   },
   {
@@ -87,7 +93,8 @@
       "availability": "Common",
       "reach": "Very Short",
       "damage": "+SB+3",
-      "qualities_and_flaws": "Shield 3, Defensive, Undamaging"
+      "qualities_and_flaws": "Shield 3, Defensive, Undamaging",
+      "type": "Basic"
     }
   },
   {
@@ -100,7 +107,8 @@
       "availability": "Scarce",
       "reach": "Long",
       "damage": "+SB+5",
-      "qualities_and_flaws": "Pummel"
+      "qualities_and_flaws": "Pummel",
+      "type": "Cavalry"
     }
   },
   {
@@ -113,7 +121,8 @@
       "availability": "Rare",
       "reach": "Very Long",
       "damage": "+SB+6",
-      "qualities_and_flaws": "Impact, Impale"
+      "qualities_and_flaws": "Impact, Impale",
+      "type": "Cavalry"
     }
   },
   {
@@ -126,7 +135,8 @@
       "availability": "Scarce",
       "reach": "Medium",
       "damage": "+SB+3",
-      "qualities_and_flaws": "Fast, Impale, Precise, Undamaging"
+      "qualities_and_flaws": "Fast, Impale, Precise, Undamaging",
+      "type": "Fencing"
     }
   },
   {
@@ -139,7 +149,8 @@
       "availability": "Scarce",
       "reach": "Long",
       "damage": "+SB+4",
-      "qualities_and_flaws": "Fast, Impale"
+      "qualities_and_flaws": "Fast, Impale",
+      "type": "Fencing"
     }
   },
   {
@@ -152,7 +163,8 @@
       "availability": "-",
       "reach": "Personal",
       "damage": "+SB+0",
-      "qualities_and_flaws": "Undamaging"
+      "qualities_and_flaws": "Undamaging",
+      "type": "Brawling"
     }
   },
   {
@@ -165,7 +177,204 @@
       "availability": "Common",
       "reach": "Personal",
       "damage": "+SB+2",
-      "qualities_and_flaws": "-"
+      "qualities_and_flaws": "-",
+      "type": "Brawling"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 14,
+    "fields": {
+      "name": "Grain Flail",
+      "price": "10/-",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "reach": "Average",
+      "damage": "+SB+3",
+      "qualities_and_flaws": "Distract, Imprecise, Wrap",
+      "type": "Flail"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 15,
+    "fields": {
+      "name": "Flail",
+      "price": "2GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce",
+      "reach": "Average",
+      "damage": "+SB+5",
+      "qualities_and_flaws": "Distract, Wrap",
+      "type": "Flail"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 16,
+    "fields": {
+      "name": "Military Flail",
+      "price": "3GC",
+      "encumbrance": 2.0,
+      "availability": "Rare",
+      "reach": "Long",
+      "damage": "+SB+6",
+      "qualities_and_flaws": "Distract, Impact, Tiring, Wrap",
+      "type": "Flail"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 17,
+    "fields": {
+      "name": "Main Gauche",
+      "price": "1GC",
+      "encumbrance": 0.0,
+      "availability": "Rare",
+      "reach": "Very Short",
+      "damage": "+SB+2",
+      "qualities_and_flaws": "Defensive",
+      "type": "Parry"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 18,
+    "fields": {
+      "name": "Swordbreaker",
+      "price": "1GC 2/6",
+      "encumbrance": 1.0,
+      "availability": "Scarce",
+      "reach": "Short",
+      "damage": "+SB+3",
+      "qualities_and_flaws": "Defensive, Trap-blade",
+      "type": "Parry"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 19,
+    "fields": {
+      "name": "Halberd",
+      "price": "2GC",
+      "encumbrance": 3.0,
+      "availability": "Common",
+      "reach": "Long",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "Defensive, Hack, Impale",
+      "type": "Polearm"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 20,
+    "fields": {
+      "name": "Spear",
+      "price": "15/-",
+      "encumbrance": 2.0,
+      "availability": "Common",
+      "reach": "Very Long",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "Impale",
+      "type": "Polearm"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 21,
+    "fields": {
+      "name": "Pike",
+      "price": "18/-",
+      "encumbrance": 4.0,
+      "availability": "Rare",
+      "reach": "Massive",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "Impale",
+      "type": "Polearm"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 22,
+    "fields": {
+      "name": "Quarter Staff",
+      "price": "3/-",
+      "encumbrance": 2.0,
+      "availability": "Common",
+      "reach": "Long",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "Defensive, Pummel",
+      "type": "Polearm"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 23,
+    "fields": {
+      "name": "Bastard Sword",
+      "price": "8GC",
+      "encumbrance": 3.0,
+      "availability": "Scarce",
+      "reach": "Long",
+      "damage": "+SB+5",
+      "qualities_and_flaws": "Damaging, Defensive",
+      "type": "Two-Handed"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 24,
+    "fields": {
+      "name": "Great Axe",
+      "price": "4GC",
+      "encumbrance": 3.0,
+      "availability": "Scarce",
+      "reach": "Long",
+      "damage": "+SB+6",
+      "qualities_and_flaws": "Hack, Impact, Tiring",
+      "type": "Two-Handed"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 25,
+    "fields": {
+      "name": "Pick",
+      "price": "9/-",
+      "encumbrance": 3.0,
+      "availability": "Common",
+      "reach": "Average",
+      "damage": "+SB+5",
+      "qualities_and_flaws": "Damaging, Impale, Slow",
+      "type": "Two-Handed"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 26,
+    "fields": {
+      "name": "Warhammer",
+      "price": "3GC",
+      "encumbrance": 3.0,
+      "availability": "Common",
+      "reach": "Average",
+      "damage": "+SB+6",
+      "qualities_and_flaws": "Damaging, Pummel, Slow",
+      "type": "Two-Handed"
+    }
+  },
+  {
+    "model": "equipment.weapon",
+    "pk": 27,
+    "fields": {
+      "name": "Zweihander",
+      "price": "10GC",
+      "encumbrance": 3.0,
+      "availability": "Scarce",
+      "reach": "Long",
+      "damage": "+SB+5",
+      "qualities_and_flaws": "Damaging, Hack",
+      "type": "Two-Handed"
     }
   }
 ]
