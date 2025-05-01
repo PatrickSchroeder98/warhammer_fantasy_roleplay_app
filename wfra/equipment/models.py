@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class MeleeWeapon(models.Model):
+class MeleeWeapons(models.Model):
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -12,61 +12,122 @@ class MeleeWeapon(models.Model):
     type = models.CharField(max_length=50)
 
 
-class RangedWeapon(models.Model):
+class RangedWeapons(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
+    range = models.CharField(max_length=50)
+    damage = models.CharField(max_length=50)
+    qualities_and_flaws = models.CharField(max_length=200)
+    type = models.CharField(max_length=50)
 
 
 class Ammunition(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
+    range = models.CharField(max_length=50)
+    damage = models.CharField(max_length=50)
+    qualities_and_flaws = models.CharField(max_length=200)
+    type = models.CharField(max_length=50)
 
 
 class Armour(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
+    penalty = models.CharField(max_length=50)
+    locations = models.CharField(max_length=50)
+    aps = models.IntegerField()
+    qualities_and_flaws = models.CharField(max_length=200)
+    type = models.CharField(max_length=50)
 
 
-class Packs(models.Model):
+class PacksAndContainers(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    carries = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Clothing(models.Model):
+class ClothingAndAccessories(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Food(models.Model):
+class FoodDrinkAndLodging(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Tools(models.Model):
+class ToolsAndKits(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Books(models.Model):
+class BooksAndDocuments(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Workshop(models.Model):
+class TradeToolsAndWorkshops(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Animals(models.Model):
+class AnimalsAndVehicles(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    carries = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Drugs(models.Model):
+class DrugsAndPoisons(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Herbs(models.Model):
+class HerbsAndDraughts(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
 class Prosthetics(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
-class Trappings(models.Model):
+class MiscellaneousTrappings(models.Model):
     name = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    encumbrance = models.IntegerField()
+    availability = models.CharField(max_length=50)
 
 
 class Hirelings(models.Model):
     name = models.CharField(max_length=50)
+    quick_job = models.CharField(max_length=50)
+    daily_cost = models.CharField(max_length=50)
+    weekly_cost = models.CharField(max_length=50)
+    notes = models.CharField(max_length=200)
