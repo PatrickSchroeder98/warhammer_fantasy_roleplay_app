@@ -1,0 +1,184 @@
+[
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 1,
+    "fields": {
+      "name": "Blunderbuss (2H)",
+      "price": "2GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce",
+      "range": "20",
+      "damage": "+8",
+      "qualities_and_flaws": "Blast 3, Dangerous, Reload 2",
+      "type": "Blackpowder"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 2,
+    "fields": {
+      "name": "Hochland Long Rifle (2H)",
+      "price": "100GC",
+      "encumbrance": 3.0,
+      "availability": "Exotic",
+      "range": "100",
+      "damage": "+9",
+      "qualities_and_flaws": "Accurate, Precise, Reload 4",
+      "type": "Blackpowder"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 3,
+    "fields": {
+      "name": "Handgun (2H)",
+      "price": "4GC",
+      "encumbrance": 2.0,
+      "availability": "Scarce",
+      "range": "50",
+      "damage": "+9",
+      "qualities_and_flaws": "Dangerous, Reload 3",
+      "type": "Blackpowder"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 4,
+    "fields": {
+      "name": "Pistol",
+      "price": "8GC",
+      "encumbrance": 0.0,
+      "availability": "Rare",
+      "range": "20",
+      "damage": "+8",
+      "qualities_and_flaws": "Pistol, Reload 1",
+      "type": "Blackpowder"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 5,
+    "fields": {
+      "name": "Elf Bow (2H)",
+      "price": "10GC",
+      "encumbrance": 2.0,
+      "availability": "Exotic",
+      "range": "150",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "Damaging, Precise",
+      "type": "Bow"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 6,
+    "fields": {
+      "name": "Longbow (2H)",
+      "price": "5GC",
+      "encumbrance": 3.0,
+      "availability": "Scarce",
+      "range": "100",
+      "damage": "+SB+4",
+      "qualities_and_flaws": "Damaging",
+      "type": "Bow"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 7,
+    "fields": {
+      "name": "Bow (2H)",
+      "price": "4GC",
+      "encumbrance": 2.0,
+      "availability": "Common",
+      "range": "50",
+      "damage": "+SB+3",
+      "qualities_and_flaws": "-",
+      "type": "Bow"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 8,
+    "fields": {
+      "name": "Shortbow (2H)",
+      "price": "3GC",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "range": "20",
+      "damage": "+SB+2",
+      "qualities_and_flaws": "-",
+      "type": "Bow"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 9,
+    "fields": {
+      "name": "Crossbow Pistol",
+      "price": "6GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce",
+      "range": "10",
+      "damage": "+7",
+      "qualities_and_flaws": "Pistol",
+      "type": "Crossbow"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 10,
+    "fields": {
+      "name": "Heavy Crossbow (2H)",
+      "price": "7GC",
+      "encumbrance": 3.0,
+      "availability": "Rare",
+      "range": "100",
+      "damage": "+9",
+      "qualities_and_flaws": "Damaging, Reload 2",
+      "type": "Crossbow"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 11,
+    "fields": {
+      "name": "Crossbow (2H)",
+      "price": "5GC",
+      "encumbrance": 2.0,
+      "availability": "Common",
+      "range": "60",
+      "damage": "+9",
+      "qualities_and_flaws": "Reload 1",
+      "type": "Crossbow"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 12,
+    "fields": {
+      "name": "Repeater Handgun (2H)",
+      "price": "10GC",
+      "encumbrance": 3.0,
+      "availability": "Rare",
+      "range": "30",
+      "damage": "+9",
+      "qualities_and_flaws": "Dangerous, Reload 5, Repeater 4",
+      "type": "Engineering"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 13,
+    "fields": {
+      "name": "Repeater Pistol",
+      "price": "15GC",
+      "encumbrance": 1.0,
+      "availability": "Rare",
+      "range": "10",
+      "damage": "+8",
+      "qualities_and_flaws": "Dangerous, Pistol, Reload 4, Repeater 4",
+      "type": "Engineering"
+    }
+  }
+]
