@@ -180,5 +180,173 @@
       "qualities_and_flaws": "Dangerous, Pistol, Reload 4, Repeater 4",
       "type": "Engineering"
     }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 14,
+    "fields": {
+      "name": "Lasso",
+      "price": "6/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "SBx2",
+      "damage": "-",
+      "qualities_and_flaws": "Entangle",
+      "type": "Entangling"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 15,
+    "fields": {
+      "name": "Whip",
+      "price": "5/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "6",
+      "damage": "+SB+2",
+      "qualities_and_flaws": "Entangle",
+      "type": "Entangling"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 16,
+    "fields": {
+      "name": "Bomb",
+      "price": "3GC",
+      "encumbrance": 0.0,
+      "availability": "Rare",
+      "range": "SB",
+      "damage": "+12",
+      "qualities_and_flaws": "Blast 5, Dangerous, Impact",
+      "type": "Explosives"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 17,
+    "fields": {
+      "name": "Incendiary",
+      "price": "1GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce",
+      "range": "SB",
+      "damage": "Special",
+      "qualities_and_flaws": "Blast 4, Dangerous",
+      "type": "Explosives"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 18,
+    "fields": {
+      "name": "Sling",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "60",
+      "damage": "+6",
+      "qualities_and_flaws": "-",
+      "type": "Sling"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 19,
+    "fields": {
+      "name": "Staff Sling",
+      "price": "4/-",
+      "encumbrance": 2.0,
+      "availability": "Scarce",
+      "range": "100",
+      "damage": "+7",
+      "qualities_and_flaws": "-",
+      "type": "Sling"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 20,
+    "fields": {
+      "name": "Bolas",
+      "price": "10/-",
+      "encumbrance": 0.0,
+      "availability": "Rare",
+      "range": "SBx3",
+      "damage": "+SB",
+      "qualities_and_flaws": "Entangle",
+      "type": "Throwing"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 21,
+    "fields": {
+      "name": "Dart",
+      "price": "2/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce",
+      "range": "SBx2",
+      "damage": "+SB+1",
+      "qualities_and_flaws": "Impale",
+      "type": "Throwing"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 22,
+    "fields": {
+      "name": "Javelin",
+      "price": "10/6",
+      "encumbrance": 1.0,
+      "availability": "Scarce",
+      "range": "SBx3",
+      "damage": "+SB+3",
+      "qualities_and_flaws": "Impale",
+      "type": "Throwing"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 23,
+    "fields": {
+      "name": "Rock",
+      "price": "-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "SBx3",
+      "damage": "+SB",
+      "qualities_and_flaws": "-",
+      "type": "Throwing"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 24,
+    "fields": {
+      "name": "Throwing Axe",
+      "price": "1GC",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "range": "SBx2",
+      "damage": "+SB+3",
+      "qualities_and_flaws": "Hack",
+      "type": "Throwing"
+    }
+  },
+  {
+    "model": "equipment.rangedweapons",
+    "pk": 25,
+    "fields": {
+      "name": "Throwing Knife",
+      "price": "18/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "SBx2",
+      "damage": "+SB+2",
+      "qualities_and_flaws": "-",
+      "type": "Throwing"
+    }
   }
 ]
