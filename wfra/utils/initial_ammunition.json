@@ -1,0 +1,114 @@
+[
+  {
+    "model": "equipment.ammunition",
+    "pk": 1,
+    "fields": {
+      "name": "Bullet and Powder (12)",
+      "price": "3/3",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "As weapon",
+      "damage": "+1",
+      "qualities_and_flaws": "Impale, Penetrating",
+      "type": "Blackpowder and Engineering"
+    }
+  },
+  {
+    "model": "equipment.ammunition",
+    "pk": 2,
+    "fields": {
+      "name": "Improvised Shot and Powder (12)",
+      "price": "3d",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "Half weapon",
+      "damage": "-",
+      "qualities_and_flaws": "-",
+      "type": "Blackpowder and Engineering"
+    }
+  },
+  {
+    "model": "equipment.ammunition",
+    "pk": 3,
+    "fields": {
+      "name": "Small Shot and Powder (12)",
+      "price": "3/3",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "As weapon",
+      "damage": "-",
+      "qualities_and_flaws": "Blast 1",
+      "type": "Blackpowder and Engineering"
+    }
+  },
+  {
+    "model": "equipment.ammunition",
+    "pk": 4,
+    "fields": {
+      "name": "Arrow (12)",
+      "price": "5/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "As weapon",
+      "damage": "-",
+      "qualities_and_flaws": "Impale",
+      "type": "Bow"
+    }
+  },
+  {
+    "model": "equipment.ammunition",
+    "pk": 5,
+    "fields": {
+      "name": "Elf Arrow",
+      "price": "6/-",
+      "encumbrance": 0.0,
+      "availability": "Exotic",
+      "range": "+50",
+      "damage": "+1",
+      "qualities_and_flaws": "Accurate, Impale, Penetrating",
+      "type": "Bow"
+    }
+  },
+  {
+    "model": "equipment.ammunition",
+    "pk": 6,
+    "fields": {
+      "name": "Bolt (12)",
+      "price": "5/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "As weapon",
+      "damage": "-",
+      "qualities_and_flaws": "Impale",
+      "type": "Crossbow"
+    }
+  },
+  {
+    "model": "equipment.ammunition",
+    "pk": 7,
+    "fields": {
+      "name": "Lead Bullet (12)",
+      "price": "4d",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "-10",
+      "damage": "+1",
+      "qualities_and_flaws": "Pummel",
+      "type": "Sling"
+    }
+  },
+  {
+    "model": "equipment.ammunition",
+    "pk": 8,
+    "fields": {
+      "name": "Stone Bullet (12)",
+      "price": "2d",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "range": "As weapon",
+      "damage": "-",
+      "qualities_and_flaws": "Pummel",
+      "type": "Sling"
+    }
+  }
+]
