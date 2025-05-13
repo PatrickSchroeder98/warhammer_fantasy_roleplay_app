@@ -1,0 +1,107 @@
+[
+  {
+    "model": "equipment.armour",
+    "pk": 1,
+    "fields": {
+      "name": "Leather Jack",
+      "price": "12/-",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "penalty": "-",
+      "locations": "Arms, Body",
+      "aps": 1,
+      "qualities_and_flaws": "-",
+      "type": "Soft Leather"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 2,
+    "fields": {
+      "name": "Leather Jerkin",
+      "price": "10/-",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "penalty": "-",
+      "locations": "Body",
+      "aps": 1,
+      "qualities_and_flaws": "-",
+      "type": "Soft Leather"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 3,
+    "fields": {
+      "name": "Leather Leggings",
+      "price": "14/-",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "penalty": "-",
+      "locations": "Legs",
+      "aps": 1,
+      "qualities_and_flaws": "-",
+      "type": "Soft Leather"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 4,
+    "fields": {
+      "name": "Leather Skullcap",
+      "price": "8/-",
+      "encumbrance": 0.0,
+      "availability": "Common",
+      "penalty": "-",
+      "locations": "Head",
+      "aps": 1,
+      "qualities_and_flaws": "Partial",
+      "type": "Soft Leather"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 5,
+    "fields": {
+      "name": "Breastplate",
+      "price": "18/-",
+      "encumbrance": 2.0,
+      "availability": "Scarce",
+      "penalty": "-",
+      "locations": "Body",
+      "aps": 2,
+      "qualities_and_flaws": "Weakpoints",
+      "type": "Boiled Leather"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 6,
+    "fields": {
+      "name": "Mail Chausses",
+      "price": "2GC",
+      "encumbrance": 3.0,
+      "availability": "Scarce",
+      "penalty": "-",
+      "locations": "Legs",
+      "aps": 2,
+      "qualities_and_flaws": "Flexible",
+      "type": "Mail"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 7,
+    "fields": {
+      "name": "Mail Coat",
+      "price": "3GC",
+      "encumbrance": 3.0,
+      "availability": "Common",
+      "penalty": "-",
+      "locations": "Arms, Body",
+      "aps": 2,
+      "qualities_and_flaws": "Flexible",
+      "type": "Mail"
+    }
+  }
+]
