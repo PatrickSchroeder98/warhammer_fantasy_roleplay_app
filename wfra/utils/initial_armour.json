@@ -103,5 +103,110 @@
       "qualities_and_flaws": "Flexible",
       "type": "Mail"
     }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 8,
+    "fields": {
+      "name": "Mail Coif",
+      "price": "1GC",
+      "encumbrance": 2.0,
+      "availability": "Scarce",
+      "penalty": "-10% Perception",
+      "locations": "Head",
+      "aps": 2,
+      "qualities_and_flaws": "Flexible, Partial",
+      "type": "Mail"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 9,
+    "fields": {
+      "name": "Mail Shirt",
+      "price": "2GC",
+      "encumbrance": 2.0,
+      "availability": "Scarce",
+      "penalty": "-",
+      "locations": "Body",
+      "aps": 2,
+      "qualities_and_flaws": "Flexible",
+      "type": "Mail"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 10,
+    "fields": {
+      "name": "Breastplate",
+      "price": "10GC",
+      "encumbrance": 3.0,
+      "availability": "Scarce",
+      "penalty": "-",
+      "locations": "Body",
+      "aps": 2,
+      "qualities_and_flaws": "Impenetrable, Weakpoints",
+      "type": "Plate"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 11,
+    "fields": {
+      "name": "Open Helm",
+      "price": "2GC",
+      "encumbrance": 1.0,
+      "availability": "Common",
+      "penalty": "-10% Perception",
+      "locations": "Head",
+      "aps": 2,
+      "qualities_and_flaws": "Partial",
+      "type": "Plate"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 12,
+    "fields": {
+      "name": "Bracers",
+      "price": "8GC",
+      "encumbrance": 3.0,
+      "availability": "Rare",
+      "penalty": "-",
+      "locations": "Arms",
+      "aps": 2,
+      "qualities_and_flaws": "Impenetrable, Weakpoints",
+      "type": "Plate"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 13,
+    "fields": {
+      "name": "Plate Leggings",
+      "price": "10GC",
+      "encumbrance": 3.0,
+      "availability": "Rare",
+      "penalty": "-10 Stealth",
+      "locations": "Legs",
+      "aps": 2,
+      "qualities_and_flaws": "Impenetrable, Weakpoints",
+      "type": "Plate"
+    }
+  },
+  {
+    "model": "equipment.armour",
+    "pk": 14,
+    "fields": {
+      "name": "Helm",
+      "price": "3GC",
+      "encumbrance": 2.0,
+      "availability": "Rare",
+      "penalty": "-10% Perception",
+      "locations": "Head",
+      "aps": 2,
+      "qualities_and_flaws": "Impenetrable, Weakpoints",
+      "type": "Plate"
+    }
   }
 ]
