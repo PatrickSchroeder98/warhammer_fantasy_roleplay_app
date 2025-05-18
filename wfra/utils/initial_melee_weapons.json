@@ -1,6 +1,6 @@
 [
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 1,
     "fields": {
       "name": "Hand Weapon",
@@ -14,7 +14,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 2,
     "fields": {
       "name": "Improvised Weapon",
@@ -28,7 +28,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 3,
     "fields": {
       "name": "Dagger",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 4,
     "fields": {
       "name": "Knife",
@@ -56,7 +56,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 5,
     "fields": {
       "name": "Shield (Buckler)",
@@ -70,7 +70,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 6,
     "fields": {
       "name": "Shield",
@@ -84,7 +84,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 7,
     "fields": {
       "name": "Shield (Large)",
@@ -98,7 +98,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 8,
     "fields": {
       "name": "Cavalry Hammer",
@@ -112,7 +112,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 9,
     "fields": {
       "name": "Lance",
@@ -126,7 +126,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 10,
     "fields": {
       "name": "Foil",
@@ -140,7 +140,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 11,
     "fields": {
       "name": "Rapier",
@@ -154,7 +154,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 12,
     "fields": {
       "name": "Unarmed",
@@ -168,7 +168,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 13,
     "fields": {
       "name": "Knuckledusters",
@@ -182,7 +182,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 14,
     "fields": {
       "name": "Grain Flail",
@@ -196,7 +196,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 15,
     "fields": {
       "name": "Flail",
@@ -210,7 +210,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 16,
     "fields": {
       "name": "Military Flail",
@@ -224,7 +224,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 17,
     "fields": {
       "name": "Main Gauche",
@@ -238,7 +238,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 18,
     "fields": {
       "name": "Swordbreaker",
@@ -252,7 +252,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 19,
     "fields": {
       "name": "Halberd",
@@ -266,7 +266,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 20,
     "fields": {
       "name": "Spear",
@@ -280,7 +280,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 21,
     "fields": {
       "name": "Pike",
@@ -294,7 +294,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 22,
     "fields": {
       "name": "Quarter Staff",
@@ -308,7 +308,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 23,
     "fields": {
       "name": "Bastard Sword",
@@ -322,7 +322,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 24,
     "fields": {
       "name": "Great Axe",
@@ -336,7 +336,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 25,
     "fields": {
       "name": "Pick",
@@ -350,7 +350,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 26,
     "fields": {
       "name": "Warhammer",
@@ -364,7 +364,7 @@
     }
   },
   {
-    "model": "equipment.weapon",
+    "model": "equipment.meleeweapons",
     "pk": 27,
     "fields": {
       "name": "Zweihander",

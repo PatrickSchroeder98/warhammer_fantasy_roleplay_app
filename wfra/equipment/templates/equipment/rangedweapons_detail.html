@@ -3,7 +3,7 @@
 {% block content %}
 <div class="text-center">
     <br>
-    <h2>{{ melee_weapon.name }}</h2>
+    <h2>{{ ranged_weapon.name }}</h2>
 
     <table class="table table-striped table-bordered" style="color: #f5e1c8">
         <thead>
@@ -12,18 +12,18 @@
                 <th>Price</th>
                 <th>Encumbrance</th>
                 <th>Availability</th>
-                <th>Reach</th>
+                <th>Range</th>
                 <th>Damage</th>
             </tr>
         </thead>
         <tbody>
                 <tr>
-                    <td>{{ melee_weapon.type }}</td>
-                    <td>{{ melee_weapon.price }}</td>
-                    <td>{{ melee_weapon.encumbrance }}</td>
-                    <td>{{ melee_weapon.availability }}</td>
-                    <td>{{ melee_weapon.reach }}</td>
-                    <td>{{ melee_weapon.damage }}</td>
+                    <td>{{ ranged_weapon.type }}</td>
+                    <td>{{ ranged_weapon.price }}</td>
+                    <td>{{ ranged_weapon.encumbrance }}</td>
+                    <td>{{ ranged_weapon.availability }}</td>
+                    <td>{{ ranged_weapon.range }}</td>
+                    <td>{{ ranged_weapon.damage }}</td>
                 </tr>
         </tbody>
 </table>
@@ -36,7 +36,7 @@
 
     <tbody>
             <tr>
-                <td>{{ melee_weapon.qualities_and_flaws }}</td>
+                <td>{{ ranged_weapon.qualities_and_flaws }}</td>
             </tr>
     </tbody>
 </table>
