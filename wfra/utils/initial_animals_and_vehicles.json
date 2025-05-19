@@ -1,0 +1,211 @@
+[
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 1,
+    "fields": {
+      "name": "Cart",
+      "price": "20GC",
+      "encumbrance": 0.0,
+      "carries": 25.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 2,
+    "fields": {
+      "name": "Chicken",
+      "price": "5d",
+      "encumbrance": 1.0,
+      "carries": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 3,
+    "fields": {
+      "name": "Coach",
+      "price": "150GC",
+      "encumbrance": 0.0,
+      "carries": 80.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 4,
+    "fields": {
+      "name": "Coracle",
+      "price": "2GC",
+      "encumbrance": 6.0,
+      "carries": 10.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 5,
+    "fields": {
+      "name": "Destrier",
+      "price": "230GC",
+      "encumbrance": 0.0,
+      "carries": 20.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 6,
+    "fields": {
+      "name": "Dog collar and lead",
+      "price": "1/7",
+      "encumbrance": 0.0,
+      "carries": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 7,
+    "fields": {
+      "name": "Draught horse",
+      "price": "4GC",
+      "encumbrance": 0.0,
+      "carries": 20.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 8,
+    "fields": {
+      "name": "Homing pigeons",
+      "price": "3/-",
+      "encumbrance": 1.0,
+      "carries": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 9,
+    "fields": {
+      "name": "Hunting dog",
+      "price": "2GC",
+      "encumbrance": 0.0,
+      "carries": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 10,
+    "fields": {
+      "name": "Light Warhorse",
+      "price": "70GC",
+      "encumbrance": 0.0,
+      "carries": 18.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 11,
+    "fields": {
+      "name": "Monkey",
+      "price": "10GC",
+      "encumbrance": 2.0,
+      "carries": 1.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 12,
+    "fields": {
+      "name": "Mule",
+      "price": "5GC",
+      "encumbrance": 0.0,
+      "carries": 14.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 13,
+    "fields": {
+      "name": "Pony",
+      "price": "10GC",
+      "encumbrance": 0.0,
+      "carries": 14.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 14,
+    "fields": {
+      "name": "Riding Horse",
+      "price": "15GC",
+      "encumbrance": 0.0,
+      "carries": 16.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 15,
+    "fields": {
+      "name": "River Barge",
+      "price": "225GC",
+      "encumbrance": 0.0,
+      "carries": 300.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 16,
+    "fields": {
+      "name": "Row Boat",
+      "price": "6GC",
+      "encumbrance": 0.0,
+      "carries": 60.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 17,
+    "fields": {
+      "name": "Saddle and Harness",
+      "price": "6GC",
+      "encumbrance": 4.0,
+      "carries": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 18,
+    "fields": {
+      "name": "Wagon",
+      "price": "75GC",
+      "encumbrance": 0.0,
+      "carries": 30.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.animalsandvehicles",
+    "pk": 19,
+    "fields": {
+      "name": "Worms (6)",
+      "price": "1d",
+      "encumbrance": 0.0,
+      "carries": 0.0,
+      "availability": "Common"
+    }
+  }
+]
