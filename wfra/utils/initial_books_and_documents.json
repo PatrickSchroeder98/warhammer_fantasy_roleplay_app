@@ -1,0 +1,132 @@
+[
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 1,
+    "fields": {
+      "name": "Book, Apothecary",
+      "price": "8GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 2,
+    "fields": {
+      "name": "Book, Art",
+      "price": "5GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 3,
+    "fields": {
+      "name": "Book, Cryptography",
+      "price": "8GC",
+      "encumbrance": 1.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 4,
+    "fields": {
+      "name": "Book, Engineer",
+      "price": "3GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 5,
+    "fields": {
+      "name": "Book, Law",
+      "price": "15GC",
+      "encumbrance": 1.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 6,
+    "fields": {
+      "name": "Book, Magic",
+      "price": "20GC",
+      "encumbrance": 1.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 7,
+    "fields": {
+      "name": "Book, Medicine",
+      "price": "15GC",
+      "encumbrance": 1.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 8,
+    "fields": {
+      "name": "Book, Religion",
+      "price": "1GC",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 9,
+    "fields": {
+      "name": "Guild License",
+      "price": "N/A",
+      "encumbrance": 0.0,
+      "availability": "N/A"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 10,
+    "fields": {
+      "name": "Leaflet",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 11,
+    "fields": {
+      "name": "Legal Document",
+      "price": "3/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 12,
+    "fields": {
+      "name": "Map",
+      "price": "3GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.booksanddocuments",
+    "pk": 13,
+    "fields": {
+      "name": "Parchment/sheet",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  }
+]
