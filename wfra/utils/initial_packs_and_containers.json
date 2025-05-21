@@ -1,0 +1,145 @@
+[
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 1,
+    "fields": {
+      "name": "Backpack",
+      "price": "4/10",
+      "encumbrance": 2.0,
+      "carries": 4.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 2,
+    "fields": {
+      "name": "Barrel",
+      "price": "8/-",
+      "encumbrance": 6.0,
+      "carries": 12.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 3,
+    "fields": {
+      "name": "Cask",
+      "price": "3/-",
+      "encumbrance": 2.0,
+      "carries": 4.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 4,
+    "fields": {
+      "name": "Flask",
+      "price": "5/-",
+      "encumbrance": 0.0,
+      "carries": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 5,
+    "fields": {
+      "name": "Jug",
+      "price": "3/2",
+      "encumbrance": 1.0,
+      "carries": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 6,
+    "fields": {
+      "name": "Pewter Stein",
+      "price": "4/-",
+      "encumbrance": 0.0,
+      "carries": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 7,
+    "fields": {
+      "name": "Pouch",
+      "price": "4d",
+      "encumbrance": 0.0,
+      "carries": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 8,
+    "fields": {
+      "name": "Sack",
+      "price": "1/-",
+      "encumbrance": 2.0,
+      "carries": 4.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 9,
+    "fields": {
+      "name": "Sack, Large",
+      "price": "1/6",
+      "encumbrance": 3.0,
+      "carries": 6.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 10,
+    "fields": {
+      "name": "Saddlebags",
+      "price": "18/-",
+      "encumbrance": 4.0,
+      "carries": 8.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 11,
+    "fields": {
+      "name": "Sling Bag",
+      "price": "1/-",
+      "encumbrance": 1.0,
+      "carries": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 12,
+    "fields": {
+      "name": "Scroll Case",
+      "price": "16/-",
+      "encumbrance": 0.0,
+      "carries": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.packsandcontainers",
+    "pk": 13,
+    "fields": {
+      "name": "Waterskin",
+      "price": "1/8",
+      "encumbrance": 1.0,
+      "carries": 1.0,
+      "availability": "Common"
+    }
+  }
+]
