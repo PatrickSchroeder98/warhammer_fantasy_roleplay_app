@@ -1,0 +1,233 @@
+[
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 1,
+    "fields": {
+      "name": "Amulet",
+      "price": "2d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 2,
+    "fields": {
+      "name": "Boots",
+      "price": "5/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 3,
+    "fields": {
+      "name": "Cloak",
+      "price": "10/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 4,
+    "fields": {
+      "name": "Clothing",
+      "price": "6/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 5,
+    "fields": {
+      "name": "Coat",
+      "price": "18/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 6,
+    "fields": {
+      "name": "Costume",
+      "price": "1GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 7,
+    "fields": {
+      "name": "Courtly Garb",
+      "price": "12GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 8,
+    "fields": {
+      "name": "Face Powder",
+      "price": "10/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 9,
+    "fields": {
+      "name": "Gloves",
+      "price": "4/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 10,
+    "fields": {
+      "name": "Hat",
+      "price": "4/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 11,
+    "fields": {
+      "name": "Hood",
+      "price": "5/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 12,
+    "fields": {
+      "name": "Mask",
+      "price": "5/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 13,
+    "fields": {
+      "name": "Jewellery",
+      "price": "Varies",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 14,
+    "fields": {
+      "name": "Perfume",
+      "price": "10/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 15,
+    "fields": {
+      "name": "Pins (6)",
+      "price": "10/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 16,
+    "fields": {
+      "name": "Religious Symbol",
+      "price": "6/8",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 17,
+    "fields": {
+      "name": "Robes",
+      "price": "2GC",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 18,
+    "fields": {
+      "name": "Sceptre",
+      "price": "8GC",
+      "encumbrance": 1.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 19,
+    "fields": {
+      "name": "Shoes",
+      "price": "5/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 20,
+    "fields": {
+      "name": "Signet Ring",
+      "price": "5GC",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 21,
+    "fields": {
+      "name": "Tattoo",
+      "price": "4/- +",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 22,
+    "fields": {
+      "name": "Uniform",
+      "price": "1GC 2/-",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.clothingandaccessories",
+    "pk": 23,
+    "fields": {
+      "name": "Walking Cane",
+      "price": "3GC",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  }
+]
