@@ -1,0 +1,122 @@
+[
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 1,
+    "fields": {
+      "name": "Ale, pint",
+      "price": "3d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 2,
+    "fields": {
+      "name": "Ale, keg",
+      "price": "3/-",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 3,
+    "fields": {
+      "name": "Bugman's XXXXXX Ale, pint",
+      "price": "9d",
+      "encumbrance": 0.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 4,
+    "fields": {
+      "name": "Food, groceries/day",
+      "price": "10d",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 5,
+    "fields": {
+      "name": "Meal, inn",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 6,
+    "fields": {
+      "name": "Rations, 1 day",
+      "price": "2/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 7,
+    "fields": {
+      "name": "Room, common/night",
+      "price": "10d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 8,
+    "fields": {
+      "name": "Room, private/night",
+      "price": "10/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 9,
+    "fields": {
+      "name": "Spirits, pint",
+      "price": "2/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 10,
+    "fields": {
+      "name": "Stables/night",
+      "price": "10d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 11,
+    "fields": {
+      "name": "Wine, bottle",
+      "price": "10d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.fooddrinkandlodging",
+    "pk": 12,
+    "fields": {
+      "name": "Wine & Spirits, drink",
+      "price": "4d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  }
+]
