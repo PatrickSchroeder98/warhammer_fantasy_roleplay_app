@@ -1,0 +1,82 @@
+[
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 1,
+    "fields": {
+      "name": "Digestive Tonic",
+      "price": "3/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 2,
+    "fields": {
+      "name": "Earth Root",
+      "price": "5GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 3,
+    "fields": {
+      "name": "Faxtoryll",
+      "price": "15/-",
+      "encumbrance": 0.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 4,
+    "fields": {
+      "name": "Healing Draught",
+      "price": "10/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 5,
+    "fields": {
+      "name": "Healing Poultice",
+      "price": "12/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 6,
+    "fields": {
+      "name": "Nightshade",
+      "price": "3GC",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 7,
+    "fields": {
+      "name": "Salwort",
+      "price": "12/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.herbsanddraughts",
+    "pk": 8,
+    "fields": {
+      "name": "Vitality Draught",
+      "price": "18/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  }
+]

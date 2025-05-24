@@ -1,0 +1,22 @@
+[
+  {
+    "model": "equipment.tradetoolsandworkshops",
+    "pk": 1,
+    "fields": {
+      "name": "Trade Tools",
+      "price": "3GC",
+      "encumbrance": 1.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.tradetoolsandworkshops",
+    "pk": 2,
+    "fields": {
+      "name": "Workshop",
+      "price": "80GC",
+      "encumbrance": 0.0,
+      "availability": "Exotic"
+    }
+  }
+]

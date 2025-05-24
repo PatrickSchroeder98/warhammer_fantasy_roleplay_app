@@ -1,0 +1,82 @@
+[
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 1,
+    "fields": {
+      "name": "Black Lotus",
+      "price": "20GC",
+      "encumbrance": 0.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 2,
+    "fields": {
+      "name": "Heartkill",
+      "price": "40GC",
+      "encumbrance": 0.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 3,
+    "fields": {
+      "name": "Mad Cap Mushrooms",
+      "price": "5GC",
+      "encumbrance": 0.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 4,
+    "fields": {
+      "name": "Mandrake Root",
+      "price": "1GC",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 5,
+    "fields": {
+      "name": "Moonflower",
+      "price": "5GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 6,
+    "fields": {
+      "name": "Ranald's Delight",
+      "price": "18/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 7,
+    "fields": {
+      "name": "Spit",
+      "price": "1GC 5/-",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.drugsandpoisons",
+    "pk": 8,
+    "fields": {
+      "name": "Weirdroot",
+      "price": "4/-",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  }
+]
