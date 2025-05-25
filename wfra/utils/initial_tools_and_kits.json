@@ -1,0 +1,402 @@
+[
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 1,
+    "fields": {
+      "name": "Abacus",
+      "price": "3/4",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 2,
+    "fields": {
+      "name": "Animal Trap",
+      "price": "2/6",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 3,
+    "fields": {
+      "name": "Antitoxin Kit",
+      "price": "3GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 4,
+    "fields": {
+      "name": "Boat Hook",
+      "price": "5/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 5,
+    "fields": {
+      "name": "Broom",
+      "price": "10d",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 6,
+    "fields": {
+      "name": "Bucket",
+      "price": "2/6",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 7,
+    "fields": {
+      "name": "Chisel",
+      "price": "4/2",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 8,
+    "fields": {
+      "name": "Comb",
+      "price": "10d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 9,
+    "fields": {
+      "name": "Crowbar",
+      "price": "2/6",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 10,
+    "fields": {
+      "name": "Crutch",
+      "price": "3/-",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 11,
+    "fields": {
+      "name": "Disguise Kit",
+      "price": "6/6",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 12,
+    "fields": {
+      "name": "Ear Pick",
+      "price": "2/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 13,
+    "fields": {
+      "name": "Fish Hooks (12)",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 14,
+    "fields": {
+      "name": "Floor Brush",
+      "price": "1/6",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 15,
+    "fields": {
+      "name": "Gavel",
+      "price": "1GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 16,
+    "fields": {
+      "name": "Hammer",
+      "price": "3/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 17,
+    "fields": {
+      "name": "Hand Mirror",
+      "price": "1GC 1/6",
+      "encumbrance": 0.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 18,
+    "fields": {
+      "name": "Hoe",
+      "price": "4/-",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 19,
+    "fields": {
+      "name": "Key",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 20,
+    "fields": {
+      "name": "Knife",
+      "price": "8/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 21,
+    "fields": {
+      "name": "Lock Picks",
+      "price": "15/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 22,
+    "fields": {
+      "name": "Manacles",
+      "price": "18/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 23,
+    "fields": {
+      "name": "Mop",
+      "price": "1/-",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 24,
+    "fields": {
+      "name": "Nails (12)",
+      "price": "2d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 25,
+    "fields": {
+      "name": "Paint Brush",
+      "price": "4/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 26,
+    "fields": {
+      "name": "Pestle & Mortar",
+      "price": "14/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 27,
+    "fields": {
+      "name": "Pick",
+      "price": "18/-",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 28,
+    "fields": {
+      "name": "Pole (3 yards)",
+      "price": "8/-",
+      "encumbrance": 3.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 29,
+    "fields": {
+      "name": "Quill Pen",
+      "price": "3/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 30,
+    "fields": {
+      "name": "Rake",
+      "price": "4/6",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 31,
+    "fields": {
+      "name": "Reading Lens",
+      "price": "3GC",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 32,
+    "fields": {
+      "name": "Saw",
+      "price": "6/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 33,
+    "fields": {
+      "name": "Sickle",
+      "price": "1GC",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 34,
+    "fields": {
+      "name": "Spade",
+      "price": "8/-",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 35,
+    "fields": {
+      "name": "Spike",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 36,
+    "fields": {
+      "name": "Stamp, engraved",
+      "price": "5GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 37,
+    "fields": {
+      "name": "Tongs, steel",
+      "price": "16/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 38,
+    "fields": {
+      "name": "Telescope",
+      "price": "5GC",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 39,
+    "fields": {
+      "name": "Tweezers",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.toolsandkits",
+    "pk": 40,
+    "fields": {
+      "name": "Writing Kit",
+      "price": "2GC",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  }
+]
