@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="text-center">{{ character.name }}'s Equipment</h2>
+
+<h3>Melee Weapons</h3>
+<ul>
+  {% for item in melee_weapons %}
+    <li>
+      <a href="{% url 'equipment:detail_melee_weapon' item.melee_weapon.id %}">
+        {{ item.melee_weapon.name }}
+      </a> — Quantity: {{ item.quantity }} {% if item.equipped %}(Equipped){% endif %}
+    </li>
+  {% empty %}
+    <li>No melee weapons.</li>
+  {% endfor %}
+</ul>
+
+<h3>Ranged Weapons</h3>
+<ul>
+  {% for item in ranged_weapons %}
+    <li>
+      <a href="{% url 'equipment:detail_ranged_weapon' item.ranged_weapon.id %}">
+        {{ item.ranged_weapon.name }}
+      </a> — Quantity: {{ item.quantity }} {% if item.equipped %}(Equipped){% endif %}
+    </li>
+  {% empty %}
+    <li>No ranged weapons.</li>
+  {% endfor %}
+</ul>
+
+<h3>Ammunition</h3>
+<ul>
+  {% for item in ammunition %}
+    <li>
+      <a href="{% url 'equipment:detail_ammunition' item.ammunition.id %}">
+        {{ item.ammunition.name }}
+      </a> — Quantity: {{ item.quantity }} {% if item.equipped %}(Equipped){% endif %}
+    </li>
+  {% empty %}
+    <li>No ammunition.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'characters:detail' character.id %}">← Back to Character</a>
+
+{% endblock %}

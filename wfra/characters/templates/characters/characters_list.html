@@ -8,7 +8,7 @@
         <ul class="list-group">
             {% for character in object_list %}
                 <li class="list-group-item bg-dark">
-                    <a href="{% url 'characters:detail' character.pk %}">{{ character.name }}</a> ({{ character.species }})
+                    <a href="{% url 'characters:detail' character.pk %}">{{ character.name }}</a> ({{ character.species }}) <a href="{% url 'equipment:character_equipment' character.pk %}">Equipment</a>
                 </li>
                 <br>
             {% endfor %}

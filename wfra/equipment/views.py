@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, render
+from django.views import View
 from django.views.generic import DetailView
+from characters.models import Characters
+from .models import (
+    CharacterMeleeWeapons, CharacterRangedWeapons, CharacterAmmunition
+)
 from .models import (
     MeleeWeapons,
     RangedWeapons,
@@ -19,6 +25,23 @@ from .models import (
     MiscellaneousTrappings,
     Hirelings,
 )
+
+
+class CharacterEquipmentView(View):
+    def get(self, request, character_id):
+        character = get_object_or_404(Characters, pk=character_id)
+
+        melee_weapons = CharacterMeleeWeapons.objects.filter(character=character)
+        ranged_weapons = CharacterRangedWeapons.objects.filter(character=character)
+        ammunition = CharacterAmmunition.objects.filter(character=character)
+
+        context = {
+            "character": character,
+            "melee_weapons": melee_weapons,
+            "ranged_weapons": ranged_weapons,
+            "ammunition": ammunition,
+        }
+        return render(request, "equipment/character_equipment.html", context)
 
 
 class DetailViewMeleeWeapons(LoginRequiredMixin, DetailView):

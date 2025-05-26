@@ -551,6 +551,7 @@
 
 <div class="d-flex justify-content-between mt-3">
     <a href="{% url 'characters:update' character.pk %}" class="btn btn-warning">Update</a>
+    <a href="{% url 'equipment:character_equipment' character.pk %}" class="btn btn-warning">See Equipment</a>
     <a href="{% url 'characters:delete' character.pk %}" class="btn btn-danger">Delete</a>
 </div>
     <br><br>
