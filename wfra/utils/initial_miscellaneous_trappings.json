@@ -1,0 +1,312 @@
+[
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 1,
+    "fields": {
+      "name": "Ball",
+      "price": "5d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 2,
+    "fields": {
+      "name": "Bandage",
+      "price": "4d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 3,
+    "fields": {
+      "name": "Baton",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 4,
+    "fields": {
+      "name": "Bedroll",
+      "price": "6/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 5,
+    "fields": {
+      "name": "Blanket",
+      "price": "8d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 6,
+    "fields": {
+      "name": "Candle (dozen)",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 7,
+    "fields": {
+      "name": "Canvas Tarp",
+      "price": "8/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 8,
+    "fields": {
+      "name": "Chalk",
+      "price": "10d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 9,
+    "fields": {
+      "name": "Charcoal stick",
+      "price": "10d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 10,
+    "fields": {
+      "name": "Cutlery",
+      "price": "3/6",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 11,
+    "fields": {
+      "name": "Davrich Lamp",
+      "price": "2GC",
+      "encumbrance": 1.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 12,
+    "fields": {
+      "name": "Deck of Cards",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 13,
+    "fields": {
+      "name": "Cooking Pot",
+      "price": "8/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 14,
+    "fields": {
+      "name": "Cup",
+      "price": "8d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 15,
+    "fields": {
+      "name": "Dice",
+      "price": "10d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 16,
+    "fields": {
+      "name": "Doll",
+      "price": "2/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 17,
+    "fields": {
+      "name": "Grappling Hook",
+      "price": "1GC -/10",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 18,
+    "fields": {
+      "name": "Instrument",
+      "price": "2GC",
+      "encumbrance": 1.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 19,
+    "fields": {
+      "name": "Lamp Oil",
+      "price": "2/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 20,
+    "fields": {
+      "name": "Lantern",
+      "price": "12/-",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 21,
+    "fields": {
+      "name": "Storm Lantern",
+      "price": "1GC",
+      "encumbrance": 1.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 22,
+    "fields": {
+      "name": "Match",
+      "price": "1d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 23,
+    "fields": {
+      "name": "Pan",
+      "price": "7/6",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 24,
+    "fields": {
+      "name": "Pipe and Tobacco",
+      "price": "3/4",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 25,
+    "fields": {
+      "name": "Placard",
+      "price": "1/-",
+      "encumbrance": 2.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 26,
+    "fields": {
+      "name": "Plate",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 27,
+    "fields": {
+      "name": "Bowl",
+      "price": "1/-",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 28,
+    "fields": {
+      "name": "Rags",
+      "price": "1d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 29,
+    "fields": {
+      "name": "Rope, 10 yards",
+      "price": "8/4",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 30,
+    "fields": {
+      "name": "Tent",
+      "price": "12/-",
+      "encumbrance": 2.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.miscellaneoustrappings",
+    "pk": 31,
+    "fields": {
+      "name": "Tinderbox",
+      "price": "4/2",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  }
+]
