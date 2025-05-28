@@ -143,7 +143,7 @@
     "model": "equipment.clothingandaccessories",
     "pk": 15,
     "fields": {
-      "name": "Pins (6)",
+      "name": "Pins",
       "price": "10/-",
       "encumbrance": 0.0,
       "availability": "Scarce"

@@ -3,7 +3,7 @@
     "model": "equipment.ammunition",
     "pk": 1,
     "fields": {
-      "name": "Bullet and Powder (12)",
+      "name": "Bullet and Powder",
       "price": "3/3",
       "encumbrance": 0.0,
       "availability": "Common",
@@ -17,7 +17,7 @@
     "model": "equipment.ammunition",
     "pk": 2,
     "fields": {
-      "name": "Improvised Shot and Powder (12)",
+      "name": "Improvised Shot and Powder",
       "price": "3d",
       "encumbrance": 0.0,
       "availability": "Common",
@@ -31,7 +31,7 @@
     "model": "equipment.ammunition",
     "pk": 3,
     "fields": {
-      "name": "Small Shot and Powder (12)",
+      "name": "Small Shot and Powder",
       "price": "3/3",
       "encumbrance": 0.0,
       "availability": "Common",
@@ -45,7 +45,7 @@
     "model": "equipment.ammunition",
     "pk": 4,
     "fields": {
-      "name": "Arrow (12)",
+      "name": "Arrow",
       "price": "5/-",
       "encumbrance": 0.0,
       "availability": "Common",
@@ -73,7 +73,7 @@
     "model": "equipment.ammunition",
     "pk": 6,
     "fields": {
-      "name": "Bolt (12)",
+      "name": "Bolt",
       "price": "5/-",
       "encumbrance": 0.0,
       "availability": "Common",
@@ -87,7 +87,7 @@
     "model": "equipment.ammunition",
     "pk": 7,
     "fields": {
-      "name": "Lead Bullet (12)",
+      "name": "Lead Bullet",
       "price": "4d",
       "encumbrance": 0.0,
       "availability": "Common",
@@ -101,7 +101,7 @@
     "model": "equipment.ammunition",
     "pk": 8,
     "fields": {
-      "name": "Stone Bullet (12)",
+      "name": "Stone Bullet",
       "price": "2d",
       "encumbrance": 0.0,
       "availability": "Common",

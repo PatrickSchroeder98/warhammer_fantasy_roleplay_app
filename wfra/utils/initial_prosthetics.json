@@ -1,0 +1,72 @@
+[
+  {
+    "model": "equipment.prosthetics",
+    "pk": 1,
+    "fields": {
+      "name": "Eye Patch",
+      "price": "6d",
+      "encumbrance": 0.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.prosthetics",
+    "pk": 2,
+    "fields": {
+      "name": "False Eye",
+      "price": "1GC",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  },
+  {
+    "model": "equipment.prosthetics",
+    "pk": 3,
+    "fields": {
+      "name": "False Leg",
+      "price": "16/-",
+      "encumbrance": 2.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.prosthetics",
+    "pk": 4,
+    "fields": {
+      "name": "Gilded Nose",
+      "price": "18/-",
+      "encumbrance": 0.0,
+      "availability": "Scarce"
+    }
+  },
+  {
+    "model": "equipment.prosthetics",
+    "pk": 5,
+    "fields": {
+      "name": "Hook",
+      "price": "3/4",
+      "encumbrance": 1.0,
+      "availability": "Common"
+    }
+  },
+  {
+    "model": "equipment.prosthetics",
+    "pk": 6,
+    "fields": {
+      "name": "Engineering Marvel",
+      "price": "20GC",
+      "encumbrance": 1.0,
+      "availability": "Exotic"
+    }
+  },
+  {
+    "model": "equipment.prosthetics",
+    "pk": 7,
+    "fields": {
+      "name": "Wooden Teeth",
+      "price": "10/-",
+      "encumbrance": 0.0,
+      "availability": "Rare"
+    }
+  }
+]

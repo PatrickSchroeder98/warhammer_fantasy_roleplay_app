@@ -201,7 +201,7 @@
     "model": "equipment.animalsandvehicles",
     "pk": 19,
     "fields": {
-      "name": "Worms (6)",
+      "name": "Worms",
       "price": "1d",
       "encumbrance": 0.0,
       "carries": 0.0,

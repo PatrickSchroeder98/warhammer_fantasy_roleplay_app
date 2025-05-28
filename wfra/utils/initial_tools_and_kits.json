@@ -123,7 +123,7 @@
     "model": "equipment.toolsandkits",
     "pk": 13,
     "fields": {
-      "name": "Fish Hooks (12)",
+      "name": "Fish Hooks",
       "price": "1/-",
       "encumbrance": 0.0,
       "availability": "Common"
@@ -233,7 +233,7 @@
     "model": "equipment.toolsandkits",
     "pk": 24,
     "fields": {
-      "name": "Nails (12)",
+      "name": "Nails",
       "price": "2d",
       "encumbrance": 0.0,
       "availability": "Common"

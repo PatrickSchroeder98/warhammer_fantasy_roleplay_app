@@ -53,7 +53,7 @@
     "model": "equipment.miscellaneoustrappings",
     "pk": 6,
     "fields": {
-      "name": "Candle (dozen)",
+      "name": "Candle",
       "price": "1/-",
       "encumbrance": 0.0,
       "availability": "Common"

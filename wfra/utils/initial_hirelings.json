@@ -1,0 +1,68 @@
+[
+  {
+    "model": "equipment.hirelings",
+    "pk": 1,
+    "fields": {
+      "name": "Local Scout",
+      "quick_job": "5d",
+      "daily_cost": "15d",
+      "weekly_cost": "10/-",
+      "notes": "Works independently without Leadership Tests."
+    }
+  },
+  {
+    "model": "equipment.hirelings",
+    "pk": 2,
+    "fields": {
+      "name": "Seasoned Mercenary",
+      "quick_job": "3/-",
+      "daily_cost": "9/-",
+      "weekly_cost": "3GC 12/-",
+      "notes": "Demands a share of loot in lieu of danger pay."
+    }
+  },
+  {
+    "model": "equipment.hirelings",
+    "pk": 3,
+    "fields": {
+      "name": "Lawyer",
+      "quick_job": "3/-",
+      "daily_cost": "9/-",
+      "weekly_cost": "3GC 12/-",
+      "notes": "Drafting a simple legal document costs 2-4 shillings."
+    }
+  },
+  {
+    "model": "equipment.hirelings",
+    "pk": 4,
+    "fields": {
+      "name": "Porter",
+      "quick_job": "1/-",
+      "daily_cost": "3/-",
+      "weekly_cost": "1GC 4/-",
+      "notes": "Carries 10 Encumbrance points."
+    }
+  },
+  {
+    "model": "equipment.hirelings",
+    "pk": 5,
+    "fields": {
+      "name": "Scribe",
+      "quick_job": "2/-",
+      "daily_cost": "6/-",
+      "weekly_cost": "2GC 8/-",
+      "notes": "Also translates 1-2 other common languages."
+    }
+  },
+  {
+    "model": "equipment.hirelings",
+    "pk": 6,
+    "fields": {
+      "name": "Doktor",
+      "quick_job": "5/-",
+      "daily_cost": "15/-",
+      "weekly_cost": "5GC",
+      "notes": "A single visit costs 4-6 shillings for medical attention."
+    }
+  }
+]
