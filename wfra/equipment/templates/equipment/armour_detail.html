@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <br>
+    <h2>{{ armour.name }}</h2>
+
+    <table class="table table-striped table-bordered" style="color: #f5e1c8">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Encumbrance</th>
+                <th>Availability</th>
+                <th>Penalty</th>
+                <th>Locations</th>
+                <th>Aps</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ armour.type }}</td>
+                    <td>{{ armour.price }}</td>
+                    <td>{{ armour.encumbrance }}</td>
+                    <td>{{ armour.availability }}</td>
+                    <td>{{ armour.penalty }}</td>
+                    <td>{{ armour.locations }}</td>
+                    <td>{{ armour.aps }}</td>
+                </tr>
+        </tbody>
+</table>
+    <table class="table table-striped table-bordered" style="color: #f5e1c8">
+    <thead>
+        <tr>
+            <th>Qualities and Flaws</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr>
+                <td>{{ armour.qualities_and_flaws }}</td>
+            </tr>
+    </tbody>
+</table>
+</div>
+{% endblock %}
