@@ -1,48 +1,92 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<br>
 <h2 class="text-center">{{ character.name }}'s Equipment</h2>
+<br>
 
-<h3>Melee Weapons</h3>
-<ul>
-  {% for item in melee_weapons %}
-    <li>
-      <a href="{% url 'equipment:detail_melee_weapon' item.melee_weapon.id %}">
-        {{ item.melee_weapon.name }}
-      </a> — Quantity: {{ item.quantity }} {% if item.equipped %}(Equipped){% endif %}
-    </li>
-  {% empty %}
-    <li>No melee weapons.</li>
-  {% endfor %}
-</ul>
+<div class="text-center">
 
-<h3>Ranged Weapons</h3>
-<ul>
-  {% for item in ranged_weapons %}
-    <li>
-      <a href="{% url 'equipment:detail_ranged_weapon' item.ranged_weapon.id %}">
-        {{ item.ranged_weapon.name }}
-      </a> — Quantity: {{ item.quantity }} {% if item.equipped %}(Equipped){% endif %}
-    </li>
-  {% empty %}
-    <li>No ranged weapons.</li>
-  {% endfor %}
-</ul>
 
-<h3>Ammunition</h3>
-<ul>
-  {% for item in ammunition %}
-    <li>
-      <a href="{% url 'equipment:detail_ammunition' item.ammunition.id %}">
-        {{ item.ammunition.name }}
-      </a> — Quantity: {{ item.quantity }} {% if item.equipped %}(Equipped){% endif %}
-    </li>
-  {% empty %}
-    <li>No ammunition.</li>
-  {% endfor %}
-</ul>
+  <h2>Melee Weapons</h2>
+  {% if melee_weapons %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
 
-<a href="{% url 'characters:detail' character.id %}">← Back to Character</a>
+      <tbody>
+              {% for item in melee_weapons %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_melee_weapon' item.melee_weapon.id %}">{{ item.melee_weapon.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Melee Weapons.</p>
+  {% endif %}
 
+  <h2>Ranged Weapons</h2>
+  {% if ranged_weapons %}
+    <table class="table table-striped table-bordered" style="color: #f5e1c8">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Equipped</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in ranged_weapons %}
+                <tr>
+                    <td>
+                        <a href="{% url 'equipment:detail_ranged_weapon' item.ranged_weapon.id %}">
+                            {{ item.ranged_weapon.name }}
+                        </a>
+                    </td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  {% else %}
+    <p>No Ranged Weapons.</p>
+  {% endif %}
+
+
+  <h2>Ammunition</h2>
+  {% if ammunition %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in ammunition %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_ammunition' item.ammunition.id %}">{{ item.ammunition.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Ammunition.</p>
+  {% endif %}
+
+  <a href="{% url 'characters:detail' character.id %}">← Back to Character</a>
+</div>
 {% endblock %}
