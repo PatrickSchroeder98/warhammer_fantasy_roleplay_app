@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <br>
+    <h2>{{ food_drink_and_lodging.name }}</h2>
+
+    <table class="table table-striped table-bordered" style="color: #f5e1c8">
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Encumbrance</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ food_drink_and_lodging.price }}</td>
+                    <td>{{ food_drink_and_lodging.encumbrance }}</td>
+                    <td>{{ food_drink_and_lodging.availability }}</td>
+                </tr>
+        </tbody>
+</table>
+
+</div>
+{% endblock %}
