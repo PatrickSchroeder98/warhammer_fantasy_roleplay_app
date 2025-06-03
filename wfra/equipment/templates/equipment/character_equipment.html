@@ -87,6 +87,131 @@
     <p>No Ammunition.</p>
   {% endif %}
 
+    <h2>Armour</h2>
+  {% if armour %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in armour %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_armour' item.armour.id %}">{{ item.armour.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Armour.</p>
+  {% endif %}
+
+    <h2>Packs And Containers</h2>
+  {% if packs_and_containers %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in packs_and_containers %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_packs_and_containers' item.packs_and_containers.id %}">{{ item.packs_and_containers.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Packs And Containers.</p>
+  {% endif %}
+
+    <h2>Clothing And Accessories</h2>
+  {% if clothing_and_accessories %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in clothing_and_accessories %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_clothing_and_accessories' item.clothing_and_accessories.id %}">{{ item.clothing_and_accessories.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Clothing And Accessories.</p>
+  {% endif %}
+
+    <h2>Food Drink And Lodging</h2>
+  {% if food_drink_and_lodging %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in food_drink_and_lodging %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_food_drink_and_lodging' item.food_drink_and_lodging.id %}">{{ item.food_drink_and_lodging.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Food Drink And Lodging.</p>
+  {% endif %}
+
+      <h2>Tools And Kits</h2>
+  {% if tools_and_kits %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in tools_and_kits %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_tools_and_kits' item.tools_and_kits.id %}">{{ item.tools_and_kits.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Tools And Kits.</p>
+  {% endif %}
+
   <a href="{% url 'characters:detail' character.id %}">← Back to Character</a>
 </div>
 {% endblock %}
