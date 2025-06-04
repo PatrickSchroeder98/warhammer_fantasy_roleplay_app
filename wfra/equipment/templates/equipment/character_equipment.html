@@ -212,6 +212,206 @@
     <p>No Tools And Kits.</p>
   {% endif %}
 
+     <h2>Books And Documents</h2>
+  {% if books_and_documents %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in books_and_documents %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_books_and_documents' item.books_and_documents.id %}">{{ item.books_and_documents.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Books And Documents.</p>
+  {% endif %}
+
+     <h2>Trade Tools And Workshops</h2>
+  {% if trade_tools_and_workshops %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in trade_tools_and_workshops %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_trade_tools_and_workshops' item.trade_tools_and_workshops.id %}">{{ item.trade_tools_and_workshops.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Trade Tools And Workshops.</p>
+  {% endif %}
+
+    <h2>Animals And Vehicles</h2>
+  {% if animals_and_vehicles %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in animals_and_vehicles %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_animals_and_vehicles' item.animals_and_vehicles.id %}">{{ item.animals_and_vehicles.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Animals And Vehicles.</p>
+  {% endif %}
+
+    <h2>Drugs And Poisons</h2>
+  {% if drugs_and_poisons %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in drugs_and_poisons %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_drugs_and_poisons' item.drugs_and_poisons.id %}">{{ item.drugs_and_poisons.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Drugs And Poisons.</p>
+  {% endif %}
+
+    <h2>Herbs And Draughts</h2>
+  {% if herbs_and_draughts %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in herbs_and_draughts %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_herbs_and_draughts' item.herbs_and_draughts.id %}">{{ item.herbs_and_draughts.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Herbs And Draughts.</p>
+  {% endif %}
+
+     <h2>Prosthetics</h2>
+  {% if prosthetics %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in prosthetics %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_prosthetics' item.prosthetics.id %}">{{ item.prosthetics.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Prosthetics.</p>
+  {% endif %}
+
+    <h2>Miscellaneous Trappings</h2>
+  {% if miscellaneous_trappings %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in miscellaneous_trappings %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_miscellaneous_trappings' item.miscellaneous_trappings.id %}">{{ item.miscellaneous_trappings.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Miscellaneous Trappings.</p>
+  {% endif %}
+
+    <h2>Hirelings</h2>
+  {% if hirelings %}
+  <table class="table table-striped table-bordered" style="color: #f5e1c8">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Equipped</th>
+          </tr>
+      </thead>
+
+      <tbody>
+              {% for item in hirelings %}
+              <tr>
+                  <td><a href="{% url 'equipment:detail_hirelings' item.hirelings.id %}">{{ item.hirelings.name }}</a></td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+              </tr>
+              {% endfor %}
+      </tbody>
+  </table>
+  {% else %}
+    <p>No Hirelings.</p>
+  {% endif %}
+
   <a href="{% url 'characters:detail' character.id %}">← Back to Character</a>
 </div>
 {% endblock %}
