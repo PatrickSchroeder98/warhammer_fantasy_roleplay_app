@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, render
 from django.views import View
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView
+from django.urls import reverse_lazy
 from characters.models import Characters
 from .models import (
     CharacterMeleeWeapons,
@@ -40,7 +41,9 @@ from .models import (
     MiscellaneousTrappings,
     Hirelings,
 )
-
+from .forms import (
+    CharacterMeleeWeaponsForm
+)
 
 class CharacterEquipmentView(View):
     """View for equipment of given character."""
@@ -103,6 +106,22 @@ class CharacterEquipmentView(View):
         }
         return render(request, "equipment/character_equipment.html", context)
 
+
+class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
+    model = CharacterMeleeWeapons
+    form_class = CharacterMeleeWeaponsForm
+    template_name = "equipment/charactermeleeweapons_update.html"
+    success_url = reverse_lazy("TODO")
+
+    def get_queryset(self):
+        """Filter queryset to only allow access to the user's own characters."""
+        return CharacterMeleeWeapons.objects.filter(
+            character__user=self.request.user  # adjust if your user FK field has a different name
+        )
+
+    def get_success_url(self):
+        """Redirect back to character's equipment page."""
+        return reverse_lazy("equipment:character_equipment", kwargs={"character_id": self.object.character.id})
 
 class DetailViewMeleeWeapons(LoginRequiredMixin, DetailView):
     """Detail view of melee weapons."""

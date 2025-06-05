@@ -5,6 +5,7 @@ app_name = 'equipment'
 
 urlpatterns = [
     path("character/<int:character_id>/", views.CharacterEquipmentView.as_view(), name="character_equipment"),
+    path("character_melee_weapons/<int:pk>/edit/", views.UpdateViewCharacterMeleeWeapons.as_view(), name="edit_character_melee_weapon"),
     path("meleeweapons/<int:pk>/", views.DetailViewMeleeWeapons.as_view(), name="detail_melee_weapon"),
     path("rangedweapons/<int:pk>/", views.DetailViewRangedWeapons.as_view(), name="detail_ranged_weapon"),
     path("ammunition/<int:pk>/", views.DetailViewAmmunition.as_view(), name="detail_ammunition"),
