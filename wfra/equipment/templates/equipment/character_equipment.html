@@ -16,6 +16,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -25,6 +26,9 @@
                   <td><a href="{% url 'equipment:detail_melee_weapon' item.melee_weapon.id %}">{{ item.melee_weapon.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                  <td>
+                      <a href="{% url 'equipment:edit_character_melee_weapon' item.pk %}">Edit</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -32,6 +36,7 @@
   {% else %}
     <p>No Melee Weapons.</p>
   {% endif %}
+    <a href="{% url 'equipment:add_character_melee_weapon' character.id %}">Add Melee Weapon</a>
 
   <h2>Ranged Weapons</h2>
   {% if ranged_weapons %}

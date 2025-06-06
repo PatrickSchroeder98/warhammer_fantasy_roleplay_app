@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, render
 from django.views import View
-from django.views.generic import DetailView, UpdateView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib import messages
 from characters.models import Characters
 from .models import (
     CharacterMeleeWeapons,
@@ -107,6 +108,22 @@ class CharacterEquipmentView(View):
         return render(request, "equipment/character_equipment.html", context)
 
 
+class CreateCharacterMeleeWeaponView(LoginRequiredMixin, CreateView):
+    model = CharacterMeleeWeapons
+    form_class = CharacterMeleeWeaponsForm
+    template_name = "equipment/charactermeleeweapons_create.html"
+
+    def form_valid(self, form):
+        """Ensure the user can only create for their own characters"""
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(Characters, pk=character_id, user=self.request.user)
+        form.instance.character = character
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy("equipment:character_equipment", kwargs={"character_id": self.kwargs["character_id"]})
+
+
 class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
     model = CharacterMeleeWeapons
     form_class = CharacterMeleeWeaponsForm
@@ -122,6 +139,24 @@ class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         """Redirect back to character's equipment page."""
         return reverse_lazy("equipment:character_equipment", kwargs={"character_id": self.object.character.id})
+
+
+class DeleteViewCharacterMeleeWeapon(LoginRequiredMixin, DeleteView):
+    """Delete view of a character melee weapon."""
+
+    model = CharacterMeleeWeapons
+    success_url = reverse_lazy("equipment:character_equipment")
+
+    # def get_queryset(self):
+    #     """Method to ensure that only the owner can delete their characters' melee weapon."""
+    #     queryset = super().get_queryset()
+    #     return queryset.filter(user=self.request.character)
+    #
+    # def delete(self, *args, **kwargs):
+    #     """Method deletes chosen character melee weapon."""
+    #     messages.success(self.request, "Character Melee Weapon Deleted")
+    #     return super().delete(*args, **kwargs)
+
 
 class DetailViewMeleeWeapons(LoginRequiredMixin, DetailView):
     """Detail view of melee weapons."""
