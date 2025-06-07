@@ -27,7 +27,8 @@
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
                   <td>
-                      <a href="{% url 'equipment:edit_character_melee_weapon' item.pk %}">Edit</a>
+                      <a href="{% url 'equipment:edit_character_melee_weapon' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_melee_weapon' item.pk %}">Delete</a>
                   </td>
               </tr>
               {% endfor %}

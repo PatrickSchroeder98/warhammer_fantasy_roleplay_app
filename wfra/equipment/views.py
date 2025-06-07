@@ -145,17 +145,19 @@ class DeleteViewCharacterMeleeWeapon(LoginRequiredMixin, DeleteView):
     """Delete view of a character melee weapon."""
 
     model = CharacterMeleeWeapons
-    success_url = reverse_lazy("equipment:character_equipment")
 
-    # def get_queryset(self):
-    #     """Method to ensure that only the owner can delete their characters' melee weapon."""
-    #     queryset = super().get_queryset()
-    #     return queryset.filter(user=self.request.character)
-    #
-    # def delete(self, *args, **kwargs):
-    #     """Method deletes chosen character melee weapon."""
-    #     messages.success(self.request, "Character Melee Weapon Deleted")
-    #     return super().delete(*args, **kwargs)
+    def get_success_url(self):
+        character_id = self.object.character.id
+        return reverse_lazy("equipment:character_equipment", kwargs={"character_id": character_id})
+
+    def get_queryset(self):
+        """Method to ensure that only the owner can delete their characters' melee weapon."""
+        return super().get_queryset().filter(character__user=self.request.user)
+
+    def delete(self, *args, **kwargs):
+        """Method deletes chosen character melee weapon."""
+        messages.success(self.request, "Character Melee Weapon Deleted")
+        return super().delete(*args, **kwargs)
 
 
 class DetailViewMeleeWeapons(LoginRequiredMixin, DetailView):
