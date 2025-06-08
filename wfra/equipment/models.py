@@ -12,6 +12,9 @@ class MeleeWeapons(models.Model):
     qualities_and_flaws = models.CharField(max_length=200)
     type = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (DMG: {self.damage}, ENC: {self.encumbrance})"
+
 
 class RangedWeapons(models.Model):
     name = models.CharField(max_length=50)

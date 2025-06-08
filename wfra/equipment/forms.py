@@ -1,20 +1,32 @@
 from django import forms
-from .models import CharacterMeleeWeapons
+from .models import CharacterMeleeWeapons, MeleeWeapons
 
 
-class CharacterMeleeWeaponsForm(forms.ModelForm):
+class CharacterMeleeWeaponsCreateForm(forms.ModelForm):
+    """Form for creation of CharacterMeleeWeapons row."""
+    melee_weapon = forms.ModelChoiceField(
+        queryset=MeleeWeapons.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="Weapon"
+    )
+
     class Meta:
         model = CharacterMeleeWeapons
-        fields = ("quantity", "equipped", "melee_weapon")  # Only editable fields
+        fields = ("melee_weapon", "quantity", "equipped")
 
         widgets = {
-            "melee_weapon": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Weapon ID"}),
-            "quantity": forms.NumberInput(attrs={"class": "form-control", "placeholder": "Quantity"}),
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
             "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
         }
 
-        labels = {
-            "quantity": "Quantity",
-            "equipped": "Equipped",
-            "melee_weapon": "Weapon ID",
+
+class CharacterMeleeWeaponsUpdateForm(forms.ModelForm):
+    """Form for update of CharacterMeleeWeapons row. MeleeWeaponID is not possible to change."""
+    class Meta:
+        model = CharacterMeleeWeapons
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
         }

@@ -43,8 +43,10 @@ from .models import (
     Hirelings,
 )
 from .forms import (
-    CharacterMeleeWeaponsForm
+    CharacterMeleeWeaponsCreateForm,
+    CharacterMeleeWeaponsUpdateForm,
 )
+
 
 class CharacterEquipmentView(View):
     """View for equipment of given character."""
@@ -110,7 +112,7 @@ class CharacterEquipmentView(View):
 
 class CreateCharacterMeleeWeaponView(LoginRequiredMixin, CreateView):
     model = CharacterMeleeWeapons
-    form_class = CharacterMeleeWeaponsForm
+    form_class = CharacterMeleeWeaponsCreateForm
     template_name = "equipment/charactermeleeweapons_create.html"
 
     def form_valid(self, form):
@@ -126,9 +128,8 @@ class CreateCharacterMeleeWeaponView(LoginRequiredMixin, CreateView):
 
 class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
     model = CharacterMeleeWeapons
-    form_class = CharacterMeleeWeaponsForm
+    form_class = CharacterMeleeWeaponsUpdateForm
     template_name = "equipment/charactermeleeweapons_update.html"
-    success_url = reverse_lazy("TODO")
 
     def get_queryset(self):
         """Filter queryset to only allow access to the user's own characters."""
@@ -147,6 +148,7 @@ class DeleteViewCharacterMeleeWeapon(LoginRequiredMixin, DeleteView):
     model = CharacterMeleeWeapons
 
     def get_success_url(self):
+        """Method to redirect user after successful deletion."""
         character_id = self.object.character.id
         return reverse_lazy("equipment:character_equipment", kwargs={"character_id": character_id})
 
