@@ -115,6 +115,13 @@ class CreateCharacterMeleeWeaponView(LoginRequiredMixin, CreateView):
     form_class = CharacterMeleeWeaponsCreateForm
     template_name = "equipment/charactermeleeweapons_create.html"
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(Characters, pk=character_id, user=self.request.user)
+        kwargs["character"] = character
+        return kwargs
+
     def form_valid(self, form):
         """Ensure the user can only create for their own characters"""
         character_id = self.kwargs.get("character_id")

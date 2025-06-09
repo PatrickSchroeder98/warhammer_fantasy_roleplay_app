@@ -143,6 +143,14 @@ class CharacterMeleeWeapons(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['character', 'melee_weapon'],
+                name='unique_melee_weapon_per_character'
+            )
+        ]
+
 
 class CharacterRangedWeapons(models.Model):
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
