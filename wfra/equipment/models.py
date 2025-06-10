@@ -3,6 +3,8 @@ from characters.models import Characters
 
 
 class MeleeWeapons(models.Model):
+    """Model with fields for melee weapons."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -17,6 +19,8 @@ class MeleeWeapons(models.Model):
 
 
 class RangedWeapons(models.Model):
+    """Model with fields for ranged weapons."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -28,6 +32,8 @@ class RangedWeapons(models.Model):
 
 
 class Ammunition(models.Model):
+    """Model with fields for ammunition."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -39,6 +45,8 @@ class Ammunition(models.Model):
 
 
 class Armour(models.Model):
+    """Model with fields for armour."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -51,6 +59,8 @@ class Armour(models.Model):
 
 
 class PacksAndContainers(models.Model):
+    """Model with fields for packs and containers."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -59,6 +69,8 @@ class PacksAndContainers(models.Model):
 
 
 class ClothingAndAccessories(models.Model):
+    """Model with fields for clothing and accessories."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -66,6 +78,8 @@ class ClothingAndAccessories(models.Model):
 
 
 class FoodDrinkAndLodging(models.Model):
+    """Model with fields for food, drink and lodging."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -73,6 +87,8 @@ class FoodDrinkAndLodging(models.Model):
 
 
 class ToolsAndKits(models.Model):
+    """Model with fields for tools and kits."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -80,6 +96,8 @@ class ToolsAndKits(models.Model):
 
 
 class BooksAndDocuments(models.Model):
+    """Model with fields for books and documents."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -87,6 +105,8 @@ class BooksAndDocuments(models.Model):
 
 
 class TradeToolsAndWorkshops(models.Model):
+    """Model with fields for trade tools and workshops."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -94,6 +114,8 @@ class TradeToolsAndWorkshops(models.Model):
 
 
 class AnimalsAndVehicles(models.Model):
+    """Model with fields for animals and vehicles."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -102,6 +124,8 @@ class AnimalsAndVehicles(models.Model):
 
 
 class DrugsAndPoisons(models.Model):
+    """Model with fields for drugs and poisons."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -109,6 +133,8 @@ class DrugsAndPoisons(models.Model):
 
 
 class HerbsAndDraughts(models.Model):
+    """Model with fields for herbs and draughts."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -116,6 +142,8 @@ class HerbsAndDraughts(models.Model):
 
 
 class Prosthetics(models.Model):
+    """Model with fields for prosthetics."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -123,6 +151,8 @@ class Prosthetics(models.Model):
 
 
 class MiscellaneousTrappings(models.Model):
+    """Model with fields for miscellaneous trappings."""
+
     name = models.CharField(max_length=50)
     price = models.CharField(max_length=50)
     encumbrance = models.IntegerField()
@@ -130,6 +160,8 @@ class MiscellaneousTrappings(models.Model):
 
 
 class Hirelings(models.Model):
+    """Model with fields for hirelings."""
+
     name = models.CharField(max_length=50)
     quick_job = models.CharField(max_length=50)
     daily_cost = models.CharField(max_length=50)
@@ -138,6 +170,8 @@ class Hirelings(models.Model):
 
 
 class CharacterMeleeWeapons(models.Model):
+    """Model with fields for characters' melee weapons."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     melee_weapon = models.ForeignKey(MeleeWeapons, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -146,13 +180,15 @@ class CharacterMeleeWeapons(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['character', 'melee_weapon'],
-                name='unique_melee_weapon_per_character'
+                fields=["character", "melee_weapon"],
+                name="unique_melee_weapon_per_character",
             )
         ]
 
 
 class CharacterRangedWeapons(models.Model):
+    """Model with fields for characters' ranged weapons."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     ranged_weapon = models.ForeignKey(RangedWeapons, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -160,6 +196,8 @@ class CharacterRangedWeapons(models.Model):
 
 
 class CharacterAmmunition(models.Model):
+    """Model with fields for characters' ammunition."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     ammunition = models.ForeignKey(Ammunition, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -167,6 +205,8 @@ class CharacterAmmunition(models.Model):
 
 
 class CharacterArmour(models.Model):
+    """Model with fields for characters' armour."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     armour = models.ForeignKey(Armour, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -174,27 +214,41 @@ class CharacterArmour(models.Model):
 
 
 class CharacterPacksAndContainers(models.Model):
+    """Model with fields for characters' packs and containers."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
-    packs_and_containers = models.ForeignKey(PacksAndContainers, on_delete=models.CASCADE)
+    packs_and_containers = models.ForeignKey(
+        PacksAndContainers, on_delete=models.CASCADE
+    )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
 
 
 class CharacterClothingAndAccessories(models.Model):
+    """Model with fields for characters' clothing and accessories."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
-    clothing_and_accessories = models.ForeignKey(ClothingAndAccessories, on_delete=models.CASCADE)
+    clothing_and_accessories = models.ForeignKey(
+        ClothingAndAccessories, on_delete=models.CASCADE
+    )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
 
 
 class CharacterFoodDrinkAndLodging(models.Model):
+    """Model with fields for characters' food, drink and lodging."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
-    food_drink_and_lodging = models.ForeignKey(FoodDrinkAndLodging, on_delete=models.CASCADE)
+    food_drink_and_lodging = models.ForeignKey(
+        FoodDrinkAndLodging, on_delete=models.CASCADE
+    )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
 
 
 class CharacterToolsAndKits(models.Model):
+    """Model with fields for characters' tools and kits."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     tools_and_kits = models.ForeignKey(ToolsAndKits, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -202,6 +256,8 @@ class CharacterToolsAndKits(models.Model):
 
 
 class CharacterBooksAndDocuments(models.Model):
+    """Model with fields for characters' books and documents."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     books_and_documents = models.ForeignKey(BooksAndDocuments, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -209,20 +265,30 @@ class CharacterBooksAndDocuments(models.Model):
 
 
 class CharacterTradeToolsAndWorkshops(models.Model):
+    """Model with fields for characters' trade tools and workshops."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
-    trade_tools_and_workshops = models.ForeignKey(TradeToolsAndWorkshops, on_delete=models.CASCADE)
+    trade_tools_and_workshops = models.ForeignKey(
+        TradeToolsAndWorkshops, on_delete=models.CASCADE
+    )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
 
 
 class CharacterAnimalsAndVehicles(models.Model):
+    """Model with fields for characters' animals and vehicles."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
-    animals_and_vehicles = models.ForeignKey(AnimalsAndVehicles, on_delete=models.CASCADE)
+    animals_and_vehicles = models.ForeignKey(
+        AnimalsAndVehicles, on_delete=models.CASCADE
+    )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
 
 
 class CharacterDrugsAndPoisons(models.Model):
+    """Model with fields for characters' drugs and poisons."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     drugs_and_poisons = models.ForeignKey(DrugsAndPoisons, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -230,6 +296,8 @@ class CharacterDrugsAndPoisons(models.Model):
 
 
 class CharacterHerbsAndDraughts(models.Model):
+    """Model with fields for characters' herbs and draughts."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     herbs_and_draughts = models.ForeignKey(HerbsAndDraughts, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -237,6 +305,8 @@ class CharacterHerbsAndDraughts(models.Model):
 
 
 class CharacterProsthetics(models.Model):
+    """Model with fields for characters' prosthetics."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     prosthetics = models.ForeignKey(Prosthetics, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -244,16 +314,20 @@ class CharacterProsthetics(models.Model):
 
 
 class CharacterMiscellaneousTrappings(models.Model):
+    """Model with fields for characters' miscellaneous trappings."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
-    miscellaneous_trappings = models.ForeignKey(MiscellaneousTrappings, on_delete=models.CASCADE)
+    miscellaneous_trappings = models.ForeignKey(
+        MiscellaneousTrappings, on_delete=models.CASCADE
+    )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
 
 
 class CharacterHirelings(models.Model):
+    """Model with fields for characters' hirelings."""
+
     character = models.ForeignKey(Characters, on_delete=models.CASCADE)
     hirelings = models.ForeignKey(Hirelings, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
-
-
