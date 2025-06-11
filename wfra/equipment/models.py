@@ -30,6 +30,9 @@ class RangedWeapons(models.Model):
     qualities_and_flaws = models.CharField(max_length=200)
     type = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (DMG: {self.damage}, ENC: {self.encumbrance})"
+
 
 class Ammunition(models.Model):
     """Model with fields for ammunition."""
@@ -193,6 +196,14 @@ class CharacterRangedWeapons(models.Model):
     ranged_weapon = models.ForeignKey(RangedWeapons, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "ranged_weapon"],
+                name="unique_ranged_weapon_per_character",
+            )
+        ]
 
 
 class CharacterAmmunition(models.Model):

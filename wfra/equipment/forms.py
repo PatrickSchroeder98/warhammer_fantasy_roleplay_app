@@ -1,5 +1,5 @@
 from django import forms
-from .models import CharacterMeleeWeapons, MeleeWeapons
+from .models import MeleeWeapons, RangedWeapons, CharacterMeleeWeapons, CharacterRangedWeapons
 
 
 class CharacterMeleeWeaponsCreateForm(forms.ModelForm):
@@ -52,6 +52,64 @@ class CharacterMeleeWeaponsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterMeleeWeapons
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterRangedWeaponsCreateForm(forms.ModelForm):
+    """Form for creation of CharacterRangedWeapons row."""
+
+    ranged_weapon = forms.ModelChoiceField(
+        queryset=RangedWeapons.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="RangedWeapon",
+    )
+
+    class Meta:
+        model = CharacterRangedWeapons
+        fields = ("ranged_weapon", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen melee weapon, raises error if it exists."""
+        cleaned_data = super().clean()
+        ranged_weapon = cleaned_data.get("ranged_weapon")
+
+        if self.character and ranged_weapon:
+            exists = CharacterRangedWeapons.objects.filter(
+                character=self.character, ranged_weapon=ranged_weapon
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "This character already has this ranged weapon. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterRangedWeaponsUpdateForm(forms.ModelForm):
+    """Form for update of CharacterRangedWeapons row. RangedWeaponID is not possible to change."""
+
+    class Meta:
+        model = CharacterRangedWeapons
         fields = ("quantity", "equipped")
 
         widgets = {
