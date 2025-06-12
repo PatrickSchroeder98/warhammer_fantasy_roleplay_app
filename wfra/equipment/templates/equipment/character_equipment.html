@@ -47,6 +47,7 @@
                 <th>Name</th>
                 <th>Quantity</th>
                 <th>Equipped</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
@@ -59,6 +60,10 @@
                     </td>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                    <td>
+                      <a href="{% url 'equipment:edit_character_ranged_weapon' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_ranged_weapon' item.pk %}">Delete</a>
+                  </td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -66,6 +71,7 @@
   {% else %}
     <p>No Ranged Weapons.</p>
   {% endif %}
+    <a href="{% url 'equipment:add_character_ranged_weapon' character.id %}">Add Ranged Weapon</a>
 
 
   <h2>Ammunition</h2>
