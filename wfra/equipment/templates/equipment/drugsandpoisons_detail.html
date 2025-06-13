@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <br>
+    <h2>{{ drugs_and_poisons.name }}</h2>
+
+    <table class="table table-striped table-bordered" style="color: #f5e1c8">
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Encumbrance</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ drugs_and_poisons.price }}</td>
+                    <td>{{ drugs_and_poisons.encumbrance }}</td>
+                    <td>{{ drugs_and_poisons.availability }}</td>
+                </tr>
+        </tbody>
+</table>
+
+</div>
+{% endblock %}

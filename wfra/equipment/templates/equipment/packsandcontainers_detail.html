@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+    <br>
+    <h2>{{ packs_and_containers.name }}</h2>
+
+    <table class="table table-striped table-bordered" style="color: #f5e1c8">
+        <thead>
+            <tr>
+                <th>Price</th>
+                <th>Encumbrance</th>
+                <th>Carries</th>
+                <th>Availability</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>{{ packs_and_containers.price }}</td>
+                    <td>{{ packs_and_containers.encumbrance }}</td>
+                    <td>{{ packs_and_containers.carries }}</td>
+                    <td>{{ packs_and_containers.availability }}</td>
+                </tr>
+        </tbody>
+</table>
+
+</div>
+{% endblock %}
