@@ -46,6 +46,9 @@ class Ammunition(models.Model):
     qualities_and_flaws = models.CharField(max_length=200)
     type = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (DMG: {self.damage}, ENC: {self.encumbrance}, Price {self.price})"
+
 
 class Armour(models.Model):
     """Model with fields for armour."""
@@ -213,6 +216,14 @@ class CharacterAmmunition(models.Model):
     ammunition = models.ForeignKey(Ammunition, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "ammunition"],
+                name="unique_ammunition_per_character",
+            )
+        ]
 
 
 class CharacterArmour(models.Model):

@@ -1,5 +1,5 @@
 from django import forms
-from .models import MeleeWeapons, RangedWeapons, CharacterMeleeWeapons, CharacterRangedWeapons
+from .models import MeleeWeapons, RangedWeapons, Ammunition, CharacterMeleeWeapons, CharacterRangedWeapons, CharacterAmmunition
 
 
 class CharacterMeleeWeaponsCreateForm(forms.ModelForm):
@@ -41,7 +41,7 @@ class CharacterMeleeWeaponsCreateForm(forms.ModelForm):
 
             if exists and not self.instance.pk:
                 raise forms.ValidationError(
-                    "This character already has this melee weapon. Increase the quantity in equipment to add another item of this type."
+                    "Character already has this melee weapon. Increase the quantity in equipment to add another item of this type."
                 )
 
         return cleaned_data
@@ -88,7 +88,7 @@ class CharacterRangedWeaponsCreateForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
     def clean(self):
-        """Method checks if there is a duplicate of chosen melee weapon, raises error if it exists."""
+        """Method checks if there is a duplicate of chosen ranged weapon, raises error if it exists."""
         cleaned_data = super().clean()
         ranged_weapon = cleaned_data.get("ranged_weapon")
 
@@ -99,7 +99,7 @@ class CharacterRangedWeaponsCreateForm(forms.ModelForm):
 
             if exists and not self.instance.pk:
                 raise forms.ValidationError(
-                    "This character already has this ranged weapon. Increase the quantity in equipment to add another item of this type."
+                    "Character already has this ranged weapon. Increase the quantity in equipment to add another item of this type."
                 )
 
         return cleaned_data
@@ -110,6 +110,64 @@ class CharacterRangedWeaponsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterRangedWeapons
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterAmmunitionCreateForm(forms.ModelForm):
+    """Form for creation of CharacterAmmunition row."""
+
+    ammunition = forms.ModelChoiceField(
+        queryset=Ammunition.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="Ammunition",
+    )
+
+    class Meta:
+        model = CharacterAmmunition
+        fields = ("ammunition", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen ammunition, raises error if it exists."""
+        cleaned_data = super().clean()
+        ammunition = cleaned_data.get("ammunition")
+
+        if self.character and ammunition:
+            exists = CharacterAmmunition.objects.filter(
+                character=self.character, ammunition=ammunition
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this ammunition. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterAmmunitionUpdateForm(forms.ModelForm):
+    """Form for update of CharacterAmmunition row. AmmunitionID is not possible to change."""
+
+    class Meta:
+        model = CharacterAmmunition
         fields = ("quantity", "equipped")
 
         widgets = {
