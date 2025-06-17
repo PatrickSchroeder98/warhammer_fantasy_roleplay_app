@@ -63,6 +63,10 @@ class Armour(models.Model):
     qualities_and_flaws = models.CharField(max_length=200)
     type = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (APS: {self.aps}, ENC: {self.encumbrance}, Price {self.price})"
+
+
 
 class PacksAndContainers(models.Model):
     """Model with fields for packs and containers."""
@@ -233,6 +237,14 @@ class CharacterArmour(models.Model):
     armour = models.ForeignKey(Armour, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "armour"],
+                name="unique_armour_per_character",
+            )
+        ]
 
 
 class CharacterPacksAndContainers(models.Model):

@@ -49,6 +49,8 @@ from .forms import (
     CharacterRangedWeaponsUpdateForm,
     CharacterAmmunitionCreateForm,
     CharacterAmmunitionUpdateForm,
+    CharacterArmourCreateForm,
+    CharacterArmourUpdateForm,
 )
 
 
@@ -216,6 +218,40 @@ class CreateViewCharacterAmmunition(LoginRequiredMixin, CreateView):
         )
 
 
+class CreateViewCharacterArmour(LoginRequiredMixin, CreateView):
+    """Create view for characters' armour."""
+
+    model = CharacterArmour
+    form_class = CharacterArmourCreateForm
+    template_name = "equipment/characterarmour_create.html"
+
+    def get_form_kwargs(self):
+        """Method returns kwargs with saved character."""
+        kwargs = super().get_form_kwargs()
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        kwargs["character"] = character
+        return kwargs
+
+    def form_valid(self, form):
+        """Method ensures the user can only create armour for their own characters."""
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        form.instance.character = character
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        """Method prepares redirection link with character id in argument."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.kwargs["character_id"]},
+        )
+
+
 class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
     """Update view for characters' melee weapon."""
 
@@ -264,6 +300,25 @@ class UpdateViewCharacterAmmunition(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         """Method filters queryset to only allow access to the user's own characters."""
         return CharacterAmmunition.objects.filter(character__user=self.request.user)
+
+    def get_success_url(self):
+        """Method redirects back to character's equipment page."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.object.character.id},
+        )
+
+
+class UpdateViewCharacterArmour(LoginRequiredMixin, UpdateView):
+    """Update view for characters' armour."""
+
+    model = CharacterArmour
+    form_class = CharacterArmourUpdateForm
+    template_name = "equipment/characterarmour_update.html"
+
+    def get_queryset(self):
+        """Method filters queryset to only allow access to the user's own characters."""
+        return CharacterArmour.objects.filter(character__user=self.request.user)
 
     def get_success_url(self):
         """Method redirects back to character's equipment page."""
@@ -336,6 +391,28 @@ class DeleteViewCharacterAmmunition(LoginRequiredMixin, DeleteView):
     def delete(self, *args, **kwargs):
         """Method deletes chosen characters' ammunition."""
         messages.success(self.request, "Characters' Ammunition Deleted")
+        return super().delete(*args, **kwargs)
+
+
+class DeleteViewCharacterArmour(LoginRequiredMixin, DeleteView):
+    """Delete view of a characters' armour."""
+
+    model = CharacterArmour
+
+    def get_success_url(self):
+        """Method to redirect user after successful deletion."""
+        character_id = self.object.character.id
+        return reverse_lazy(
+            "equipment:character_equipment", kwargs={"character_id": character_id}
+        )
+
+    def get_queryset(self):
+        """Method to ensure that only the owner can delete their characters' armour."""
+        return super().get_queryset().filter(character__user=self.request.user)
+
+    def delete(self, *args, **kwargs):
+        """Method deletes chosen characters' armour."""
+        messages.success(self.request, "Characters' Armour Deleted")
         return super().delete(*args, **kwargs)
 
 
