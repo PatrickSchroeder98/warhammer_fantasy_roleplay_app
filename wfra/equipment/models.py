@@ -67,7 +67,6 @@ class Armour(models.Model):
         return f"{self.name} (APS: {self.aps}, ENC: {self.encumbrance}, Price {self.price})"
 
 
-
 class PacksAndContainers(models.Model):
     """Model with fields for packs and containers."""
 
@@ -76,6 +75,9 @@ class PacksAndContainers(models.Model):
     encumbrance = models.IntegerField()
     carries = models.IntegerField()
     availability = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.name} (Carries: {self.carries}, ENC: {self.encumbrance}, Price {self.price})"
 
 
 class ClothingAndAccessories(models.Model):
@@ -256,6 +258,14 @@ class CharacterPacksAndContainers(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "packs_and_containers"],
+                name="unique_packs_and_containers_per_character",
+            )
+        ]
 
 
 class CharacterClothingAndAccessories(models.Model):

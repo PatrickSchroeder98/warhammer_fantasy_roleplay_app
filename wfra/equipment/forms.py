@@ -1,5 +1,5 @@
 from django import forms
-from .models import MeleeWeapons, RangedWeapons, Ammunition, Armour, CharacterMeleeWeapons, CharacterRangedWeapons, CharacterAmmunition, CharacterArmour
+from .models import MeleeWeapons, RangedWeapons, Ammunition, Armour, PacksAndContainers, CharacterMeleeWeapons, CharacterRangedWeapons, CharacterAmmunition, CharacterArmour, CharacterPacksAndContainers
 
 
 class CharacterMeleeWeaponsCreateForm(forms.ModelForm):
@@ -226,6 +226,64 @@ class CharacterArmourUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterArmour
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterPacksAndContainersCreateForm(forms.ModelForm):
+    """Form for creation of PacksAndContainers row."""
+
+    packs_and_containers = forms.ModelChoiceField(
+        queryset=PacksAndContainers.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="PacksAndContainers",
+    )
+
+    class Meta:
+        model = CharacterPacksAndContainers
+        fields = ("packs_and_containers", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen container, raises error if it exists."""
+        cleaned_data = super().clean()
+        packs_and_containers = cleaned_data.get("packs_and_containers")
+
+        if self.character and packs_and_containers:
+            exists = CharacterPacksAndContainers.objects.filter(
+                character=self.character, packs_and_containers=packs_and_containers
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this container. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterPacksAndContainersUpdateForm(forms.ModelForm):
+    """Form for update of PacksAndContainers row. PacksAndContainersID is not possible to change."""
+
+    class Meta:
+        model = CharacterPacksAndContainers
         fields = ("quantity", "equipped")
 
         widgets = {

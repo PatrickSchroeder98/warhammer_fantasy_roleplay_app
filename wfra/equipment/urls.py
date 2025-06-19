@@ -10,16 +10,19 @@ urlpatterns = [
     path("character/<int:character_id>/add-ranged-weapon/", views.CreateCharacterRangedWeaponView.as_view(), name="add_character_ranged_weapon"),
     path("character/<int:character_id>/add-ammunition/", views.CreateViewCharacterAmmunition.as_view(), name="add_character_ammunition"),
     path("character/<int:character_id>/add-armour/", views.CreateViewCharacterArmour.as_view(), name="add_character_armour"),
+    path("character/<int:character_id>/add-packs-and-containers/", views.CreateViewCharacterPacksAndContainers.as_view(), name="add_character_packs_and_containers"),
 
     path("character_melee_weapons/<int:pk>/edit/", views.UpdateViewCharacterMeleeWeapons.as_view(), name="edit_character_melee_weapon"),
     path("character_ranged_weapons/<int:pk>/edit/", views.UpdateViewCharacterRangedWeapons.as_view(), name="edit_character_ranged_weapon"),
     path("character_ammunition/<int:pk>/edit/", views.UpdateViewCharacterAmmunition.as_view(), name="edit_character_ammunition"),
     path("character_armour/<int:pk>/edit/", views.UpdateViewCharacterArmour.as_view(), name="edit_character_armour"),
+    path("character_packs_and_containers/<int:pk>/edit/", views.UpdateViewCharacterPacksAndContainers.as_view(), name="edit_character_packs_and_containers"),
 
     path("character_melee_weapons/<int:pk>/delete", views.DeleteViewCharacterMeleeWeapon.as_view(), name="delete_character_melee_weapon"),
     path("character_ranged_weapons/<int:pk>/delete", views.DeleteViewCharacterRangedWeapon.as_view(), name="delete_character_ranged_weapon"),
     path("character_ammunition/<int:pk>/delete", views.DeleteViewCharacterAmmunition.as_view(), name="delete_character_ammunition"),
     path("character_armour/<int:pk>/delete", views.DeleteViewCharacterArmour.as_view(), name="delete_character_armour"),
+    path("character_packs_and_containers/<int:pk>/delete", views.DeleteViewCharacterPacksAndContainers.as_view(), name="delete_character_packs_and_containers"),
 
     path("meleeweapons/<int:pk>/", views.DetailViewMeleeWeapons.as_view(), name="detail_melee_weapon"),
     path("rangedweapons/<int:pk>/", views.DetailViewRangedWeapons.as_view(), name="detail_ranged_weapon"),
