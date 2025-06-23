@@ -53,6 +53,8 @@ from .forms import (
     CharacterArmourUpdateForm,
     CharacterPacksAndContainersCreateForm,
     CharacterPacksAndContainersUpdateForm,
+    CharacterClothingAndAccessoriesCreateForm,
+    CharacterClothingAndAccessoriesUpdateForm,
 )
 
 
@@ -288,6 +290,40 @@ class CreateViewCharacterPacksAndContainers(LoginRequiredMixin, CreateView):
         )
 
 
+class CreateViewCharacterClothingAndAccessories(LoginRequiredMixin, CreateView):
+    """Create view for characters' clothing and accessories."""
+
+    model = CharacterClothingAndAccessories
+    form_class = CharacterClothingAndAccessoriesCreateForm
+    template_name = "equipment/characterclothingandaccessories_create.html"
+
+    def get_form_kwargs(self):
+        """Method returns kwargs with saved character."""
+        kwargs = super().get_form_kwargs()
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        kwargs["character"] = character
+        return kwargs
+
+    def form_valid(self, form):
+        """Method ensures the user can only create clothing for their own characters."""
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        form.instance.character = character
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        """Method prepares redirection link with character id in argument."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.kwargs["character_id"]},
+        )
+
+
 class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
     """Update view for characters' melee weapon."""
 
@@ -374,6 +410,25 @@ class UpdateViewCharacterPacksAndContainers(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         """Method filters queryset to only allow access to the user's own characters."""
         return CharacterPacksAndContainers.objects.filter(character__user=self.request.user)
+
+    def get_success_url(self):
+        """Method redirects back to character's equipment page."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.object.character.id},
+        )
+
+
+class UpdateViewCharacterClothingAndAccessories(LoginRequiredMixin, UpdateView):
+    """Update view for characters' clothing and accessories."""
+
+    model = CharacterClothingAndAccessories
+    form_class = CharacterClothingAndAccessoriesUpdateForm
+    template_name = "equipment/characterclothingandaccessories_update.html"
+
+    def get_queryset(self):
+        """Method filters queryset to only allow access to the user's own characters."""
+        return CharacterClothingAndAccessories.objects.filter(character__user=self.request.user)
 
     def get_success_url(self):
         """Method redirects back to character's equipment page."""
@@ -490,6 +545,28 @@ class DeleteViewCharacterPacksAndContainers(LoginRequiredMixin, DeleteView):
     def delete(self, *args, **kwargs):
         """Method deletes chosen characters' container."""
         messages.success(self.request, "Characters' Container Deleted")
+        return super().delete(*args, **kwargs)
+
+
+class DeleteViewCharacterClothingAndAccessories(LoginRequiredMixin, DeleteView):
+    """Delete view of a characters' clothing and accessories."""
+
+    model = CharacterClothingAndAccessories
+
+    def get_success_url(self):
+        """Method to redirect user after successful deletion."""
+        character_id = self.object.character.id
+        return reverse_lazy(
+            "equipment:character_equipment", kwargs={"character_id": character_id}
+        )
+
+    def get_queryset(self):
+        """Method to ensure that only the owner can delete their characters' clothing."""
+        return super().get_queryset().filter(character__user=self.request.user)
+
+    def delete(self, *args, **kwargs):
+        """Method deletes chosen characters' clothing."""
+        messages.success(self.request, "Characters' Clothing Deleted")
         return super().delete(*args, **kwargs)
 
 

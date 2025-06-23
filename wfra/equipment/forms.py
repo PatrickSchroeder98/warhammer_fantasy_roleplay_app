@@ -1,5 +1,18 @@
 from django import forms
-from .models import MeleeWeapons, RangedWeapons, Ammunition, Armour, PacksAndContainers, CharacterMeleeWeapons, CharacterRangedWeapons, CharacterAmmunition, CharacterArmour, CharacterPacksAndContainers
+from .models import (
+    MeleeWeapons,
+    RangedWeapons,
+    Ammunition,
+    Armour,
+    PacksAndContainers,
+    ClothingAndAccessories,
+    CharacterMeleeWeapons,
+    CharacterRangedWeapons,
+    CharacterAmmunition,
+    CharacterArmour,
+    CharacterPacksAndContainers,
+    CharacterClothingAndAccessories,
+)
 
 
 class CharacterMeleeWeaponsCreateForm(forms.ModelForm):
@@ -284,6 +297,64 @@ class CharacterPacksAndContainersUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterPacksAndContainers
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterClothingAndAccessoriesCreateForm(forms.ModelForm):
+    """Form for creation of ClothingAndAccessories row."""
+
+    clothing_and_accessories = forms.ModelChoiceField(
+        queryset=ClothingAndAccessories.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="ClothingAndAccessories",
+    )
+
+    class Meta:
+        model = CharacterClothingAndAccessories
+        fields = ("clothing_and_accessories", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen clothing, raises error if it exists."""
+        cleaned_data = super().clean()
+        clothing_and_accessories = cleaned_data.get("clothing_and_accessories")
+
+        if self.character and clothing_and_accessories:
+            exists = CharacterClothingAndAccessories.objects.filter(
+                character=self.character, clothing_and_accessories=clothing_and_accessories
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this clothing. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterClothingAndAccessoriesUpdateForm(forms.ModelForm):
+    """Form for update of ClothingAndAccessories row. ClothingAndAccessoriesID is not possible to change."""
+
+    class Meta:
+        model = CharacterClothingAndAccessories
         fields = ("quantity", "equipped")
 
         widgets = {
