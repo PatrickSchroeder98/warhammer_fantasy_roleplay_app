@@ -100,6 +100,9 @@ class FoodDrinkAndLodging(models.Model):
     encumbrance = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (ENC: {self.encumbrance}, Price {self.price})"
+
 
 class ToolsAndKits(models.Model):
     """Model with fields for tools and kits."""
@@ -299,6 +302,15 @@ class CharacterFoodDrinkAndLodging(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "food_drink_and_lodging"],
+                name="unique_food_drink_and_lodging_per_character",
+            )
+        ]
+
 
 
 class CharacterToolsAndKits(models.Model):

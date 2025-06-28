@@ -6,12 +6,14 @@ from .models import (
     Armour,
     PacksAndContainers,
     ClothingAndAccessories,
+    FoodDrinkAndLodging,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
     CharacterAmmunition,
     CharacterArmour,
     CharacterPacksAndContainers,
     CharacterClothingAndAccessories,
+    CharacterFoodDrinkAndLodging
 )
 
 
@@ -355,6 +357,64 @@ class CharacterClothingAndAccessoriesUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterClothingAndAccessories
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterFoodDrinkAndLodgingCreateForm(forms.ModelForm):
+    """Form for creation of FoodDrinkAndLodging row."""
+
+    food_drink_and_lodging = forms.ModelChoiceField(
+        queryset=FoodDrinkAndLodging.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="FoodDrinkAndLodging",
+    )
+
+    class Meta:
+        model = CharacterFoodDrinkAndLodging
+        fields = ("food_drink_and_lodging", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen food, raises error if it exists."""
+        cleaned_data = super().clean()
+        food_drink_and_lodging = cleaned_data.get("food_drink_and_lodging")
+
+        if self.character and food_drink_and_lodging:
+            exists = CharacterFoodDrinkAndLodging.objects.filter(
+                character=self.character, food_drink_and_lodging=food_drink_and_lodging
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this food, drink or lodging. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterFoodDrinkAndLodgingUpdateForm(forms.ModelForm):
+    """Form for update of FoodDrinkAndLodging row. FoodDrinkAndLodgingID is not possible to change."""
+
+    class Meta:
+        model = CharacterFoodDrinkAndLodging
         fields = ("quantity", "equipped")
 
         widgets = {
