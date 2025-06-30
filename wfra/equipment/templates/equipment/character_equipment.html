@@ -213,6 +213,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -222,6 +223,10 @@
                   <td><a href="{% url 'equipment:detail_food_drink_and_lodging' item.food_drink_and_lodging.id %}">{{ item.food_drink_and_lodging.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                    <td>
+                      <a href="{% url 'equipment:edit_character_food_drink_and_lodging' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_food_drink_and_lodging' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -229,6 +234,8 @@
   {% else %}
     <p>No Food Drink And Lodging.</p>
   {% endif %}
+<a href="{% url 'equipment:add_character_food_drink_and_lodging' character.id %}">Add Clothing And Accessories</a>
+<br><br>
 
       <h2>Tools And Kits</h2>
   {% if tools_and_kits %}
