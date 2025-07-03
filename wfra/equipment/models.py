@@ -112,6 +112,9 @@ class ToolsAndKits(models.Model):
     encumbrance = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (ENC: {self.encumbrance}, Price {self.price})"
+
 
 class BooksAndDocuments(models.Model):
     """Model with fields for books and documents."""
@@ -312,7 +315,6 @@ class CharacterFoodDrinkAndLodging(models.Model):
         ]
 
 
-
 class CharacterToolsAndKits(models.Model):
     """Model with fields for characters' tools and kits."""
 
@@ -320,6 +322,14 @@ class CharacterToolsAndKits(models.Model):
     tools_and_kits = models.ForeignKey(ToolsAndKits, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "tools_and_kits"],
+                name="unique_tools_and_kits_per_character",
+            )
+        ]
 
 
 class CharacterBooksAndDocuments(models.Model):

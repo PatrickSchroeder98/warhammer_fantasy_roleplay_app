@@ -13,6 +13,7 @@ urlpatterns = [
     path("character/<int:character_id>/add-packs-and-containers/", views.CreateViewCharacterPacksAndContainers.as_view(), name="add_character_packs_and_containers"),
     path("character/<int:character_id>/add-clothing-and-accessories/", views.CreateViewCharacterClothingAndAccessories.as_view(), name="add_character_clothing_and_accessories"),
     path("character/<int:character_id>/add-food-drink-and-lodging/", views.CreateViewCharacterFoodDrinkAndLodging.as_view(), name="add_character_food_drink_and_lodging"),
+    path("character/<int:character_id>/add-tools-and-kits/", views.CreateViewCharacterToolsAndKits.as_view(), name="add_character_tools_and_kits"),
 
     path("character_melee_weapons/<int:pk>/edit/", views.UpdateViewCharacterMeleeWeapons.as_view(), name="edit_character_melee_weapon"),
     path("character_ranged_weapons/<int:pk>/edit/", views.UpdateViewCharacterRangedWeapons.as_view(), name="edit_character_ranged_weapon"),
@@ -21,6 +22,7 @@ urlpatterns = [
     path("character_packs_and_containers/<int:pk>/edit/", views.UpdateViewCharacterPacksAndContainers.as_view(), name="edit_character_packs_and_containers"),
     path("character_clothing_and_accessories/<int:pk>/edit/", views.UpdateViewCharacterClothingAndAccessories.as_view(), name="edit_character_clothing_and_accessories"),
     path("character_food_drink_and_lodging/<int:pk>/edit/", views.UpdateViewCharacterFoodDrinkAndLodging.as_view(), name="edit_character_food_drink_and_lodging"),
+    path("character_tools_and_kits/<int:pk>/edit/", views.UpdateViewCharacterToolsAndKits.as_view(), name="edit_character_tools_and_kits"),
 
     path("character_melee_weapons/<int:pk>/delete", views.DeleteViewCharacterMeleeWeapon.as_view(), name="delete_character_melee_weapon"),
     path("character_ranged_weapons/<int:pk>/delete", views.DeleteViewCharacterRangedWeapon.as_view(), name="delete_character_ranged_weapon"),
@@ -29,6 +31,7 @@ urlpatterns = [
     path("character_packs_and_containers/<int:pk>/delete", views.DeleteViewCharacterPacksAndContainers.as_view(), name="delete_character_packs_and_containers"),
     path("character_clothing_and_accessories/<int:pk>/delete", views.DeleteViewCharacterClothingAndAccessories.as_view(), name="delete_character_clothing_and_accessories"),
     path("character_food_drink_and_lodging/<int:pk>/delete", views.DeleteViewCharacterFoodDrinkAndLodging.as_view(), name="delete_character_food_drink_and_lodging"),
+    path("character_tools_and_kits/<int:pk>/delete", views.DeleteViewCharacterToolsAndKits.as_view(), name="delete_character_tools_and_kits"),
 
     path("meleeweapons/<int:pk>/", views.DetailViewMeleeWeapons.as_view(), name="detail_melee_weapon"),
     path("rangedweapons/<int:pk>/", views.DetailViewRangedWeapons.as_view(), name="detail_ranged_weapon"),

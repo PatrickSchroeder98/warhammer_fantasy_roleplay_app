@@ -7,13 +7,15 @@ from .models import (
     PacksAndContainers,
     ClothingAndAccessories,
     FoodDrinkAndLodging,
+    ToolsAndKits,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
     CharacterAmmunition,
     CharacterArmour,
     CharacterPacksAndContainers,
     CharacterClothingAndAccessories,
-    CharacterFoodDrinkAndLodging
+    CharacterFoodDrinkAndLodging,
+    CharacterToolsAndKits,
 )
 
 
@@ -415,6 +417,64 @@ class CharacterFoodDrinkAndLodgingUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterFoodDrinkAndLodging
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterToolsAndKitsCreateForm(forms.ModelForm):
+    """Form for creation of ToolsAndKits row."""
+
+    tools_and_kits = forms.ModelChoiceField(
+        queryset=ToolsAndKits.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="ToolsAndKits",
+    )
+
+    class Meta:
+        model = CharacterToolsAndKits
+        fields = ("tools_and_kits", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen tool, raises error if it exists."""
+        cleaned_data = super().clean()
+        tools_and_kits = cleaned_data.get("tools_and_kits")
+
+        if self.character and tools_and_kits:
+            exists = CharacterToolsAndKits.objects.filter(
+                character=self.character, tools_and_kits=tools_and_kits
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this tool or kit. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterToolsAndKitsUpdateForm(forms.ModelForm):
+    """Form for update of ToolsAndKits row. ToolsAndKitsID is not possible to change."""
+
+    class Meta:
+        model = CharacterToolsAndKits
         fields = ("quantity", "equipped")
 
         widgets = {
