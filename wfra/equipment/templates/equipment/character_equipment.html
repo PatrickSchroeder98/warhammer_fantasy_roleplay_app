@@ -234,7 +234,7 @@
   {% else %}
     <p>No Food Drink And Lodging.</p>
   {% endif %}
-<a href="{% url 'equipment:add_character_food_drink_and_lodging' character.id %}">Add Clothing And Accessories</a>
+<a href="{% url 'equipment:add_character_food_drink_and_lodging' character.id %}">Add Food, Drink and Lodging</a>
 <br><br>
 
       <h2>Tools And Kits</h2>
@@ -245,6 +245,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -254,6 +255,10 @@
                   <td><a href="{% url 'equipment:detail_tools_and_kits' item.tools_and_kits.id %}">{{ item.tools_and_kits.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                    <td>
+                      <a href="{% url 'equipment:edit_character_tools_and_kits' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_tools_and_kits' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -261,6 +266,8 @@
   {% else %}
     <p>No Tools And Kits.</p>
   {% endif %}
+<a href="{% url 'equipment:add_character_tools_and_kits' character.id %}">Add Tools And Kits</a>
+<br><br>
 
      <h2>Books And Documents</h2>
   {% if books_and_documents %}
