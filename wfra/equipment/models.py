@@ -124,6 +124,9 @@ class BooksAndDocuments(models.Model):
     encumbrance = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (ENC: {self.encumbrance}, Price {self.price})"
+
 
 class TradeToolsAndWorkshops(models.Model):
     """Model with fields for trade tools and workshops."""
@@ -339,6 +342,14 @@ class CharacterBooksAndDocuments(models.Model):
     books_and_documents = models.ForeignKey(BooksAndDocuments, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "books_and_documents"],
+                name="unique_books_and_documents_per_character",
+            )
+        ]
 
 
 class CharacterTradeToolsAndWorkshops(models.Model):

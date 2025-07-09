@@ -8,6 +8,7 @@ from .models import (
     ClothingAndAccessories,
     FoodDrinkAndLodging,
     ToolsAndKits,
+    BooksAndDocuments,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
     CharacterAmmunition,
@@ -16,6 +17,7 @@ from .models import (
     CharacterClothingAndAccessories,
     CharacterFoodDrinkAndLodging,
     CharacterToolsAndKits,
+    CharacterBooksAndDocuments,
 )
 
 
@@ -475,6 +477,64 @@ class CharacterToolsAndKitsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterToolsAndKits
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterBooksAndDocumentsCreateForm(forms.ModelForm):
+    """Form for creation of BooksAndDocuments row."""
+
+    books_and_documents = forms.ModelChoiceField(
+        queryset=BooksAndDocuments.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="BooksAndDocuments",
+    )
+
+    class Meta:
+        model = CharacterBooksAndDocuments
+        fields = ("books_and_documents", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen book, raises error if it exists."""
+        cleaned_data = super().clean()
+        books_and_documents = cleaned_data.get("books_and_documents")
+
+        if self.character and books_and_documents:
+            exists = CharacterBooksAndDocuments.objects.filter(
+                character=self.character, books_and_documents=books_and_documents
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this book or document. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterBooksAndDocumentsUpdateForm(forms.ModelForm):
+    """Form for update of BooksAndDocuments row. BooksAndDocumentsID is not possible to change."""
+
+    class Meta:
+        model = CharacterBooksAndDocuments
         fields = ("quantity", "equipped")
 
         widgets = {

@@ -59,6 +59,8 @@ from .forms import (
     CharacterFoodDrinkAndLodgingUpdateForm,
     CharacterToolsAndKitsCreateForm,
     CharacterToolsAndKitsUpdateForm,
+    CharacterBooksAndDocumentsCreateForm,
+    CharacterBooksAndDocumentsUpdateForm,
 )
 
 
@@ -396,6 +398,40 @@ class CreateViewCharacterToolsAndKits(LoginRequiredMixin, CreateView):
         )
 
 
+class CreateViewCharacterBooksAndDocuments(LoginRequiredMixin, CreateView):
+    """Create view for characters' tools and kits."""
+
+    model = CharacterBooksAndDocuments
+    form_class = CharacterBooksAndDocumentsCreateForm
+    template_name = "equipment/characterbooksanddocuments_create.html"
+
+    def get_form_kwargs(self):
+        """Method returns kwargs with saved character."""
+        kwargs = super().get_form_kwargs()
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        kwargs["character"] = character
+        return kwargs
+
+    def form_valid(self, form):
+        """Method ensures the user can only create books for their own characters."""
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        form.instance.character = character
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        """Method prepares redirection link with character id in argument."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.kwargs["character_id"]},
+        )
+
+
 class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
     """Update view for characters' melee weapon."""
 
@@ -539,6 +575,25 @@ class UpdateViewCharacterToolsAndKits(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         """Method filters queryset to only allow access to the user's own characters."""
         return CharacterToolsAndKits.objects.filter(character__user=self.request.user)
+
+    def get_success_url(self):
+        """Method redirects back to character's equipment page."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.object.character.id},
+        )
+
+
+class UpdateViewCharacterBooksAndDocuments(LoginRequiredMixin, UpdateView):
+    """Update view for characters' tools and kits."""
+
+    model = CharacterBooksAndDocuments
+    form_class = CharacterBooksAndDocumentsUpdateForm
+    template_name = "equipment/characterbooksanddocuments_update.html"
+
+    def get_queryset(self):
+        """Method filters queryset to only allow access to the user's own characters."""
+        return CharacterBooksAndDocuments.objects.filter(character__user=self.request.user)
 
     def get_success_url(self):
         """Method redirects back to character's equipment page."""
@@ -723,6 +778,27 @@ class DeleteViewCharacterToolsAndKits(LoginRequiredMixin, DeleteView):
         messages.success(self.request, "Characters' Tool Or Kit Deleted")
         return super().delete(*args, **kwargs)
 
+
+class DeleteViewCharacterBooksAndDocuments(LoginRequiredMixin, DeleteView):
+    """Delete view of a characters' books and documents."""
+
+    model = CharacterBooksAndDocuments
+
+    def get_success_url(self):
+        """Method to redirect user after successful deletion."""
+        character_id = self.object.character.id
+        return reverse_lazy(
+            "equipment:character_equipment", kwargs={"character_id": character_id}
+        )
+
+    def get_queryset(self):
+        """Method to ensure that only the owner can delete their characters' books and documents."""
+        return super().get_queryset().filter(character__user=self.request.user)
+
+    def delete(self, *args, **kwargs):
+        """Method deletes chosen characters' book or document."""
+        messages.success(self.request, "Characters' Book Or Document Deleted")
+        return super().delete(*args, **kwargs)
 
 
 class DetailViewMeleeWeapons(LoginRequiredMixin, DetailView):
