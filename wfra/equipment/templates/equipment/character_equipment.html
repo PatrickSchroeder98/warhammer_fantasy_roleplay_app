@@ -277,6 +277,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -286,6 +287,10 @@
                   <td><a href="{% url 'equipment:detail_books_and_documents' item.books_and_documents.id %}">{{ item.books_and_documents.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                    <td>
+                      <a href="{% url 'equipment:edit_character_books_and_documents' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_books_and_documents' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -293,6 +298,8 @@
   {% else %}
     <p>No Books And Documents.</p>
   {% endif %}
+<a href="{% url 'equipment:add_character_books_and_documents' character.id %}">Add Books And Documents</a>
+<br><br>
 
      <h2>Trade Tools And Workshops</h2>
   {% if trade_tools_and_workshops %}
