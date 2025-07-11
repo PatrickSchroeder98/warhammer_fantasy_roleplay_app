@@ -136,6 +136,9 @@ class TradeToolsAndWorkshops(models.Model):
     encumbrance = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (ENC: {self.encumbrance}, Price {self.price})"
+
 
 class AnimalsAndVehicles(models.Model):
     """Model with fields for animals and vehicles."""
@@ -361,6 +364,14 @@ class CharacterTradeToolsAndWorkshops(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "trade_tools_and_workshops"],
+                name="unique_trade_tools_and_workshops_per_character",
+            )
+        ]
 
 
 class CharacterAnimalsAndVehicles(models.Model):

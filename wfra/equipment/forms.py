@@ -9,6 +9,7 @@ from .models import (
     FoodDrinkAndLodging,
     ToolsAndKits,
     BooksAndDocuments,
+    TradeToolsAndWorkshops,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
     CharacterAmmunition,
@@ -18,6 +19,7 @@ from .models import (
     CharacterFoodDrinkAndLodging,
     CharacterToolsAndKits,
     CharacterBooksAndDocuments,
+    CharacterTradeToolsAndWorkshops,
 )
 
 
@@ -535,6 +537,64 @@ class CharacterBooksAndDocumentsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterBooksAndDocuments
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterTradeToolsAndWorkshopsCreateForm(forms.ModelForm):
+    """Form for creation of TradeToolsAndWorkshops row."""
+
+    trade_tools_and_workshops = forms.ModelChoiceField(
+        queryset=TradeToolsAndWorkshops.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="TradeToolsAndWorkshops",
+    )
+
+    class Meta:
+        model = CharacterTradeToolsAndWorkshops
+        fields = ("trade_tools_and_workshops", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen tool, raises error if it exists."""
+        cleaned_data = super().clean()
+        trade_tools_and_workshops = cleaned_data.get("trade_tools_and_workshops")
+
+        if self.character and trade_tools_and_workshops:
+            exists = CharacterTradeToolsAndWorkshops.objects.filter(
+                character=self.character, trade_tools_and_workshops=trade_tools_and_workshops
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this trade tool or workshop. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterTradeToolsAndWorkshopsUpdateForm(forms.ModelForm):
+    """Form for update of TradeToolsAndWorkshops row. TradeToolsAndWorkshopsID is not possible to change."""
+
+    class Meta:
+        model = CharacterTradeToolsAndWorkshops
         fields = ("quantity", "equipped")
 
         widgets = {
