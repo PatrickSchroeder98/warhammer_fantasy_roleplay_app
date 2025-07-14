@@ -309,6 +309,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -318,6 +319,10 @@
                   <td><a href="{% url 'equipment:detail_trade_tools_and_workshops' item.trade_tools_and_workshops.id %}">{{ item.trade_tools_and_workshops.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                    <td>
+                      <a href="{% url 'equipment:edit_character_trade_tools_and_workshops' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_trade_tools_and_workshops' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -325,6 +330,8 @@
   {% else %}
     <p>No Trade Tools And Workshops.</p>
   {% endif %}
+<a href="{% url 'equipment:add_character_trade_tools_and_workshops' character.id %}">Add Trade Tools And Workshops</a>
+<br><br>
 
     <h2>Animals And Vehicles</h2>
   {% if animals_and_vehicles %}
