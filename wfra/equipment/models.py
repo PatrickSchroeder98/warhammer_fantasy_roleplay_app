@@ -149,6 +149,8 @@ class AnimalsAndVehicles(models.Model):
     carries = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (Carries: {self.carries}, ENC: {self.encumbrance}, Price {self.price})"
 
 class DrugsAndPoisons(models.Model):
     """Model with fields for drugs and poisons."""
@@ -383,6 +385,14 @@ class CharacterAnimalsAndVehicles(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "animals_and_vehicles"],
+                name="unique_animals_and_vehicles_per_character",
+            )
+        ]
 
 
 class CharacterDrugsAndPoisons(models.Model):

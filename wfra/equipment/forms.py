@@ -10,6 +10,7 @@ from .models import (
     ToolsAndKits,
     BooksAndDocuments,
     TradeToolsAndWorkshops,
+    AnimalsAndVehicles,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
     CharacterAmmunition,
@@ -20,6 +21,7 @@ from .models import (
     CharacterToolsAndKits,
     CharacterBooksAndDocuments,
     CharacterTradeToolsAndWorkshops,
+    CharacterAnimalsAndVehicles,
 )
 
 
@@ -595,6 +597,64 @@ class CharacterTradeToolsAndWorkshopsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterTradeToolsAndWorkshops
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterAnimalsAndVehiclesCreateForm(forms.ModelForm):
+    """Form for creation of AnimalsAndVehicles row."""
+
+    animals_and_vehicles = forms.ModelChoiceField(
+        queryset=AnimalsAndVehicles.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="AnimalsAndVehicles",
+    )
+
+    class Meta:
+        model = CharacterAnimalsAndVehicles
+        fields = ("animals_and_vehicles", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen animal or vehicle, raises error if it exists."""
+        cleaned_data = super().clean()
+        animals_and_vehicles = cleaned_data.get("animals_and_vehicles")
+
+        if self.character and animals_and_vehicles:
+            exists = CharacterAnimalsAndVehicles.objects.filter(
+                character=self.character, animals_and_vehicles=animals_and_vehicles
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this animal or vehicle. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterAnimalsAndVehiclesUpdateForm(forms.ModelForm):
+    """Form for update of AnimalsAndVehicles row. AnimalsAndVehiclesID is not possible to change."""
+
+    class Meta:
+        model = CharacterAnimalsAndVehicles
         fields = ("quantity", "equipped")
 
         widgets = {
