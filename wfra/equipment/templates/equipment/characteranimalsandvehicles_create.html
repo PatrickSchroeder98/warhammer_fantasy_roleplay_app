@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<br>
+{% if form.non_field_errors %}
+  <div class="alert alert-danger">
+    {% for error in form.non_field_errors %}
+      <p>{{ error }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="container mt-5">
+    <h2 class="text-center">Add Animals And Vehicles</h2>
+    <form method="post">
+        {% csrf_token %}
+
+            <h4>Animals And Vehicles Information</h4>
+
+        <div class="mb-3">
+            <label for="{{ form.animals_and_vehicles.id_for_label }}" class="form-label">Animals And Vehicles</label>
+            {{ form.animals_and_vehicles }}
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.quantity.id_for_label }}" class="form-label">Quantity</label>
+            {{ form.quantity }}
+        </div>
+
+        <div class="mb-3 form-check">
+            {{ form.equipped }}
+            <label class="form-check-label" for="{{ form.equipped.id_for_label }}">
+                Equipped
+            </label>
+        </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-warning" type="submit">Add</button>
+                </div>
+
+        <br><br>
+    </form>
+</div>
+
+
+{% endblock %}
