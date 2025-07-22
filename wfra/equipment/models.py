@@ -160,6 +160,9 @@ class DrugsAndPoisons(models.Model):
     encumbrance = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (ENC: {self.encumbrance}, Price {self.price})"
+
 
 class HerbsAndDraughts(models.Model):
     """Model with fields for herbs and draughts."""
@@ -402,6 +405,14 @@ class CharacterDrugsAndPoisons(models.Model):
     drugs_and_poisons = models.ForeignKey(DrugsAndPoisons, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "drugs_and_poisons"],
+                name="unique_drugs_and_poisons_per_character",
+            )
+        ]
 
 
 class CharacterHerbsAndDraughts(models.Model):
