@@ -375,6 +375,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -384,6 +385,10 @@
                   <td><a href="{% url 'equipment:detail_drugs_and_poisons' item.drugs_and_poisons.id %}">{{ item.drugs_and_poisons.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                  <td>
+                      <a href="{% url 'equipment:edit_character_drugs_and_poisons' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_drugs_and_poisons' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -391,6 +396,8 @@
   {% else %}
     <p>No Drugs And Poisons.</p>
   {% endif %}
+    <a href="{% url 'equipment:add_character_drugs_and_poisons' character.id %}">Add Drugs And Poisons</a>
+<br><br>
 
     <h2>Herbs And Draughts</h2>
   {% if herbs_and_draughts %}
