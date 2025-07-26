@@ -67,6 +67,8 @@ from .forms import (
     CharacterAnimalsAndVehiclesUpdateForm,
     CharacterDrugsAndPoisonsCreateForm,
     CharacterDrugsAndPoisonsUpdateForm,
+    CharacterHerbsAndDraughtsCreateForm,
+    CharacterHerbsAndDraughtsUpdateForm,
 )
 
 
@@ -540,6 +542,40 @@ class CreateViewCharacterDrugsAndPoisons(LoginRequiredMixin, CreateView):
         )
 
 
+class CreateViewCharacterHerbsAndDraughts(LoginRequiredMixin, CreateView):
+    """Create view for characters' herbs and draughts."""
+
+    model = CharacterHerbsAndDraughts
+    form_class = CharacterHerbsAndDraughtsCreateForm
+    template_name = "equipment/characterherbsanddraughts_create.html"
+
+    def get_form_kwargs(self):
+        """Method returns kwargs with saved character."""
+        kwargs = super().get_form_kwargs()
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        kwargs["character"] = character
+        return kwargs
+
+    def form_valid(self, form):
+        """Method ensures the user can only create herbs or draughts for their own characters."""
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(
+            Characters, pk=character_id, user=self.request.user
+        )
+        form.instance.character = character
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        """Method prepares redirection link with character id in argument."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.kwargs["character_id"]},
+        )
+
+
 class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
     """Update view for characters' melee weapon."""
 
@@ -759,6 +795,25 @@ class UpdateViewCharacterDrugsAndPoisons(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         """Method filters queryset to only allow access to the user's own characters."""
         return CharacterDrugsAndPoisons.objects.filter(character__user=self.request.user)
+
+    def get_success_url(self):
+        """Method redirects back to character's equipment page."""
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.object.character.id},
+        )
+
+
+class UpdateViewCharacterHerbsAndDraughts(LoginRequiredMixin, UpdateView):
+    """Update view for characters' herbs and draughts."""
+
+    model = CharacterHerbsAndDraughts
+    form_class = CharacterHerbsAndDraughtsUpdateForm
+    template_name = "equipment/characterherbsanddraughts_update.html"
+
+    def get_queryset(self):
+        """Method filters queryset to only allow access to the user's own characters."""
+        return CharacterHerbsAndDraughts.objects.filter(character__user=self.request.user)
 
     def get_success_url(self):
         """Method redirects back to character's equipment page."""
@@ -1029,6 +1084,28 @@ class DeleteViewCharacterDrugsAndPoisons(LoginRequiredMixin, DeleteView):
     def delete(self, *args, **kwargs):
         """Method deletes chosen characters' drug or poison."""
         messages.success(self.request, "Characters' Drug Or Poison Deleted")
+        return super().delete(*args, **kwargs)
+
+
+class DeleteViewCharacterHerbsAndDraughts(LoginRequiredMixin, DeleteView):
+    """Delete view of a characters' herbs and draughts."""
+
+    model = CharacterHerbsAndDraughts
+
+    def get_success_url(self):
+        """Method to redirect user after successful deletion."""
+        character_id = self.object.character.id
+        return reverse_lazy(
+            "equipment:character_equipment", kwargs={"character_id": character_id}
+        )
+
+    def get_queryset(self):
+        """Method to ensure that only the owner can delete their characters' herbs and draughts."""
+        return super().get_queryset().filter(character__user=self.request.user)
+
+    def delete(self, *args, **kwargs):
+        """Method deletes chosen characters' herb or draught."""
+        messages.success(self.request, "Characters' Herb Or Draught Deleted")
         return super().delete(*args, **kwargs)
 
 

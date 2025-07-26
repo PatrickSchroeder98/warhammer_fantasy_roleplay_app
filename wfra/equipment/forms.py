@@ -12,6 +12,7 @@ from .models import (
     TradeToolsAndWorkshops,
     AnimalsAndVehicles,
     DrugsAndPoisons,
+    HerbsAndDraughts,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
     CharacterAmmunition,
@@ -24,6 +25,7 @@ from .models import (
     CharacterTradeToolsAndWorkshops,
     CharacterAnimalsAndVehicles,
     CharacterDrugsAndPoisons,
+    CharacterHerbsAndDraughts,
 )
 
 
@@ -715,6 +717,64 @@ class CharacterDrugsAndPoisonsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterDrugsAndPoisons
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterHerbsAndDraughtsCreateForm(forms.ModelForm):
+    """Form for creation of HerbsAndDraughts row."""
+
+    herbs_and_draughts = forms.ModelChoiceField(
+        queryset=HerbsAndDraughts.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="HerbsAndDraughts",
+    )
+
+    class Meta:
+        model = CharacterHerbsAndDraughts
+        fields = ("herbs_and_draughts", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen herb or draught, raises error if it exists."""
+        cleaned_data = super().clean()
+        herbs_and_draughts = cleaned_data.get("herbs_and_draughts")
+
+        if self.character and herbs_and_draughts:
+            exists = CharacterHerbsAndDraughts.objects.filter(
+                character=self.character, herbs_and_draughts=herbs_and_draughts
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this herb or draught. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterHerbsAndDraughtsUpdateForm(forms.ModelForm):
+    """Form for update of HerbsAndDraughts row. HerbsAndDraughtsID is not possible to change."""
+
+    class Meta:
+        model = CharacterHerbsAndDraughts
         fields = ("quantity", "equipped")
 
         widgets = {
