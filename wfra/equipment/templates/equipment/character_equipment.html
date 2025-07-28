@@ -407,6 +407,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -416,6 +417,10 @@
                   <td><a href="{% url 'equipment:detail_herbs_and_draughts' item.herbs_and_draughts.id %}">{{ item.herbs_and_draughts.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                  <td>
+                      <a href="{% url 'equipment:edit_character_herbs_and_draughts' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_herbs_and_draughts' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -423,6 +428,8 @@
   {% else %}
     <p>No Herbs And Draughts.</p>
   {% endif %}
+    <a href="{% url 'equipment:add_character_herbs_and_draughts' character.id %}">Add Herbs And Draughts</a>
+<br><br>
 
      <h2>Prosthetics</h2>
   {% if prosthetics %}
