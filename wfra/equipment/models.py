@@ -184,6 +184,9 @@ class Prosthetics(models.Model):
     encumbrance = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (ENC: {self.encumbrance}, Price {self.price})"
+
 
 class MiscellaneousTrappings(models.Model):
     """Model with fields for miscellaneous trappings."""
@@ -442,6 +445,14 @@ class CharacterProsthetics(models.Model):
     prosthetics = models.ForeignKey(Prosthetics, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "prosthetics"],
+                name="unique_prosthetics_per_character",
+            )
+        ]
 
 
 class CharacterMiscellaneousTrappings(models.Model):

@@ -19,6 +19,7 @@ urlpatterns = [
     path("character/<int:character_id>/add-animals-and-vehicles/", views.CreateViewCharacterAnimalsAndVehicles.as_view(), name="add_character_animals_and_vehicles"),
     path("character/<int:character_id>/add-drugs-and-poisons/", views.CreateViewCharacterDrugsAndPoisons.as_view(), name="add_character_drugs_and_poisons"),
     path("character/<int:character_id>/add-herbs-and-draughts/", views.CreateViewCharacterHerbsAndDraughts.as_view(), name="add_character_herbs_and_draughts"),
+    path("character/<int:character_id>/add-prosthetics/", views.CreateViewCharacterProsthetics.as_view(), name="add_character_prosthetics"),
 
     path("character_melee_weapons/<int:pk>/edit/", views.UpdateViewCharacterMeleeWeapons.as_view(), name="edit_character_melee_weapon"),
     path("character_ranged_weapons/<int:pk>/edit/", views.UpdateViewCharacterRangedWeapons.as_view(), name="edit_character_ranged_weapon"),
@@ -33,6 +34,7 @@ urlpatterns = [
     path("character_animals_and_vehicles/<int:pk>/edit/", views.UpdateViewCharacterAnimalsAndVehicles.as_view(), name="edit_character_animals_and_vehicles"),
     path("character_drugs_and_poisons/<int:pk>/edit/", views.UpdateViewCharacterDrugsAndPoisons.as_view(), name="edit_character_drugs_and_poisons"),
     path("character_herbs_and_draughts/<int:pk>/edit/", views.UpdateViewCharacterHerbsAndDraughts.as_view(), name="edit_character_herbs_and_draughts"),
+    path("character_prosthetics/<int:pk>/edit/", views.UpdateViewCharacterProsthetics.as_view(), name="edit_character_prosthetics"),
 
     path("character_melee_weapons/<int:pk>/delete", views.DeleteViewCharacterMeleeWeapon.as_view(), name="delete_character_melee_weapon"),
     path("character_ranged_weapons/<int:pk>/delete", views.DeleteViewCharacterRangedWeapon.as_view(), name="delete_character_ranged_weapon"),
@@ -47,6 +49,7 @@ urlpatterns = [
     path("character_animals_and_vehicles/<int:pk>/delete", views.DeleteViewCharacterAnimalsAndVehicles.as_view(), name="delete_character_animals_and_vehicles"),
     path("character_drugs_and_poisons/<int:pk>/delete", views.DeleteViewCharacterDrugsAndPoisons.as_view(), name="delete_character_drugs_and_poisons"),
     path("character_herbs_and_draughts/<int:pk>/delete", views.DeleteViewCharacterHerbsAndDraughts.as_view(), name="delete_character_herbs_and_draughts"),
+    path("character_prosthetics/<int:pk>/delete", views.DeleteViewCharacterProsthetics.as_view(), name="delete_character_prosthetics"),
 
     path("meleeweapons/<int:pk>/", views.DetailViewMeleeWeapons.as_view(), name="detail_melee_weapon"),
     path("rangedweapons/<int:pk>/", views.DetailViewRangedWeapons.as_view(), name="detail_ranged_weapon"),
