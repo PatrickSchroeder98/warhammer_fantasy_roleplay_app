@@ -439,6 +439,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -448,6 +449,10 @@
                   <td><a href="{% url 'equipment:detail_prosthetics' item.prosthetics.id %}">{{ item.prosthetics.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                  <td>
+                      <a href="{% url 'equipment:edit_character_prosthetics' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_prosthetics' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -455,6 +460,8 @@
   {% else %}
     <p>No Prosthetics.</p>
   {% endif %}
+    <a href="{% url 'equipment:add_character_prosthetics' character.id %}">Add Prosthetics</a>
+<br><br>
 
     <h2>Miscellaneous Trappings</h2>
   {% if miscellaneous_trappings %}
