@@ -14,6 +14,7 @@ from .models import (
     DrugsAndPoisons,
     HerbsAndDraughts,
     Prosthetics,
+    MiscellaneousTrappings,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
     CharacterAmmunition,
@@ -28,6 +29,7 @@ from .models import (
     CharacterDrugsAndPoisons,
     CharacterHerbsAndDraughts,
     CharacterProsthetics,
+    CharacterMiscellaneousTrappings,
 )
 
 
@@ -835,6 +837,64 @@ class CharacterProstheticsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterProsthetics
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterMiscellaneousTrappingsCreateForm(forms.ModelForm):
+    """Form for creation of MiscellaneousTrappings row."""
+
+    miscellaneous_trappings = forms.ModelChoiceField(
+        queryset=MiscellaneousTrappings.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="MiscellaneousTrappings",
+    )
+
+    class Meta:
+        model = CharacterMiscellaneousTrappings
+        fields = ("miscellaneous_trappings", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen miscellaneous trapping, raises error if it exists."""
+        cleaned_data = super().clean()
+        miscellaneous_trappings = cleaned_data.get("miscellaneous_trappings")
+
+        if self.character and miscellaneous_trappings:
+            exists = CharacterMiscellaneousTrappings.objects.filter(
+                character=self.character, miscellaneous_trappings=miscellaneous_trappings
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this miscellaneous trapping. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterMiscellaneousTrappingsUpdateForm(forms.ModelForm):
+    """Form for update of MiscellaneousTrappings row. MiscellaneousTrappingsID is not possible to change."""
+
+    class Meta:
+        model = CharacterMiscellaneousTrappings
         fields = ("quantity", "equipped")
 
         widgets = {

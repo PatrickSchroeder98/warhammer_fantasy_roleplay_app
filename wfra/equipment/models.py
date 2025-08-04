@@ -196,6 +196,9 @@ class MiscellaneousTrappings(models.Model):
     encumbrance = models.IntegerField()
     availability = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.name} (ENC: {self.encumbrance}, Price {self.price})"
+
 
 class Hirelings(models.Model):
     """Model with fields for hirelings."""
@@ -464,6 +467,14 @@ class CharacterMiscellaneousTrappings(models.Model):
     )
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "miscellaneous_trappings"],
+                name="unique_miscellaneous_trappings_per_character",
+            )
+        ]
 
 
 class CharacterHirelings(models.Model):
