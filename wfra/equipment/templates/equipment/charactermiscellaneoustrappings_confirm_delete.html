@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Delete Characters' Miscellaneous Trappings</h2>
+    <p class="text-center">Are you sure you want to delete "{{ object.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="text-center">
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url 'characters:all' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -471,6 +471,7 @@
               <th>Name</th>
               <th>Quantity</th>
               <th>Equipped</th>
+              <th>Options</th>
           </tr>
       </thead>
 
@@ -480,6 +481,10 @@
                   <td><a href="{% url 'equipment:detail_miscellaneous_trappings' item.miscellaneous_trappings.id %}">{{ item.miscellaneous_trappings.name }}</a></td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.equipped|yesno:"Yes,No" }}</td>
+                  <td>
+                      <a href="{% url 'equipment:edit_character_miscellaneous_trappings' item.pk %}">Edit</a> |
+                      <a href="{% url 'equipment:delete_character_miscellaneous_trappings' item.pk %}">Delete</a>
+                  </td>
               </tr>
               {% endfor %}
       </tbody>
@@ -487,6 +492,9 @@
   {% else %}
     <p>No Miscellaneous Trappings.</p>
   {% endif %}
+    <a href="{% url 'equipment:add_character_miscellaneous_trappings' character.id %}">Add Miscellaneous Trappings</a>
+<br><br>
+
 
     <h2>Hirelings</h2>
   {% if hirelings %}
@@ -512,6 +520,7 @@
   {% else %}
     <p>No Hirelings.</p>
   {% endif %}
+
 
   <a href="{% url 'characters:detail' character.id %}">← Back to Character</a>
 </div>
