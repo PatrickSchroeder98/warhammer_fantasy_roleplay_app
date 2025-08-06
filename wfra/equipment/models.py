@@ -209,6 +209,9 @@ class Hirelings(models.Model):
     weekly_cost = models.CharField(max_length=50)
     notes = models.CharField(max_length=200)
 
+    def __str__(self):
+        return f"{self.name} (Quick Job: {self.quick_job}, Daily Cost: {self.daily_cost}, Weekly Cost: {self.weekly_cost})"
+
 
 class CharacterMeleeWeapons(models.Model):
     """Model with fields for characters' melee weapons."""
@@ -484,3 +487,11 @@ class CharacterHirelings(models.Model):
     hirelings = models.ForeignKey(Hirelings, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     equipped = models.BooleanField(default=False)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["character", "hirelings"],
+                name="unique_hirelings_per_character",
+            )
+        ]

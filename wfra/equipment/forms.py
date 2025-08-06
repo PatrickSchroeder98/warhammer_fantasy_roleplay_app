@@ -14,6 +14,7 @@ from .models import (
     DrugsAndPoisons,
     HerbsAndDraughts,
     Prosthetics,
+    Hirelings,
     MiscellaneousTrappings,
     CharacterMeleeWeapons,
     CharacterRangedWeapons,
@@ -30,6 +31,7 @@ from .models import (
     CharacterHerbsAndDraughts,
     CharacterProsthetics,
     CharacterMiscellaneousTrappings,
+    CharacterHirelings
 )
 
 
@@ -895,6 +897,64 @@ class CharacterMiscellaneousTrappingsUpdateForm(forms.ModelForm):
 
     class Meta:
         model = CharacterMiscellaneousTrappings
+        fields = ("quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
+class CharacterHirelingsCreateForm(forms.ModelForm):
+    """Form for creation of Hirelings row."""
+
+    hirelings = forms.ModelChoiceField(
+        queryset=Hirelings.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        label="Hirelings",
+    )
+
+    class Meta:
+        model = CharacterHirelings
+        fields = ("hirelings", "quantity", "equipped")
+
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+        labels = {
+            "equipped": "Equipped",
+        }
+
+    def __init__(self, *args, **kwargs):
+        """Accepts a character instance to filter during validation"""
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+    def clean(self):
+        """Method checks if there is a duplicate of chosen hireling, raises error if it exists."""
+        cleaned_data = super().clean()
+        hirelings = cleaned_data.get("hirelings")
+
+        if self.character and hirelings:
+            exists = CharacterHirelings.objects.filter(
+                character=self.character, hirelings=hirelings
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    "Character already has this hireling. Increase the quantity in equipment to add another item of this type."
+                )
+
+        return cleaned_data
+
+
+class CharacterHirelingsUpdateForm(forms.ModelForm):
+    """Form for update of Hirelings row. HirelingsID is not possible to change."""
+
+    class Meta:
+        model = CharacterHirelings
         fields = ("quantity", "equipped")
 
         widgets = {
