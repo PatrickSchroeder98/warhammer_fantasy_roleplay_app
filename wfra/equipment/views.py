@@ -140,140 +140,55 @@ class CharacterEquipmentView(View):
         return render(request, "equipment/character_equipment.html", context)
 
 
-class CreateCharacterMeleeWeaponView(LoginRequiredMixin, CreateView):
-    """Create view for characters' melee weapon."""
+class CharacterEquipmentCreateView(LoginRequiredMixin, CreateView):
+    """Generic create view for character equipment."""
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(Characters, pk=character_id, user=self.request.user)
+        kwargs["character"] = character
+        return kwargs
+
+    def form_valid(self, form):
+        character_id = self.kwargs.get("character_id")
+        character = get_object_or_404(Characters, pk=character_id, user=self.request.user)
+        form.instance.character = character
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.kwargs["character_id"]},
+        )
+
+
+class CreateViewCharacterMeleeWeapons(CharacterEquipmentCreateView):
+    """Create view for characters' melee weapon."""
     model = CharacterMeleeWeapons
     form_class = CharacterMeleeWeaponsCreateForm
     template_name = "equipment/charactermeleeweapons_create.html"
 
-    def get_form_kwargs(self):
-        """Method returns kwargs with saved character."""
-        kwargs = super().get_form_kwargs()
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        kwargs["character"] = character
-        return kwargs
 
-    def form_valid(self, form):
-        """Method ensures the user can only create weapon for their own characters."""
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        form.instance.character = character
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        """Method prepares redirection link with character id in argument."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.kwargs["character_id"]},
-        )
-
-
-class CreateCharacterRangedWeaponView(LoginRequiredMixin, CreateView):
+class CreateViewCharacterRangedWeapons(CharacterEquipmentCreateView):
     """Create view for characters' ranged weapon."""
-
     model = CharacterRangedWeapons
     form_class = CharacterRangedWeaponsCreateForm
     template_name = "equipment/characterrangedweapons_create.html"
 
-    def get_form_kwargs(self):
-        """Method returns kwargs with saved character."""
-        kwargs = super().get_form_kwargs()
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        kwargs["character"] = character
-        return kwargs
 
-    def form_valid(self, form):
-        """Method ensures the user can only create weapon for their own characters."""
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        form.instance.character = character
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        """Method prepares redirection link with character id in argument."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.kwargs["character_id"]},
-        )
-
-
-class CreateViewCharacterAmmunition(LoginRequiredMixin, CreateView):
+class CreateViewCharacterAmmunition(CharacterEquipmentCreateView):
     """Create view for characters' ammunition."""
-
     model = CharacterAmmunition
     form_class = CharacterAmmunitionCreateForm
     template_name = "equipment/characterammunition_create.html"
 
-    def get_form_kwargs(self):
-        """Method returns kwargs with saved character."""
-        kwargs = super().get_form_kwargs()
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        kwargs["character"] = character
-        return kwargs
 
-    def form_valid(self, form):
-        """Method ensures the user can only create ammunition for their own characters."""
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        form.instance.character = character
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        """Method prepares redirection link with character id in argument."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.kwargs["character_id"]},
-        )
-
-
-class CreateViewCharacterArmour(LoginRequiredMixin, CreateView):
+class CreateViewCharacterArmour(CharacterEquipmentCreateView):
     """Create view for characters' armour."""
-
     model = CharacterArmour
     form_class = CharacterArmourCreateForm
     template_name = "equipment/characterarmour_create.html"
-
-    def get_form_kwargs(self):
-        """Method returns kwargs with saved character."""
-        kwargs = super().get_form_kwargs()
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        kwargs["character"] = character
-        return kwargs
-
-    def form_valid(self, form):
-        """Method ensures the user can only create armour for their own characters."""
-        character_id = self.kwargs.get("character_id")
-        character = get_object_or_404(
-            Characters, pk=character_id, user=self.request.user
-        )
-        form.instance.character = character
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        """Method prepares redirection link with character id in argument."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.kwargs["character_id"]},
-        )
 
 
 class CreateViewCharacterPacksAndContainers(LoginRequiredMixin, CreateView):

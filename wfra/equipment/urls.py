@@ -6,8 +6,8 @@ app_name = 'equipment'
 urlpatterns = [
     path("character/<int:character_id>/", views.CharacterEquipmentView.as_view(), name="character_equipment"),
 
-    path("character/<int:character_id>/add-melee-weapon/", views.CreateCharacterMeleeWeaponView.as_view(), name="add_character_melee_weapon"),
-    path("character/<int:character_id>/add-ranged-weapon/", views.CreateCharacterRangedWeaponView.as_view(), name="add_character_ranged_weapon"),
+    path("character/<int:character_id>/add-melee-weapon/", views.CreateViewCharacterMeleeWeapons.as_view(), name="add_character_melee_weapon"),
+    path("character/<int:character_id>/add-ranged-weapon/", views.CreateViewCharacterRangedWeapons.as_view(), name="add_character_ranged_weapon"),
     path("character/<int:character_id>/add-ammunition/", views.CreateViewCharacterAmmunition.as_view(), name="add_character_ammunition"),
     path("character/<int:character_id>/add-armour/", views.CreateViewCharacterArmour.as_view(), name="add_character_armour"),
     path("character/<int:character_id>/add-packs-and-containers/", views.CreateViewCharacterPacksAndContainers.as_view(), name="add_character_packs_and_containers"),
