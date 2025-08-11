@@ -183,11 +183,25 @@ class CreateViewCharacterMeleeWeapons(CharacterEquipmentCreateView):
     template_name = "equipment/charactermeleeweapons_create.html"
 
 
+class UpdateViewCharacterMeleeWeapons(CharacterEquipmentUpdateView):
+    """Update view for characters' melee weapon."""
+    model = CharacterMeleeWeapons
+    form_class = CharacterMeleeWeaponsUpdateForm
+    template_name = "equipment/charactermeleeweapons_update.html"
+
+
 class CreateViewCharacterRangedWeapons(CharacterEquipmentCreateView):
     """Create view for characters' ranged weapon."""
     model = CharacterRangedWeapons
     form_class = CharacterRangedWeaponsCreateForm
     template_name = "equipment/characterrangedweapons_create.html"
+
+
+class UpdateViewCharacterRangedWeapons(CharacterEquipmentUpdateView):
+    """Update view for characters' ranged weapon."""
+    model = CharacterRangedWeapons
+    form_class = CharacterRangedWeaponsUpdateForm
+    template_name = "equipment/characterrangedweapons_update.html"
 
 
 class CreateViewCharacterAmmunition(CharacterEquipmentCreateView):
@@ -197,11 +211,25 @@ class CreateViewCharacterAmmunition(CharacterEquipmentCreateView):
     template_name = "equipment/characterammunition_create.html"
 
 
+class UpdateViewCharacterAmmunition(CharacterEquipmentUpdateView):
+    """Update view for characters' ammunition."""
+    model = CharacterAmmunition
+    form_class = CharacterAmmunitionUpdateForm
+    template_name = "equipment/characterammunition_update.html"
+
+
 class CreateViewCharacterArmour(CharacterEquipmentCreateView):
     """Create view for characters' armour."""
     model = CharacterArmour
     form_class = CharacterArmourCreateForm
     template_name = "equipment/characterarmour_create.html"
+
+
+class UpdateViewCharacterArmour(CharacterEquipmentUpdateView):
+    """Update view for characters' armour."""
+    model = CharacterArmour
+    form_class = CharacterArmourUpdateForm
+    template_name = "equipment/characterarmour_update.html"
 
 
 class CreateViewCharacterPacksAndContainers(CharacterEquipmentCreateView):
@@ -211,11 +239,25 @@ class CreateViewCharacterPacksAndContainers(CharacterEquipmentCreateView):
     template_name = "equipment/characterpacksandcontainers_create.html"
 
 
+class UpdateViewCharacterPacksAndContainers(CharacterEquipmentUpdateView):
+    """Update view for characters' packs and containers."""
+    model = CharacterPacksAndContainers
+    form_class = CharacterPacksAndContainersUpdateForm
+    template_name = "equipment/characterpacksandcontainers_update.html"
+
+
 class CreateViewCharacterClothingAndAccessories(CharacterEquipmentCreateView):
     """Create view for characters' clothing and accessories."""
     model = CharacterClothingAndAccessories
     form_class = CharacterClothingAndAccessoriesCreateForm
     template_name = "equipment/characterclothingandaccessories_create.html"
+
+
+class UpdateViewCharacterClothingAndAccessories(CharacterEquipmentUpdateView):
+    """Update view for characters' clothing and accessories."""
+    model = CharacterClothingAndAccessories
+    form_class = CharacterClothingAndAccessoriesUpdateForm
+    template_name = "equipment/characterclothingandaccessories_update.html"
 
 
 class CreateViewCharacterFoodDrinkAndLodging(CharacterEquipmentCreateView):
@@ -225,11 +267,25 @@ class CreateViewCharacterFoodDrinkAndLodging(CharacterEquipmentCreateView):
     template_name = "equipment/characterfooddrinkandlodging_create.html"
 
 
+class UpdateViewCharacterFoodDrinkAndLodging(CharacterEquipmentUpdateView):
+    """Update view for characters' food, drink and lodging."""
+    model = CharacterFoodDrinkAndLodging
+    form_class = CharacterFoodDrinkAndLodgingUpdateForm
+    template_name = "equipment/characterfooddrinkandlodging_update.html"
+
+
 class CreateViewCharacterToolsAndKits(CharacterEquipmentCreateView):
     """Create view for characters' tools and kits."""
     model = CharacterToolsAndKits
     form_class = CharacterToolsAndKitsCreateForm
     template_name = "equipment/charactertoolsandkits_create.html"
+
+
+class UpdateViewCharacterToolsAndKits(CharacterEquipmentUpdateView):
+    """Update view for characters' tools and kits."""
+    model = CharacterToolsAndKits
+    form_class = CharacterToolsAndKitsUpdateForm
+    template_name = "equipment/charactertoolsandkits_update.html"
 
 
 class CreateViewCharacterBooksAndDocuments(CharacterEquipmentCreateView):
@@ -239,11 +295,25 @@ class CreateViewCharacterBooksAndDocuments(CharacterEquipmentCreateView):
     template_name = "equipment/characterbooksanddocuments_create.html"
 
 
+class UpdateViewCharacterBooksAndDocuments(CharacterEquipmentUpdateView):
+    """Update view for characters' tools and kits."""
+    model = CharacterBooksAndDocuments
+    form_class = CharacterBooksAndDocumentsUpdateForm
+    template_name = "equipment/characterbooksanddocuments_update.html"
+
+
 class CreateViewCharacterTradeToolsAndWorkshops(CharacterEquipmentCreateView):
     """Create view for characters' tools and workshops."""
     model = CharacterTradeToolsAndWorkshops
     form_class = CharacterTradeToolsAndWorkshopsCreateForm
     template_name = "equipment/charactertradetoolsandworkshops_create.html"
+
+
+class UpdateViewCharacterTradeToolsAndWorkshops(CharacterEquipmentUpdateView):
+    """Update view for characters' tools and workshops."""
+    model = CharacterTradeToolsAndWorkshops
+    form_class = CharacterTradeToolsAndWorkshopsUpdateForm
+    template_name = "equipment/charactertradetoolsandworkshops_update.html"
 
 
 class CreateViewCharacterAnimalsAndVehicles(CharacterEquipmentCreateView):
@@ -253,11 +323,25 @@ class CreateViewCharacterAnimalsAndVehicles(CharacterEquipmentCreateView):
     template_name = "equipment/characteranimalsandvehicles_create.html"
 
 
+class UpdateViewCharacterAnimalsAndVehicles(CharacterEquipmentUpdateView):
+    """Update view for characters' animals and vehicles."""
+    model = CharacterAnimalsAndVehicles
+    form_class = CharacterAnimalsAndVehiclesUpdateForm
+    template_name = "equipment/characteranimalsandvehicles_update.html"
+
+
 class CreateViewCharacterDrugsAndPoisons(CharacterEquipmentCreateView):
     """Create view for characters' drugs and poisons."""
     model = CharacterDrugsAndPoisons
     form_class = CharacterDrugsAndPoisonsCreateForm
     template_name = "equipment/characterdrugsandpoisons_create.html"
+
+
+class UpdateViewCharacterDrugsAndPoisons(CharacterEquipmentUpdateView):
+    """Update view for characters' drugs and poisons."""
+    model = CharacterDrugsAndPoisons
+    form_class = CharacterDrugsAndPoisonsUpdateForm
+    template_name = "equipment/characterdrugsandpoisons_update.html"
 
 
 class CreateViewCharacterHerbsAndDraughts(CharacterEquipmentCreateView):
@@ -267,11 +351,25 @@ class CreateViewCharacterHerbsAndDraughts(CharacterEquipmentCreateView):
     template_name = "equipment/characterherbsanddraughts_create.html"
 
 
+class UpdateViewCharacterHerbsAndDraughts(CharacterEquipmentUpdateView):
+    """Update view for characters' herbs and draughts."""
+    model = CharacterHerbsAndDraughts
+    form_class = CharacterHerbsAndDraughtsUpdateForm
+    template_name = "equipment/characterherbsanddraughts_update.html"
+
+
 class CreateViewCharacterProsthetics(CharacterEquipmentCreateView):
     """Create view for characters' prosthetics."""
     model = CharacterProsthetics
     form_class = CharacterProstheticsCreateForm
     template_name = "equipment/characterprosthetics_create.html"
+
+
+class UpdateViewCharacterProsthetics(CharacterEquipmentUpdateView):
+    """Update view for characters' prosthetics."""
+    model = CharacterProsthetics
+    form_class = CharacterProstheticsUpdateForm
+    template_name = "equipment/characterprosthetics_update.html"
 
 
 class CreateViewCharacterMiscellaneousTrappings(CharacterEquipmentCreateView):
@@ -281,6 +379,13 @@ class CreateViewCharacterMiscellaneousTrappings(CharacterEquipmentCreateView):
     template_name = "equipment/charactermiscellaneoustrappings_create.html"
 
 
+class UpdateViewCharacterMiscellaneousTrappings(CharacterEquipmentUpdateView):
+    """Update view for characters' miscellaneous trappings."""
+    model = CharacterMiscellaneousTrappings
+    form_class = CharacterMiscellaneousTrappingsUpdateForm
+    template_name = "equipment/charactermiscellaneoustrappings_update.html"
+
+
 class CreateViewCharacterHirelings(CharacterEquipmentCreateView):
     """Create view for characters' hirelings."""
     model = CharacterHirelings
@@ -288,308 +393,11 @@ class CreateViewCharacterHirelings(CharacterEquipmentCreateView):
     template_name = "equipment/characterhirelings_create.html"
 
 
-class UpdateViewCharacterMeleeWeapons(LoginRequiredMixin, UpdateView):
-    """Update view for characters' melee weapon."""
-
-    model = CharacterMeleeWeapons
-    form_class = CharacterMeleeWeaponsUpdateForm
-    template_name = "equipment/charactermeleeweapons_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterMeleeWeapons.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterRangedWeapons(LoginRequiredMixin, UpdateView):
-    """Update view for characters' ranged weapon."""
-
-    model = CharacterRangedWeapons
-    form_class = CharacterRangedWeaponsUpdateForm
-    template_name = "equipment/characterrangedweapons_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterRangedWeapons.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterAmmunition(LoginRequiredMixin, UpdateView):
-    """Update view for characters' ammunition."""
-
-    model = CharacterAmmunition
-    form_class = CharacterAmmunitionUpdateForm
-    template_name = "equipment/characterammunition_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterAmmunition.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterArmour(LoginRequiredMixin, UpdateView):
-    """Update view for characters' armour."""
-
-    model = CharacterArmour
-    form_class = CharacterArmourUpdateForm
-    template_name = "equipment/characterarmour_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterArmour.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterPacksAndContainers(LoginRequiredMixin, UpdateView):
-    """Update view for characters' packs and containers."""
-
-    model = CharacterPacksAndContainers
-    form_class = CharacterPacksAndContainersUpdateForm
-    template_name = "equipment/characterpacksandcontainers_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterPacksAndContainers.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterClothingAndAccessories(LoginRequiredMixin, UpdateView):
-    """Update view for characters' clothing and accessories."""
-
-    model = CharacterClothingAndAccessories
-    form_class = CharacterClothingAndAccessoriesUpdateForm
-    template_name = "equipment/characterclothingandaccessories_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterClothingAndAccessories.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterFoodDrinkAndLodging(LoginRequiredMixin, UpdateView):
-    """Update view for characters' food, drink and lodging."""
-
-    model = CharacterFoodDrinkAndLodging
-    form_class = CharacterFoodDrinkAndLodgingUpdateForm
-    template_name = "equipment/characterfooddrinkandlodging_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterFoodDrinkAndLodging.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterToolsAndKits(LoginRequiredMixin, UpdateView):
-    """Update view for characters' tools and kits."""
-
-    model = CharacterToolsAndKits
-    form_class = CharacterToolsAndKitsUpdateForm
-    template_name = "equipment/charactertoolsandkits_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterToolsAndKits.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterBooksAndDocuments(LoginRequiredMixin, UpdateView):
-    """Update view for characters' tools and kits."""
-
-    model = CharacterBooksAndDocuments
-    form_class = CharacterBooksAndDocumentsUpdateForm
-    template_name = "equipment/characterbooksanddocuments_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterBooksAndDocuments.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterTradeToolsAndWorkshops(LoginRequiredMixin, UpdateView):
-    """Update view for characters' tools and workshops."""
-
-    model = CharacterTradeToolsAndWorkshops
-    form_class = CharacterTradeToolsAndWorkshopsUpdateForm
-    template_name = "equipment/charactertradetoolsandworkshops_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterTradeToolsAndWorkshops.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterAnimalsAndVehicles(LoginRequiredMixin, UpdateView):
-    """Update view for characters' animals and vehicles."""
-
-    model = CharacterAnimalsAndVehicles
-    form_class = CharacterAnimalsAndVehiclesUpdateForm
-    template_name = "equipment/characteranimalsandvehicles_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterAnimalsAndVehicles.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterDrugsAndPoisons(LoginRequiredMixin, UpdateView):
-    """Update view for characters' drugs and poisons."""
-
-    model = CharacterDrugsAndPoisons
-    form_class = CharacterDrugsAndPoisonsUpdateForm
-    template_name = "equipment/characterdrugsandpoisons_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterDrugsAndPoisons.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterHerbsAndDraughts(LoginRequiredMixin, UpdateView):
-    """Update view for characters' herbs and draughts."""
-
-    model = CharacterHerbsAndDraughts
-    form_class = CharacterHerbsAndDraughtsUpdateForm
-    template_name = "equipment/characterherbsanddraughts_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterHerbsAndDraughts.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterProsthetics(LoginRequiredMixin, UpdateView):
-    """Update view for characters' prosthetics."""
-
-    model = CharacterProsthetics
-    form_class = CharacterProstheticsUpdateForm
-    template_name = "equipment/characterprosthetics_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterProsthetics.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterMiscellaneousTrappings(LoginRequiredMixin, UpdateView):
-    """Update view for characters' miscellaneous trappings."""
-
-    model = CharacterMiscellaneousTrappings
-    form_class = CharacterMiscellaneousTrappingsUpdateForm
-    template_name = "equipment/charactermiscellaneoustrappings_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterMiscellaneousTrappings.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
-
-
-class UpdateViewCharacterHirelings(LoginRequiredMixin, UpdateView):
+class UpdateViewCharacterHirelings(CharacterEquipmentUpdateView):
     """Update view for characters' hirelings."""
-
     model = CharacterHirelings
     form_class = CharacterHirelingsUpdateForm
     template_name = "equipment/characterhirelings_update.html"
-
-    def get_queryset(self):
-        """Method filters queryset to only allow access to the user's own characters."""
-        return CharacterHirelings.objects.filter(character__user=self.request.user)
-
-    def get_success_url(self):
-        """Method redirects back to character's equipment page."""
-        return reverse_lazy(
-            "equipment:character_equipment",
-            kwargs={"character_id": self.object.character.id},
-        )
 
 
 class DeleteViewCharacterMeleeWeapon(LoginRequiredMixin, DeleteView):
