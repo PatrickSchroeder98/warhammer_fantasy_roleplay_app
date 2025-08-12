@@ -176,6 +176,23 @@ class CharacterEquipmentUpdateView(LoginRequiredMixin, UpdateView):
         )
 
 
+class CharacterEquipmentDeleteView(LoginRequiredMixin, DeleteView):
+    """Generic delete view for character equipment."""
+
+    def get_queryset(self):
+        return super().get_queryset().filter(character__user=self.request.user)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            "equipment:character_equipment",
+            kwargs={"character_id": self.object.character.id},
+        )
+
+    def delete(self, *args, **kwargs):
+        messages.success(self.request, f"{self.model._meta.verbose_name.title()} deleted.")
+        return super().delete(*args, **kwargs)
+
+
 class CreateViewCharacterMeleeWeapons(CharacterEquipmentCreateView):
     """Create view for characters' melee weapon."""
     model = CharacterMeleeWeapons
@@ -188,6 +205,11 @@ class UpdateViewCharacterMeleeWeapons(CharacterEquipmentUpdateView):
     model = CharacterMeleeWeapons
     form_class = CharacterMeleeWeaponsUpdateForm
     template_name = "equipment/charactermeleeweapons_update.html"
+
+
+class DeleteViewCharacterMeleeWeapon(CharacterEquipmentDeleteView):
+    """Delete view of a characters' melee weapon."""
+    model = CharacterMeleeWeapons
 
 
 class CreateViewCharacterRangedWeapons(CharacterEquipmentCreateView):
@@ -204,6 +226,11 @@ class UpdateViewCharacterRangedWeapons(CharacterEquipmentUpdateView):
     template_name = "equipment/characterrangedweapons_update.html"
 
 
+class DeleteViewCharacterRangedWeapon(CharacterEquipmentDeleteView):
+    """Delete view of a characters' ranged weapon."""
+    model = CharacterRangedWeapons
+
+
 class CreateViewCharacterAmmunition(CharacterEquipmentCreateView):
     """Create view for characters' ammunition."""
     model = CharacterAmmunition
@@ -216,6 +243,11 @@ class UpdateViewCharacterAmmunition(CharacterEquipmentUpdateView):
     model = CharacterAmmunition
     form_class = CharacterAmmunitionUpdateForm
     template_name = "equipment/characterammunition_update.html"
+
+
+class DeleteViewCharacterAmmunition(CharacterEquipmentDeleteView):
+    """Delete view of a characters' ammunition."""
+    model = CharacterAmmunition
 
 
 class CreateViewCharacterArmour(CharacterEquipmentCreateView):
@@ -232,6 +264,11 @@ class UpdateViewCharacterArmour(CharacterEquipmentUpdateView):
     template_name = "equipment/characterarmour_update.html"
 
 
+class DeleteViewCharacterArmour(CharacterEquipmentDeleteView):
+    """Delete view of a characters' armour."""
+    model = CharacterArmour
+
+
 class CreateViewCharacterPacksAndContainers(CharacterEquipmentCreateView):
     """Create view for characters' packs and containers."""
     model = CharacterPacksAndContainers
@@ -244,6 +281,11 @@ class UpdateViewCharacterPacksAndContainers(CharacterEquipmentUpdateView):
     model = CharacterPacksAndContainers
     form_class = CharacterPacksAndContainersUpdateForm
     template_name = "equipment/characterpacksandcontainers_update.html"
+
+
+class DeleteViewCharacterPacksAndContainers(CharacterEquipmentDeleteView):
+    """Delete view of a characters' packs and containers."""
+    model = CharacterPacksAndContainers
 
 
 class CreateViewCharacterClothingAndAccessories(CharacterEquipmentCreateView):
@@ -260,6 +302,11 @@ class UpdateViewCharacterClothingAndAccessories(CharacterEquipmentUpdateView):
     template_name = "equipment/characterclothingandaccessories_update.html"
 
 
+class DeleteViewCharacterClothingAndAccessories(CharacterEquipmentDeleteView):
+    """Delete view of a characters' clothing and accessories."""
+    model = CharacterClothingAndAccessories
+
+
 class CreateViewCharacterFoodDrinkAndLodging(CharacterEquipmentCreateView):
     """Create view for characters' food, drink and lodging."""
     model = CharacterFoodDrinkAndLodging
@@ -272,6 +319,11 @@ class UpdateViewCharacterFoodDrinkAndLodging(CharacterEquipmentUpdateView):
     model = CharacterFoodDrinkAndLodging
     form_class = CharacterFoodDrinkAndLodgingUpdateForm
     template_name = "equipment/characterfooddrinkandlodging_update.html"
+
+
+class DeleteViewCharacterFoodDrinkAndLodging(CharacterEquipmentDeleteView):
+    """Delete view of a characters' food, drink and lodging."""
+    model = CharacterFoodDrinkAndLodging
 
 
 class CreateViewCharacterToolsAndKits(CharacterEquipmentCreateView):
@@ -288,6 +340,11 @@ class UpdateViewCharacterToolsAndKits(CharacterEquipmentUpdateView):
     template_name = "equipment/charactertoolsandkits_update.html"
 
 
+class DeleteViewCharacterToolsAndKits(CharacterEquipmentDeleteView):
+    """Delete view of a characters' tools and kits."""
+    model = CharacterToolsAndKits
+
+
 class CreateViewCharacterBooksAndDocuments(CharacterEquipmentCreateView):
     """Create view for characters' tools and kits."""
     model = CharacterBooksAndDocuments
@@ -300,6 +357,11 @@ class UpdateViewCharacterBooksAndDocuments(CharacterEquipmentUpdateView):
     model = CharacterBooksAndDocuments
     form_class = CharacterBooksAndDocumentsUpdateForm
     template_name = "equipment/characterbooksanddocuments_update.html"
+
+
+class DeleteViewCharacterBooksAndDocuments(CharacterEquipmentDeleteView):
+    """Delete view of a characters' books and documents."""
+    model = CharacterBooksAndDocuments
 
 
 class CreateViewCharacterTradeToolsAndWorkshops(CharacterEquipmentCreateView):
@@ -316,6 +378,11 @@ class UpdateViewCharacterTradeToolsAndWorkshops(CharacterEquipmentUpdateView):
     template_name = "equipment/charactertradetoolsandworkshops_update.html"
 
 
+class DeleteViewCharacterTradeToolsAndWorkshops(CharacterEquipmentDeleteView):
+    """Delete view of a characters' trade tools and workshops."""
+    model = CharacterTradeToolsAndWorkshops
+
+
 class CreateViewCharacterAnimalsAndVehicles(CharacterEquipmentCreateView):
     """Create view for characters' animals and vehicles."""
     model = CharacterAnimalsAndVehicles
@@ -328,6 +395,11 @@ class UpdateViewCharacterAnimalsAndVehicles(CharacterEquipmentUpdateView):
     model = CharacterAnimalsAndVehicles
     form_class = CharacterAnimalsAndVehiclesUpdateForm
     template_name = "equipment/characteranimalsandvehicles_update.html"
+
+
+class DeleteViewCharacterAnimalsAndVehicles(CharacterEquipmentDeleteView):
+    """Delete view of a characters' animals and vehicles."""
+    model = CharacterAnimalsAndVehicles
 
 
 class CreateViewCharacterDrugsAndPoisons(CharacterEquipmentCreateView):
@@ -344,6 +416,11 @@ class UpdateViewCharacterDrugsAndPoisons(CharacterEquipmentUpdateView):
     template_name = "equipment/characterdrugsandpoisons_update.html"
 
 
+class DeleteViewCharacterDrugsAndPoisons(CharacterEquipmentDeleteView):
+    """Delete view of a characters' drugs and poisons."""
+    model = CharacterDrugsAndPoisons
+
+
 class CreateViewCharacterHerbsAndDraughts(CharacterEquipmentCreateView):
     """Create view for characters' herbs and draughts."""
     model = CharacterHerbsAndDraughts
@@ -356,6 +433,11 @@ class UpdateViewCharacterHerbsAndDraughts(CharacterEquipmentUpdateView):
     model = CharacterHerbsAndDraughts
     form_class = CharacterHerbsAndDraughtsUpdateForm
     template_name = "equipment/characterherbsanddraughts_update.html"
+
+
+class DeleteViewCharacterHerbsAndDraughts(CharacterEquipmentDeleteView):
+    """Delete view of a characters' herbs and draughts."""
+    model = CharacterHerbsAndDraughts
 
 
 class CreateViewCharacterProsthetics(CharacterEquipmentCreateView):
@@ -372,6 +454,11 @@ class UpdateViewCharacterProsthetics(CharacterEquipmentUpdateView):
     template_name = "equipment/characterprosthetics_update.html"
 
 
+class DeleteViewCharacterProsthetics(CharacterEquipmentDeleteView):
+    """Delete view of a characters' prosthetics."""
+    model = CharacterProsthetics
+
+
 class CreateViewCharacterMiscellaneousTrappings(CharacterEquipmentCreateView):
     """Create view for characters' miscellaneous trappings."""
     model = CharacterMiscellaneousTrappings
@@ -384,6 +471,11 @@ class UpdateViewCharacterMiscellaneousTrappings(CharacterEquipmentUpdateView):
     model = CharacterMiscellaneousTrappings
     form_class = CharacterMiscellaneousTrappingsUpdateForm
     template_name = "equipment/charactermiscellaneoustrappings_update.html"
+
+
+class DeleteViewCharacterMiscellaneousTrappings(CharacterEquipmentDeleteView):
+    """Delete view of a characters' miscellaneous trappings."""
+    model = CharacterMiscellaneousTrappings
 
 
 class CreateViewCharacterHirelings(CharacterEquipmentCreateView):
@@ -400,356 +492,9 @@ class UpdateViewCharacterHirelings(CharacterEquipmentUpdateView):
     template_name = "equipment/characterhirelings_update.html"
 
 
-class DeleteViewCharacterMeleeWeapon(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' melee weapon."""
-
-    model = CharacterMeleeWeapons
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' melee weapon."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' melee weapon."""
-        messages.success(self.request, "Characters' Melee Weapon Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterRangedWeapon(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' ranged weapon."""
-
-    model = CharacterRangedWeapons
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' ranged weapon."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' ranged weapon."""
-        messages.success(self.request, "Characters' Ranged Weapon Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterAmmunition(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' ammunition."""
-
-    model = CharacterAmmunition
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' ammunition."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' ammunition."""
-        messages.success(self.request, "Characters' Ammunition Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterArmour(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' armour."""
-
-    model = CharacterArmour
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' armour."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' armour."""
-        messages.success(self.request, "Characters' Armour Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterPacksAndContainers(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' packs and containers."""
-
-    model = CharacterPacksAndContainers
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' containers."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' container."""
-        messages.success(self.request, "Characters' Container Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterClothingAndAccessories(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' clothing and accessories."""
-
-    model = CharacterClothingAndAccessories
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' clothing."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' clothing."""
-        messages.success(self.request, "Characters' Clothing Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterFoodDrinkAndLodging(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' food, drink and lodging."""
-
-    model = CharacterFoodDrinkAndLodging
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' food, drink and lodging."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' melee weapon."""
-        messages.success(self.request, "Characters' Food, Drink Or Lodging Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterToolsAndKits(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' tools and kits."""
-
-    model = CharacterToolsAndKits
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' tools and kits."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' tool or kit."""
-        messages.success(self.request, "Characters' Tool Or Kit Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterBooksAndDocuments(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' books and documents."""
-
-    model = CharacterBooksAndDocuments
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' books and documents."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' book or document."""
-        messages.success(self.request, "Characters' Book Or Document Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterTradeToolsAndWorkshops(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' trade tools and workshops."""
-
-    model = CharacterTradeToolsAndWorkshops
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' trade tools and workshops."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' trade tools or workshop."""
-        messages.success(self.request, "Characters' Trade Tools Or Workshop Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterAnimalsAndVehicles(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' animals and vehicles."""
-
-    model = CharacterAnimalsAndVehicles
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' animals and vehicles."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' animal or vehicle."""
-        messages.success(self.request, "Characters' Animal Or Vehicle Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterDrugsAndPoisons(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' drugs and poisons."""
-
-    model = CharacterDrugsAndPoisons
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' drugs and poisons."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' drug or poison."""
-        messages.success(self.request, "Characters' Drug Or Poison Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterHerbsAndDraughts(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' herbs and draughts."""
-
-    model = CharacterHerbsAndDraughts
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' herbs and draughts."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' herb or draught."""
-        messages.success(self.request, "Characters' Herb Or Draught Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterProsthetics(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' prosthetics."""
-
-    model = CharacterProsthetics
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' prosthetics."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' prosthetics."""
-        messages.success(self.request, "Characters' Prosthetics Deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterMiscellaneousTrappings(LoginRequiredMixin, DeleteView):
-    """Delete view of a characters' miscellaneous trappings."""
-
-    model = CharacterMiscellaneousTrappings
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' miscellaneous trappings."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' miscellaneous trappings."""
-        messages.success(self.request, "Characters' miscellaneous trappings deleted")
-        return super().delete(*args, **kwargs)
-
-
-class DeleteViewCharacterHirelings(LoginRequiredMixin, DeleteView):
+class DeleteViewCharacterHirelings(CharacterEquipmentDeleteView):
     """Delete view of a characters' hirelings."""
-
     model = CharacterHirelings
-
-    def get_success_url(self):
-        """Method to redirect user after successful deletion."""
-        character_id = self.object.character.id
-        return reverse_lazy(
-            "equipment:character_equipment", kwargs={"character_id": character_id}
-        )
-
-    def get_queryset(self):
-        """Method to ensure that only the owner can delete their characters' hirelings."""
-        return super().get_queryset().filter(character__user=self.request.user)
-
-    def delete(self, *args, **kwargs):
-        """Method deletes chosen characters' hirelings."""
-        messages.success(self.request, "Characters' hirelings deleted")
-        return super().delete(*args, **kwargs)
 
 
 class DetailViewMeleeWeapons(LoginRequiredMixin, DetailView):
