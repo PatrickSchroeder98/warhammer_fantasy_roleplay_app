@@ -35,6 +35,64 @@ from .models import (
 )
 
 
+class CharacterEquipmentCreateForm(forms.ModelForm):
+    """Base form for creating character equipment."""
+
+    fk_field = None  # e.g., "melee_weapon"
+    fk_model = None  # e.g., MeleeWeapons
+
+    def __init__(self, *args, **kwargs):
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
+        # Dynamically add the FK choice field
+        if self.fk_field and self.fk_model:
+            self.fields[self.fk_field] = forms.ModelChoiceField(
+                queryset=self.fk_model.objects.all(),
+                widget=forms.Select(attrs={"class": "form-control"}),
+                label=self.fk_field.replace("_", " ").title(),
+            )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        fk_value = cleaned_data.get(self.fk_field)
+
+        if self.character and fk_value:
+            exists = self._meta.model.objects.filter(
+                character=self.character,
+                **{self.fk_field: fk_value}
+            ).exists()
+
+            if exists and not self.instance.pk:
+                raise forms.ValidationError(
+                    f"Character already has this {self.fk_field.replace('_', ' ')}. "
+                    f"Increase the quantity instead."
+                )
+
+        return cleaned_data
+
+    class Meta:
+        fields = ("quantity", "equipped")
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+        labels = {
+            "equipped": "Equipped",
+        }
+
+
+class CharacterEquipmentUpdateForm(forms.ModelForm):
+    """Base form for updating character equipment (FK field not editable)."""
+
+    class Meta:
+        fields = ("quantity", "equipped")
+        widgets = {
+            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
+            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
+        }
+
+
 class CharacterMeleeWeaponsCreateForm(forms.ModelForm):
     """Form for creation of CharacterMeleeWeapons row."""
 
