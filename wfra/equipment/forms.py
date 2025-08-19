@@ -94,13 +94,12 @@ class CharacterEquipmentUpdateForm(forms.ModelForm):
 
 
 class CharacterMeleeWeaponsCreateForm(CharacterEquipmentCreateForm):
-    """Form for creation of CharacterMeleeWeapons row."""
-
     fk_field = "melee_weapon"
     fk_model = MeleeWeapons
 
     class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterMeleeWeapons
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("melee_weapon",)
 
 
 class CharacterMeleeWeaponsUpdateForm(CharacterEquipmentUpdateForm):
@@ -118,6 +117,7 @@ class CharacterRangedWeaponsCreateForm(CharacterEquipmentCreateForm):
 
     class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterRangedWeapons
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("ranged_weapon",)
 
 
 class CharacterRangedWeaponsUpdateForm(CharacterEquipmentUpdateForm):
@@ -137,7 +137,7 @@ class CharacterAmmunitionCreateForm(CharacterEquipmentCreateForm):
 
 
 
-class CharacterAmmunitionUpdateForm(forms.ModelForm):
+class CharacterAmmunitionUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of CharacterAmmunition row. AmmunitionID is not possible to change."""
 
     class Meta(CharacterEquipmentUpdateForm.Meta):
@@ -154,7 +154,7 @@ class CharacterArmourCreateForm(CharacterEquipmentCreateForm):
         model = CharacterArmour
 
 
-class CharacterArmourUpdateForm(forms.ModelForm):
+class CharacterArmourUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of CharacterArmour row. AmmunitionID is not possible to change."""
 
     class Meta(CharacterEquipmentUpdateForm.Meta):
@@ -164,49 +164,14 @@ class CharacterArmourUpdateForm(forms.ModelForm):
 class CharacterPacksAndContainersCreateForm(CharacterEquipmentCreateForm):
     """Form for creation of PacksAndContainers row."""
 
-    packs_and_containers = forms.ModelChoiceField(
-        queryset=PacksAndContainers.objects.all(),
-        widget=forms.Select(attrs={"class": "form-control"}),
-        label="PacksAndContainers",
-    )
+    fk_field = "packs_and_containers"
+    fk_model = PacksAndContainers
 
-    class Meta:
+    class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterPacksAndContainers
-        fields = ("packs_and_containers", "quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
-
-        labels = {
-            "equipped": "Equipped",
-        }
-
-    def __init__(self, *args, **kwargs):
-        """Accepts a character instance to filter during validation"""
-        self.character = kwargs.pop("character", None)
-        super().__init__(*args, **kwargs)
-
-    def clean(self):
-        """Method checks if there is a duplicate of chosen container, raises error if it exists."""
-        cleaned_data = super().clean()
-        packs_and_containers = cleaned_data.get("packs_and_containers")
-
-        if self.character and packs_and_containers:
-            exists = CharacterPacksAndContainers.objects.filter(
-                character=self.character, packs_and_containers=packs_and_containers
-            ).exists()
-
-            if exists and not self.instance.pk:
-                raise forms.ValidationError(
-                    "Character already has this container. Increase the quantity in equipment to add another item of this type."
-                )
-
-        return cleaned_data
 
 
-class CharacterPacksAndContainersUpdateForm(forms.ModelForm):
+class CharacterPacksAndContainersUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of PacksAndContainers row. PacksAndContainersID is not possible to change."""
 
     class Meta:
@@ -264,7 +229,7 @@ class CharacterClothingAndAccessoriesCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterClothingAndAccessoriesUpdateForm(forms.ModelForm):
+class CharacterClothingAndAccessoriesUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of ClothingAndAccessories row. ClothingAndAccessoriesID is not possible to change."""
 
     class Meta:
@@ -322,7 +287,7 @@ class CharacterFoodDrinkAndLodgingCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterFoodDrinkAndLodgingUpdateForm(forms.ModelForm):
+class CharacterFoodDrinkAndLodgingUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of FoodDrinkAndLodging row. FoodDrinkAndLodgingID is not possible to change."""
 
     class Meta:
@@ -380,7 +345,7 @@ class CharacterToolsAndKitsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterToolsAndKitsUpdateForm(forms.ModelForm):
+class CharacterToolsAndKitsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of ToolsAndKits row. ToolsAndKitsID is not possible to change."""
 
     class Meta:
@@ -438,7 +403,7 @@ class CharacterBooksAndDocumentsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterBooksAndDocumentsUpdateForm(forms.ModelForm):
+class CharacterBooksAndDocumentsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of BooksAndDocuments row. BooksAndDocumentsID is not possible to change."""
 
     class Meta:
@@ -496,7 +461,7 @@ class CharacterTradeToolsAndWorkshopsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterTradeToolsAndWorkshopsUpdateForm(forms.ModelForm):
+class CharacterTradeToolsAndWorkshopsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of TradeToolsAndWorkshops row. TradeToolsAndWorkshopsID is not possible to change."""
 
     class Meta:
@@ -554,7 +519,7 @@ class CharacterAnimalsAndVehiclesCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterAnimalsAndVehiclesUpdateForm(forms.ModelForm):
+class CharacterAnimalsAndVehiclesUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of AnimalsAndVehicles row. AnimalsAndVehiclesID is not possible to change."""
 
     class Meta:
@@ -612,7 +577,7 @@ class CharacterDrugsAndPoisonsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterDrugsAndPoisonsUpdateForm(forms.ModelForm):
+class CharacterDrugsAndPoisonsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of DrugsAndPoisons row. DrugsAndPoisonsID is not possible to change."""
 
     class Meta:
@@ -670,7 +635,7 @@ class CharacterHerbsAndDraughtsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterHerbsAndDraughtsUpdateForm(forms.ModelForm):
+class CharacterHerbsAndDraughtsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of HerbsAndDraughts row. HerbsAndDraughtsID is not possible to change."""
 
     class Meta:
@@ -728,7 +693,7 @@ class CharacterProstheticsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterProstheticsUpdateForm(forms.ModelForm):
+class CharacterProstheticsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of Prosthetics row. ProstheticsID is not possible to change."""
 
     class Meta:
@@ -786,7 +751,7 @@ class CharacterMiscellaneousTrappingsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterMiscellaneousTrappingsUpdateForm(forms.ModelForm):
+class CharacterMiscellaneousTrappingsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of MiscellaneousTrappings row. MiscellaneousTrappingsID is not possible to change."""
 
     class Meta:
@@ -844,7 +809,7 @@ class CharacterHirelingsCreateForm(CharacterEquipmentCreateForm):
         return cleaned_data
 
 
-class CharacterHirelingsUpdateForm(forms.ModelForm):
+class CharacterHirelingsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of Hirelings row. HirelingsID is not possible to change."""
 
     class Meta:
