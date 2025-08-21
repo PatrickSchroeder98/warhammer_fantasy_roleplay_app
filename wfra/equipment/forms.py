@@ -273,12 +273,12 @@ class CharacterTradeToolsAndWorkshopsUpdateForm(CharacterEquipmentUpdateForm):
 class CharacterAnimalsAndVehiclesCreateForm(CharacterEquipmentCreateForm):
     """Form for creation of AnimalsAndVehicles row."""
 
-    fk_field = "animal_and_vehicles"
+    fk_field = "animals_and_vehicles"
     fk_model = AnimalsAndVehicles
 
     class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterAnimalsAndVehicles
-        fields = CharacterEquipmentCreateForm.Meta.fields + ("animal_and_vehicles",)
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("animals_and_vehicles",)
 
 
 class CharacterAnimalsAndVehiclesUpdateForm(CharacterEquipmentUpdateForm):
@@ -291,288 +291,88 @@ class CharacterAnimalsAndVehiclesUpdateForm(CharacterEquipmentUpdateForm):
 class CharacterDrugsAndPoisonsCreateForm(CharacterEquipmentCreateForm):
     """Form for creation of DrugsAndPoisons row."""
 
-    drugs_and_poisons = forms.ModelChoiceField(
-        queryset=DrugsAndPoisons.objects.all(),
-        widget=forms.Select(attrs={"class": "form-control"}),
-        label="DrugsAndPoisons",
-    )
+    fk_field = "drugs_and_poisons"
+    fk_model = DrugsAndPoisons
 
-    class Meta:
+    class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterDrugsAndPoisons
-        fields = ("drugs_and_poisons", "quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
-
-        labels = {
-            "equipped": "Equipped",
-        }
-
-    def __init__(self, *args, **kwargs):
-        """Accepts a character instance to filter during validation"""
-        self.character = kwargs.pop("character", None)
-        super().__init__(*args, **kwargs)
-
-    def clean(self):
-        """Method checks if there is a duplicate of chosen drug or poison, raises error if it exists."""
-        cleaned_data = super().clean()
-        drugs_and_poisons = cleaned_data.get("drugs_and_poisons")
-
-        if self.character and drugs_and_poisons:
-            exists = CharacterDrugsAndPoisons.objects.filter(
-                character=self.character, drugs_and_poisons=drugs_and_poisons
-            ).exists()
-
-            if exists and not self.instance.pk:
-                raise forms.ValidationError(
-                    "Character already has this drug or poison. Increase the quantity in equipment to add another item of this type."
-                )
-
-        return cleaned_data
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("drugs_and_poisons",)
 
 
 class CharacterDrugsAndPoisonsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of DrugsAndPoisons row. DrugsAndPoisonsID is not possible to change."""
 
-    class Meta:
+    class Meta(CharacterEquipmentUpdateForm.Meta):
         model = CharacterDrugsAndPoisons
-        fields = ("quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
 
 
 class CharacterHerbsAndDraughtsCreateForm(CharacterEquipmentCreateForm):
     """Form for creation of HerbsAndDraughts row."""
 
-    herbs_and_draughts = forms.ModelChoiceField(
-        queryset=HerbsAndDraughts.objects.all(),
-        widget=forms.Select(attrs={"class": "form-control"}),
-        label="HerbsAndDraughts",
-    )
+    fk_field = "herbs_and_draughts"
+    fk_model = HerbsAndDraughts
 
-    class Meta:
+    class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterHerbsAndDraughts
-        fields = ("herbs_and_draughts", "quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
-
-        labels = {
-            "equipped": "Equipped",
-        }
-
-    def __init__(self, *args, **kwargs):
-        """Accepts a character instance to filter during validation"""
-        self.character = kwargs.pop("character", None)
-        super().__init__(*args, **kwargs)
-
-    def clean(self):
-        """Method checks if there is a duplicate of chosen herb or draught, raises error if it exists."""
-        cleaned_data = super().clean()
-        herbs_and_draughts = cleaned_data.get("herbs_and_draughts")
-
-        if self.character and herbs_and_draughts:
-            exists = CharacterHerbsAndDraughts.objects.filter(
-                character=self.character, herbs_and_draughts=herbs_and_draughts
-            ).exists()
-
-            if exists and not self.instance.pk:
-                raise forms.ValidationError(
-                    "Character already has this herb or draught. Increase the quantity in equipment to add another item of this type."
-                )
-
-        return cleaned_data
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("herbs_and_draughts",)
 
 
 class CharacterHerbsAndDraughtsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of HerbsAndDraughts row. HerbsAndDraughtsID is not possible to change."""
 
-    class Meta:
+    class Meta(CharacterEquipmentUpdateForm.Meta):
         model = CharacterHerbsAndDraughts
-        fields = ("quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
 
 
 class CharacterProstheticsCreateForm(CharacterEquipmentCreateForm):
     """Form for creation of Prosthetics row."""
 
-    prosthetics = forms.ModelChoiceField(
-        queryset=Prosthetics.objects.all(),
-        widget=forms.Select(attrs={"class": "form-control"}),
-        label="Prosthetics",
-    )
+    fk_field = "prosthetics"
+    fk_model = Prosthetics
 
-    class Meta:
+    class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterProsthetics
-        fields = ("prosthetics", "quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
-
-        labels = {
-            "equipped": "Equipped",
-        }
-
-    def __init__(self, *args, **kwargs):
-        """Accepts a character instance to filter during validation"""
-        self.character = kwargs.pop("character", None)
-        super().__init__(*args, **kwargs)
-
-    def clean(self):
-        """Method checks if there is a duplicate of chosen prosthetics, raises error if it exists."""
-        cleaned_data = super().clean()
-        prosthetics = cleaned_data.get("prosthetics")
-
-        if self.character and prosthetics:
-            exists = CharacterProsthetics.objects.filter(
-                character=self.character, prosthetics=prosthetics
-            ).exists()
-
-            if exists and not self.instance.pk:
-                raise forms.ValidationError(
-                    "Character already has this prosthetics. Increase the quantity in equipment to add another item of this type."
-                )
-
-        return cleaned_data
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("prosthetics",)
 
 
 class CharacterProstheticsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of Prosthetics row. ProstheticsID is not possible to change."""
 
-    class Meta:
+    class Meta(CharacterEquipmentUpdateForm.Meta):
         model = CharacterProsthetics
-        fields = ("quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
 
 
 class CharacterMiscellaneousTrappingsCreateForm(CharacterEquipmentCreateForm):
     """Form for creation of MiscellaneousTrappings row."""
 
-    miscellaneous_trappings = forms.ModelChoiceField(
-        queryset=MiscellaneousTrappings.objects.all(),
-        widget=forms.Select(attrs={"class": "form-control"}),
-        label="MiscellaneousTrappings",
-    )
+    fk_field = "miscellaneous_trappings"
+    fk_model = MiscellaneousTrappings
 
-    class Meta:
+    class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterMiscellaneousTrappings
-        fields = ("miscellaneous_trappings", "quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
-
-        labels = {
-            "equipped": "Equipped",
-        }
-
-    def __init__(self, *args, **kwargs):
-        """Accepts a character instance to filter during validation"""
-        self.character = kwargs.pop("character", None)
-        super().__init__(*args, **kwargs)
-
-    def clean(self):
-        """Method checks if there is a duplicate of chosen miscellaneous trapping, raises error if it exists."""
-        cleaned_data = super().clean()
-        miscellaneous_trappings = cleaned_data.get("miscellaneous_trappings")
-
-        if self.character and miscellaneous_trappings:
-            exists = CharacterMiscellaneousTrappings.objects.filter(
-                character=self.character, miscellaneous_trappings=miscellaneous_trappings
-            ).exists()
-
-            if exists and not self.instance.pk:
-                raise forms.ValidationError(
-                    "Character already has this miscellaneous trapping. Increase the quantity in equipment to add another item of this type."
-                )
-
-        return cleaned_data
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("miscellaneous_trappings",)
 
 
 class CharacterMiscellaneousTrappingsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of MiscellaneousTrappings row. MiscellaneousTrappingsID is not possible to change."""
 
-    class Meta:
+    class Meta(CharacterEquipmentUpdateForm.Meta):
         model = CharacterMiscellaneousTrappings
-        fields = ("quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
 
 
 class CharacterHirelingsCreateForm(CharacterEquipmentCreateForm):
     """Form for creation of Hirelings row."""
 
-    hirelings = forms.ModelChoiceField(
-        queryset=Hirelings.objects.all(),
-        widget=forms.Select(attrs={"class": "form-control"}),
-        label="Hirelings",
-    )
+    fk_field = "hirelings"
+    fk_model = Hirelings
 
-    class Meta:
+    class Meta(CharacterEquipmentCreateForm.Meta):
         model = CharacterHirelings
-        fields = ("hirelings", "quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
-
-        labels = {
-            "equipped": "Equipped",
-        }
-
-    def __init__(self, *args, **kwargs):
-        """Accepts a character instance to filter during validation"""
-        self.character = kwargs.pop("character", None)
-        super().__init__(*args, **kwargs)
-
-    def clean(self):
-        """Method checks if there is a duplicate of chosen hireling, raises error if it exists."""
-        cleaned_data = super().clean()
-        hirelings = cleaned_data.get("hirelings")
-
-        if self.character and hirelings:
-            exists = CharacterHirelings.objects.filter(
-                character=self.character, hirelings=hirelings
-            ).exists()
-
-            if exists and not self.instance.pk:
-                raise forms.ValidationError(
-                    "Character already has this hireling. Increase the quantity in equipment to add another item of this type."
-                )
-
-        return cleaned_data
+        fields = CharacterEquipmentCreateForm.Meta.fields + ("hirelings",)
 
 
 class CharacterHirelingsUpdateForm(CharacterEquipmentUpdateForm):
     """Form for update of Hirelings row. HirelingsID is not possible to change."""
 
-    class Meta:
+    class Meta(CharacterEquipmentUpdateForm.Meta):
         model = CharacterHirelings
-        fields = ("quantity", "equipped")
-
-        widgets = {
-            "quantity": forms.NumberInput(attrs={"class": "form-control"}),
-            "equipped": forms.CheckboxInput(attrs={"class": "form-check-input"}),
-        }
