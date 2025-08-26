@@ -222,12 +222,16 @@ class CharacterMeleeWeapons(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Melee Weapon"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "melee_weapon"],
                 name="unique_melee_weapon_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.melee_weapon.name
 
 
 class CharacterRangedWeapons(models.Model):

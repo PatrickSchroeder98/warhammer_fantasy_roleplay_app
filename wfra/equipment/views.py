@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, render
 from django.views import View
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from characters.models import Characters
 from .models import (
@@ -179,8 +179,22 @@ class CharacterEquipmentUpdateView(LoginRequiredMixin, UpdateView):
 class CharacterEquipmentDeleteView(LoginRequiredMixin, DeleteView):
     """Generic delete view for character equipment."""
 
+    template_name = "equipment/character_equipment_confirm_delete.html"
+
     def get_queryset(self):
         return super().get_queryset().filter(character__user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        obj = self.object
+        # Safe to use _meta in Python, just not in the template
+        context["category_title"] = obj._meta.verbose_name.title()
+        # (Optional) provide cancel URL ready-made
+        context["cancel_url"] = reverse(
+            "equipment:character_equipment",
+            kwargs={"character_id": obj.character_id},
+        )
+        return context
 
     def get_success_url(self):
         return reverse_lazy(
@@ -197,7 +211,7 @@ class CreateViewCharacterMeleeWeapons(CharacterEquipmentCreateView):
     """Create view for characters' melee weapon."""
     model = CharacterMeleeWeapons
     form_class = CharacterMeleeWeaponsCreateForm
-    template_name = "equipment/charactermeleeweapons_create.html"
+    #template_name = "equipment/charactermeleeweapons_create.html"
 
 
 class UpdateViewCharacterMeleeWeapons(CharacterEquipmentUpdateView):
