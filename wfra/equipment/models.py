@@ -243,12 +243,16 @@ class CharacterRangedWeapons(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Ranged Weapon"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "ranged_weapon"],
                 name="unique_ranged_weapon_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.ranged_weapon.name
 
 
 class CharacterAmmunition(models.Model):
@@ -260,6 +264,7 @@ class CharacterAmmunition(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Ammunition"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "ammunition"],
@@ -267,6 +272,8 @@ class CharacterAmmunition(models.Model):
             )
         ]
 
+    def __str__(self):
+        return self.ammunition.name
 
 class CharacterArmour(models.Model):
     """Model with fields for characters' armour."""
@@ -277,6 +284,7 @@ class CharacterArmour(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Armour"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "armour"],
@@ -284,6 +292,8 @@ class CharacterArmour(models.Model):
             )
         ]
 
+    def __str__(self):
+        return self.armour.name
 
 class CharacterPacksAndContainers(models.Model):
     """Model with fields for characters' packs and containers."""

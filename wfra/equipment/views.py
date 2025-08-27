@@ -185,11 +185,13 @@ class CharacterEquipmentDeleteView(LoginRequiredMixin, DeleteView):
         return super().get_queryset().filter(character__user=self.request.user)
 
     def get_context_data(self, **kwargs):
+        """Gives access to _meta fields through context."""
+
         context = super().get_context_data(**kwargs)
         obj = self.object
-        # Safe to use _meta in Python, just not in the template
+
         context["category_title"] = obj._meta.verbose_name.title()
-        # (Optional) provide cancel URL ready-made
+
         context["cancel_url"] = reverse(
             "equipment:character_equipment",
             kwargs={"character_id": obj.character_id},
@@ -211,7 +213,6 @@ class CreateViewCharacterMeleeWeapons(CharacterEquipmentCreateView):
     """Create view for characters' melee weapon."""
     model = CharacterMeleeWeapons
     form_class = CharacterMeleeWeaponsCreateForm
-    #template_name = "equipment/charactermeleeweapons_create.html"
 
 
 class UpdateViewCharacterMeleeWeapons(CharacterEquipmentUpdateView):
