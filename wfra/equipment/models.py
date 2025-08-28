@@ -306,12 +306,16 @@ class CharacterPacksAndContainers(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Pack And Container"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "packs_and_containers"],
                 name="unique_packs_and_containers_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.packs_and_containers.name
 
 
 class CharacterClothingAndAccessories(models.Model):
@@ -325,12 +329,16 @@ class CharacterClothingAndAccessories(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Clothing And Accessory"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "clothing_and_accessories"],
                 name="unique_clothing_and_accessories_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.clothing_and_accessories.name
 
 
 class CharacterFoodDrinkAndLodging(models.Model):
@@ -344,12 +352,16 @@ class CharacterFoodDrinkAndLodging(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Food, Drink And Lodging"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "food_drink_and_lodging"],
                 name="unique_food_drink_and_lodging_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.food_drink_and_lodging.name
 
 
 class CharacterToolsAndKits(models.Model):
@@ -361,12 +373,16 @@ class CharacterToolsAndKits(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Tool And Kit"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "tools_and_kits"],
                 name="unique_tools_and_kits_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.tools_and_kits.name
 
 
 class CharacterBooksAndDocuments(models.Model):
