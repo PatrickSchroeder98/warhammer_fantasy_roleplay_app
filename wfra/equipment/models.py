@@ -394,12 +394,16 @@ class CharacterBooksAndDocuments(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Book And Document"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "books_and_documents"],
                 name="unique_books_and_documents_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.books_and_documents.name
 
 
 class CharacterTradeToolsAndWorkshops(models.Model):
@@ -413,12 +417,16 @@ class CharacterTradeToolsAndWorkshops(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Trade Tool And Workshop"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "trade_tools_and_workshops"],
                 name="unique_trade_tools_and_workshops_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.trade_tools_and_workshops.name
 
 
 class CharacterAnimalsAndVehicles(models.Model):
@@ -432,12 +440,16 @@ class CharacterAnimalsAndVehicles(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Animal And Vehicle"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "animals_and_vehicles"],
                 name="unique_animals_and_vehicles_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.animals_and_vehicles.name
 
 
 class CharacterDrugsAndPoisons(models.Model):
@@ -449,12 +461,16 @@ class CharacterDrugsAndPoisons(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Drug And Poison"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "drugs_and_poisons"],
                 name="unique_drugs_and_poisons_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.drugs_and_poisons.name
 
 
 class CharacterHerbsAndDraughts(models.Model):
