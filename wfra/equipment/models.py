@@ -482,12 +482,16 @@ class CharacterHerbsAndDraughts(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Herb And Draught"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "herbs_and_draughts"],
                 name="unique_herbs_and_draughts_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.herbs_and_draughts.name
 
 
 class CharacterProsthetics(models.Model):
@@ -499,12 +503,16 @@ class CharacterProsthetics(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Prosthetics"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "prosthetics"],
                 name="unique_prosthetics_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.prosthetics.name
 
 
 class CharacterMiscellaneousTrappings(models.Model):
@@ -518,12 +526,16 @@ class CharacterMiscellaneousTrappings(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Miscellaneous Trapping"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "miscellaneous_trappings"],
                 name="unique_miscellaneous_trappings_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.miscellaneous_trappings.name
 
 
 class CharacterHirelings(models.Model):
@@ -535,9 +547,13 @@ class CharacterHirelings(models.Model):
     equipped = models.BooleanField(default=False)
 
     class Meta:
+        verbose_name = "Hireling"
         constraints = [
             models.UniqueConstraint(
                 fields=["character", "hirelings"],
                 name="unique_hirelings_per_character",
             )
         ]
+
+    def __str__(self):
+        return self.hirelings.name
