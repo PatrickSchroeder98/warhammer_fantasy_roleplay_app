@@ -143,6 +143,22 @@ class CharacterEquipmentView(View):
 class CharacterEquipmentCreateView(LoginRequiredMixin, CreateView):
     """Generic create view for character equipment."""
 
+    template_name = "equipment/character_equipment_form.html"
+
+    category_title = None
+    field_name = None
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["category_title"] = self.category_title
+        context["field_name"] = self.field_name
+        context["character_id"] = self.kwargs.get("character_id")
+
+        if self.field_name and "form" in context:
+            context["main_field"] = context["form"][self.field_name]
+
+        return context
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         character_id = self.kwargs.get("character_id")
@@ -213,6 +229,9 @@ class CreateViewCharacterMeleeWeapons(CharacterEquipmentCreateView):
     """Create view for characters' melee weapon."""
     model = CharacterMeleeWeapons
     form_class = CharacterMeleeWeaponsCreateForm
+    category_title = "Melee Weapon"
+    field_name = "melee_weapon"
+    #template_name = "equipment/charactermeleeweapons_create.html"
 
 
 class UpdateViewCharacterMeleeWeapons(CharacterEquipmentUpdateView):
@@ -231,7 +250,9 @@ class CreateViewCharacterRangedWeapons(CharacterEquipmentCreateView):
     """Create view for characters' ranged weapon."""
     model = CharacterRangedWeapons
     form_class = CharacterRangedWeaponsCreateForm
-    template_name = "equipment/characterrangedweapons_create.html"
+    category_title = "Ranged Weapon"
+    field_name = "ranged_weapon"
+    #template_name = "equipment/characterrangedweapons_create.html"
 
 
 class UpdateViewCharacterRangedWeapons(CharacterEquipmentUpdateView):
@@ -250,7 +271,9 @@ class CreateViewCharacterAmmunition(CharacterEquipmentCreateView):
     """Create view for characters' ammunition."""
     model = CharacterAmmunition
     form_class = CharacterAmmunitionCreateForm
-    template_name = "equipment/characterammunition_create.html"
+    category_title = "Ammunition"
+    field_name = "ammunition"
+    #template_name = "equipment/characterammunition_create.html"
 
 
 class UpdateViewCharacterAmmunition(CharacterEquipmentUpdateView):
@@ -269,7 +292,9 @@ class CreateViewCharacterArmour(CharacterEquipmentCreateView):
     """Create view for characters' armour."""
     model = CharacterArmour
     form_class = CharacterArmourCreateForm
-    template_name = "equipment/characterarmour_create.html"
+    category_title = "Armour"
+    field_name = "armour"
+    #template_name = "equipment/characterarmour_create.html"
 
 
 class UpdateViewCharacterArmour(CharacterEquipmentUpdateView):
