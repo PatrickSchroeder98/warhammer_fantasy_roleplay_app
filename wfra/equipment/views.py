@@ -231,7 +231,6 @@ class CreateViewCharacterMeleeWeapons(CharacterEquipmentCreateView):
     form_class = CharacterMeleeWeaponsCreateForm
     category_title = "Melee Weapon"
     field_name = "melee_weapon"
-    #template_name = "equipment/charactermeleeweapons_create.html"
 
 
 class UpdateViewCharacterMeleeWeapons(CharacterEquipmentUpdateView):
@@ -252,7 +251,6 @@ class CreateViewCharacterRangedWeapons(CharacterEquipmentCreateView):
     form_class = CharacterRangedWeaponsCreateForm
     category_title = "Ranged Weapon"
     field_name = "ranged_weapon"
-    #template_name = "equipment/characterrangedweapons_create.html"
 
 
 class UpdateViewCharacterRangedWeapons(CharacterEquipmentUpdateView):
@@ -273,7 +271,6 @@ class CreateViewCharacterAmmunition(CharacterEquipmentCreateView):
     form_class = CharacterAmmunitionCreateForm
     category_title = "Ammunition"
     field_name = "ammunition"
-    #template_name = "equipment/characterammunition_create.html"
 
 
 class UpdateViewCharacterAmmunition(CharacterEquipmentUpdateView):
@@ -294,7 +291,6 @@ class CreateViewCharacterArmour(CharacterEquipmentCreateView):
     form_class = CharacterArmourCreateForm
     category_title = "Armour"
     field_name = "armour"
-    #template_name = "equipment/characterarmour_create.html"
 
 
 class UpdateViewCharacterArmour(CharacterEquipmentUpdateView):
@@ -313,7 +309,8 @@ class CreateViewCharacterPacksAndContainers(CharacterEquipmentCreateView):
     """Create view for characters' packs and containers."""
     model = CharacterPacksAndContainers
     form_class = CharacterPacksAndContainersCreateForm
-    template_name = "equipment/characterpacksandcontainers_create.html"
+    category_title = "Packs and Containers"
+    field_name = "packs_and_containers"
 
 
 class UpdateViewCharacterPacksAndContainers(CharacterEquipmentUpdateView):
@@ -332,7 +329,8 @@ class CreateViewCharacterClothingAndAccessories(CharacterEquipmentCreateView):
     """Create view for characters' clothing and accessories."""
     model = CharacterClothingAndAccessories
     form_class = CharacterClothingAndAccessoriesCreateForm
-    template_name = "equipment/characterclothingandaccessories_create.html"
+    category_title = "Clothing and Accessories"
+    field_name = "clothing_and_accessories"
 
 
 class UpdateViewCharacterClothingAndAccessories(CharacterEquipmentUpdateView):
@@ -351,7 +349,8 @@ class CreateViewCharacterFoodDrinkAndLodging(CharacterEquipmentCreateView):
     """Create view for characters' food, drink and lodging."""
     model = CharacterFoodDrinkAndLodging
     form_class = CharacterFoodDrinkAndLodgingCreateForm
-    template_name = "equipment/characterfooddrinkandlodging_create.html"
+    category_title = "Food Drink and Lodging"
+    field_name = "food_drink_and_lodging"
 
 
 class UpdateViewCharacterFoodDrinkAndLodging(CharacterEquipmentUpdateView):
@@ -370,7 +369,8 @@ class CreateViewCharacterToolsAndKits(CharacterEquipmentCreateView):
     """Create view for characters' tools and kits."""
     model = CharacterToolsAndKits
     form_class = CharacterToolsAndKitsCreateForm
-    template_name = "equipment/charactertoolsandkits_create.html"
+    category_title = "Tools and Kits"
+    field_name = "tools_and_kits"
 
 
 class UpdateViewCharacterToolsAndKits(CharacterEquipmentUpdateView):
