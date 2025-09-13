@@ -389,7 +389,8 @@ class CreateViewCharacterBooksAndDocuments(CharacterEquipmentCreateView):
     """Create view for characters' tools and kits."""
     model = CharacterBooksAndDocuments
     form_class = CharacterBooksAndDocumentsCreateForm
-    template_name = "equipment/characterbooksanddocuments_create.html"
+    category_title = "Books And Documents"
+    field_name = "books_and_documents"
 
 
 class UpdateViewCharacterBooksAndDocuments(CharacterEquipmentUpdateView):
@@ -408,7 +409,8 @@ class CreateViewCharacterTradeToolsAndWorkshops(CharacterEquipmentCreateView):
     """Create view for characters' tools and workshops."""
     model = CharacterTradeToolsAndWorkshops
     form_class = CharacterTradeToolsAndWorkshopsCreateForm
-    template_name = "equipment/charactertradetoolsandworkshops_create.html"
+    category_title = "Trade Tools and Workshops"
+    field_name = "trade_tools_and_workshops"
 
 
 class UpdateViewCharacterTradeToolsAndWorkshops(CharacterEquipmentUpdateView):
@@ -427,7 +429,8 @@ class CreateViewCharacterAnimalsAndVehicles(CharacterEquipmentCreateView):
     """Create view for characters' animals and vehicles."""
     model = CharacterAnimalsAndVehicles
     form_class = CharacterAnimalsAndVehiclesCreateForm
-    template_name = "equipment/characteranimalsandvehicles_create.html"
+    category_title = "Animals and Vehicles"
+    field_name = "animals_and_vehicles"
 
 
 class UpdateViewCharacterAnimalsAndVehicles(CharacterEquipmentUpdateView):
@@ -446,7 +449,8 @@ class CreateViewCharacterDrugsAndPoisons(CharacterEquipmentCreateView):
     """Create view for characters' drugs and poisons."""
     model = CharacterDrugsAndPoisons
     form_class = CharacterDrugsAndPoisonsCreateForm
-    template_name = "equipment/characterdrugsandpoisons_create.html"
+    category_title = "Drugs and Poisons"
+    field_name = "drugs_and_poisons"
 
 
 class UpdateViewCharacterDrugsAndPoisons(CharacterEquipmentUpdateView):
