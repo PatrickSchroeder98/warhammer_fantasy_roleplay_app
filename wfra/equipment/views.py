@@ -469,7 +469,8 @@ class CreateViewCharacterHerbsAndDraughts(CharacterEquipmentCreateView):
     """Create view for characters' herbs and draughts."""
     model = CharacterHerbsAndDraughts
     form_class = CharacterHerbsAndDraughtsCreateForm
-    template_name = "equipment/characterherbsanddraughts_create.html"
+    category_title = "Herbs And Draughts"
+    field_name = "herbs_and_draughts"
 
 
 class UpdateViewCharacterHerbsAndDraughts(CharacterEquipmentUpdateView):
@@ -488,7 +489,8 @@ class CreateViewCharacterProsthetics(CharacterEquipmentCreateView):
     """Create view for characters' prosthetics."""
     model = CharacterProsthetics
     form_class = CharacterProstheticsCreateForm
-    template_name = "equipment/characterprosthetics_create.html"
+    category_title = "Prosthetics"
+    field_name = "prosthetics"
 
 
 class UpdateViewCharacterProsthetics(CharacterEquipmentUpdateView):
@@ -507,7 +509,8 @@ class CreateViewCharacterMiscellaneousTrappings(CharacterEquipmentCreateView):
     """Create view for characters' miscellaneous trappings."""
     model = CharacterMiscellaneousTrappings
     form_class = CharacterMiscellaneousTrappingsCreateForm
-    template_name = "equipment/charactermiscellaneoustrappings_create.html"
+    category_title = "Miscellaneous Trappings"
+    field_name = "miscellaneous_trappings"
 
 
 class UpdateViewCharacterMiscellaneousTrappings(CharacterEquipmentUpdateView):
@@ -526,7 +529,8 @@ class CreateViewCharacterHirelings(CharacterEquipmentCreateView):
     """Create view for characters' hirelings."""
     model = CharacterHirelings
     form_class = CharacterHirelingsCreateForm
-    template_name = "equipment/characterhirelings_create.html"
+    category_title = "Hirelings"
+    field_name = "hirelings"
 
 
 class UpdateViewCharacterHirelings(CharacterEquipmentUpdateView):
