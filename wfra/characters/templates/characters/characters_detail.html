@@ -554,6 +554,9 @@
     <a href="{% url 'equipment:character_equipment' character.pk %}" class="btn btn-warning">See Equipment</a>
     <a href="{% url 'characters:delete' character.pk %}" class="btn btn-danger">Delete</a>
 </div>
+    <br>
+    <a href="{% url 'characters:all' %}"
+   class="btn btn-warning">Back to Characters list</a>
     <br><br>
 </div>
 {% endblock %}

@@ -528,6 +528,15 @@
 <a href="{% url 'equipment:add_character_hirelings' character.id %}">Add Hirelings</a>
 <br><br>
 
-  <a href="{% url 'characters:detail' character.id %}">← Back to Character</a>
+    <div class="text-center">
+
+                    <a href="{% url 'characters:detail' character.id %}"
+   class="btn btn-warning">See Statistics</a>
+                </div>
+<br>
+    <a href="{% url 'characters:all' %}"
+   class="btn btn-warning">Back to Characters list</a>
+
+<br><br>
 </div>
 {% endblock %}
