@@ -185,6 +185,12 @@ class CharacterEquipmentUpdateView(LoginRequiredMixin, UpdateView):
     def get_queryset(self):
         return self.model.objects.filter(character__user=self.request.user)
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.object:  # available in UpdateView
+            kwargs["character"] = self.object.character
+        return kwargs
+
     def get_success_url(self):
         return reverse_lazy(
             "equipment:character_equipment",

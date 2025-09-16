@@ -85,6 +85,10 @@ class CharacterEquipmentCreateForm(forms.ModelForm):
 class CharacterEquipmentUpdateForm(forms.ModelForm):
     """Base form for updating character equipment (FK field not editable)."""
 
+    def __init__(self, *args, **kwargs):
+        self.character = kwargs.pop("character", None)
+        super().__init__(*args, **kwargs)
+
     class Meta:
         fields = ("quantity", "equipped")
         widgets = {
