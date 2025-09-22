@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block content %}
-<h2>Update Character's Drugs And Poisons</h2>
+<br>
+<h2 class="text-center" >Update Character's Drugs And Poisons</h2>
 <form method="post">
     {% csrf_token %}
 
@@ -18,9 +19,11 @@
                 Equipped
             </label>
         </div>
-    <div class="d-flex justify-content-center">
-        <button class="btn btn-warning" type="submit">Save Changes</button>
-    </div>
+    <div class="text-center">
+                    <button class="btn btn-warning" type="submit">Save Changes</button>
+                    <a href="{% url 'equipment:character_equipment' character_id=object.character.id  %}"
+   class="btn btn-secondary">Cancel</a>
+                </div>
 
     <br><br>
 </form>
