@@ -182,6 +182,9 @@ class CharacterEquipmentCreateView(LoginRequiredMixin, CreateView):
 class CharacterEquipmentUpdateView(LoginRequiredMixin, UpdateView):
     """Generic update view for character equipment."""
 
+    template_name = "equipment/character_equipment_form_update.html"
+    category_title = None  # override in subclasses
+
     def get_queryset(self):
         return self.model.objects.filter(character__user=self.request.user)
 
@@ -243,7 +246,6 @@ class UpdateViewCharacterMeleeWeapons(CharacterEquipmentUpdateView):
     """Update view for characters' melee weapon."""
     model = CharacterMeleeWeapons
     form_class = CharacterMeleeWeaponsUpdateForm
-    template_name = "equipment/charactermeleeweapons_update.html"
 
 
 class DeleteViewCharacterMeleeWeapon(CharacterEquipmentDeleteView):
@@ -263,7 +265,6 @@ class UpdateViewCharacterRangedWeapons(CharacterEquipmentUpdateView):
     """Update view for characters' ranged weapon."""
     model = CharacterRangedWeapons
     form_class = CharacterRangedWeaponsUpdateForm
-    template_name = "equipment/characterrangedweapons_update.html"
 
 
 class DeleteViewCharacterRangedWeapon(CharacterEquipmentDeleteView):
@@ -283,7 +284,6 @@ class UpdateViewCharacterAmmunition(CharacterEquipmentUpdateView):
     """Update view for characters' ammunition."""
     model = CharacterAmmunition
     form_class = CharacterAmmunitionUpdateForm
-    template_name = "equipment/characterammunition_update.html"
 
 
 class DeleteViewCharacterAmmunition(CharacterEquipmentDeleteView):
