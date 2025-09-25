@@ -303,7 +303,6 @@ class UpdateViewCharacterArmour(CharacterEquipmentUpdateView):
     """Update view for characters' armour."""
     model = CharacterArmour
     form_class = CharacterArmourUpdateForm
-    template_name = "equipment/characterarmour_update.html"
 
 
 class DeleteViewCharacterArmour(CharacterEquipmentDeleteView):
@@ -323,7 +322,6 @@ class UpdateViewCharacterPacksAndContainers(CharacterEquipmentUpdateView):
     """Update view for characters' packs and containers."""
     model = CharacterPacksAndContainers
     form_class = CharacterPacksAndContainersUpdateForm
-    template_name = "equipment/characterpacksandcontainers_update.html"
 
 
 class DeleteViewCharacterPacksAndContainers(CharacterEquipmentDeleteView):
@@ -343,7 +341,6 @@ class UpdateViewCharacterClothingAndAccessories(CharacterEquipmentUpdateView):
     """Update view for characters' clothing and accessories."""
     model = CharacterClothingAndAccessories
     form_class = CharacterClothingAndAccessoriesUpdateForm
-    template_name = "equipment/characterclothingandaccessories_update.html"
 
 
 class DeleteViewCharacterClothingAndAccessories(CharacterEquipmentDeleteView):
