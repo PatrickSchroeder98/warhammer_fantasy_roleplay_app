@@ -360,7 +360,6 @@ class UpdateViewCharacterFoodDrinkAndLodging(CharacterEquipmentUpdateView):
     """Update view for characters' food, drink and lodging."""
     model = CharacterFoodDrinkAndLodging
     form_class = CharacterFoodDrinkAndLodgingUpdateForm
-    template_name = "equipment/characterfooddrinkandlodging_update.html"
 
 
 class DeleteViewCharacterFoodDrinkAndLodging(CharacterEquipmentDeleteView):
@@ -380,7 +379,6 @@ class UpdateViewCharacterToolsAndKits(CharacterEquipmentUpdateView):
     """Update view for characters' tools and kits."""
     model = CharacterToolsAndKits
     form_class = CharacterToolsAndKitsUpdateForm
-    template_name = "equipment/charactertoolsandkits_update.html"
 
 
 class DeleteViewCharacterToolsAndKits(CharacterEquipmentDeleteView):
@@ -400,7 +398,6 @@ class UpdateViewCharacterBooksAndDocuments(CharacterEquipmentUpdateView):
     """Update view for characters' tools and kits."""
     model = CharacterBooksAndDocuments
     form_class = CharacterBooksAndDocumentsUpdateForm
-    template_name = "equipment/characterbooksanddocuments_update.html"
 
 
 class DeleteViewCharacterBooksAndDocuments(CharacterEquipmentDeleteView):
