@@ -417,7 +417,6 @@ class UpdateViewCharacterTradeToolsAndWorkshops(CharacterEquipmentUpdateView):
     """Update view for characters' tools and workshops."""
     model = CharacterTradeToolsAndWorkshops
     form_class = CharacterTradeToolsAndWorkshopsUpdateForm
-    template_name = "equipment/charactertradetoolsandworkshops_update.html"
 
 
 class DeleteViewCharacterTradeToolsAndWorkshops(CharacterEquipmentDeleteView):
@@ -437,7 +436,6 @@ class UpdateViewCharacterAnimalsAndVehicles(CharacterEquipmentUpdateView):
     """Update view for characters' animals and vehicles."""
     model = CharacterAnimalsAndVehicles
     form_class = CharacterAnimalsAndVehiclesUpdateForm
-    template_name = "equipment/characteranimalsandvehicles_update.html"
 
 
 class DeleteViewCharacterAnimalsAndVehicles(CharacterEquipmentDeleteView):
@@ -457,7 +455,6 @@ class UpdateViewCharacterDrugsAndPoisons(CharacterEquipmentUpdateView):
     """Update view for characters' drugs and poisons."""
     model = CharacterDrugsAndPoisons
     form_class = CharacterDrugsAndPoisonsUpdateForm
-    template_name = "equipment/characterdrugsandpoisons_update.html"
 
 
 class DeleteViewCharacterDrugsAndPoisons(CharacterEquipmentDeleteView):
